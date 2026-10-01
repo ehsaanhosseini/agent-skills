@@ -1,0 +1,3 @@
+skill	line_pattern	justification
+improve-animations	ignore previous instructions	Defensive guidance: tells the agent to flag, not follow, injected instructions found in repository content
+competitor-profiling	proceed without asking	Scoped to user-supplied URLs with context already available; does not discount system/session instructions or grant extra permissions

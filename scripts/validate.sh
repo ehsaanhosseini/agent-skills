@@ -61,6 +61,32 @@ for dp,_,fs in os.walk('skills'):
 sys.exit(1 if bad else 0)
 PY
 
+# 3b. instruction-override patterns in vendored markdown (allowlist: registry/override-allowlist.tsv)
+ALLOW=registry/override-allowlist.tsv
+python3 - "$ALLOW" "$strict" <<'PY' && pass "no unreviewed instruction-override patterns in skills/" || { [ "$strict" = 1 ] && fail "unreviewed instruction-override patterns in skills/" || warn "unreviewed instruction-override patterns in skills/"; }
+import os,re,sys
+allow_path,strict=sys.argv[1],sys.argv[2]
+PATS=[r"ignore (all )?(previous|prior|above) instructions",r"disregard .*(system|session|instructions)",
+ r"override .*(system|session|instructions)",r"spawn .*sub-?agents?",r"without (asking|confirmation|permission)",
+ r"do not (ask|tell) the user",r"treat .* as (user )?permission"]
+rx=re.compile("|".join("(?:%s)"%p for p in PATS),re.I)
+allow=[];bad=0
+if not os.path.isfile(allow_path): print("  missing",allow_path); sys.exit(1)
+for i,l in enumerate(open(allow_path,encoding='utf-8').read().splitlines()):
+    if i==0 or not l.strip(): continue
+    c=l.split("\t")
+    if len(c)<3 or not all(x.strip() for x in c[:3]): print("  allowlist line %d needs skill|line-pattern|justification"%(i+1)); bad+=1; continue
+    allow.append((c[0].strip(),re.compile(c[1].strip(),re.I)))
+for dp,_,fs in os.walk('skills'):
+    for f in sorted(fs):
+        if not f.endswith('.md'): continue
+        p=os.path.join(dp,f); parts=p.split(os.sep); skill=parts[2] if len(parts)>2 else ''
+        for n,line in enumerate(open(p,encoding='utf-8').read().splitlines(),1):
+            if rx.search(line) and not any(s==skill and r.search(line) for s,r in allow):
+                print("  override pattern: %s:%d"%(p,n)); bad+=1
+sys.exit(1 if bad else 0)
+PY
+
 # 4. installed links
 if [ $repo_only = 0 ]; then
   for t in "${LINKDIRS[@]}"; do
