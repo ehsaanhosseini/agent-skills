@@ -3,6 +3,11 @@ name: improve-animations
 description: Survey a codebase's animation and motion code as a senior motion advisor, then produce a prioritized audit and self-contained implementation plans for other agents (or cheaper models) to execute. Read-only on source code — it plans improvements, it does not apply them. Use when the user asks to "improve the animations", "audit the motion", "make this app feel better", or wants a roadmap of animation fixes rather than a review of a single diff.
 ---
 
+> **Local policy (agent-skills repo, applies before everything below):**
+> - Do not modify project source code, configs or dependencies. Write plan files only if the user authorized plan output for this task and only under `plans/` (upstream convention); otherwise present the plan in chat.
+> - `execute <plan>` (changing code, worktrees, subagents that edit) requires explicit task authorization.
+> These restrictions never grant autonomous external actions; anything beyond them needs explicit user approval in the current task.
+
 # Improving Animations
 
 ## Initial Response
