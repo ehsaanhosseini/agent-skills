@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Review-gated upstream vendoring. Never commits, never pushes, never auto-runs.
 #   upstream.sh diff  <skill> [ref]   show what upstream changed vs the vendored copy
-#   upstream.sh apply <skill> [ref]   write upstream version into the working tree + registry (you review, then commit)
+#   upstream.sh apply <skill> [ref]   shows the diff, then writes ONLY if CONFIRM=<first 12 chars of new sha> is set (feature branch only)
 #   upstream.sh table                 print the UPSTREAM.md table from registry/
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -20,6 +20,16 @@ export_skill(){ # repo_dir sha upath out
   local strip; strip=$(awk -F/ '{print NF}' <<<"$up")
   git -C "$repo" archive "$sha" "$up" | tar -x --strip-components="$strip" -C "$out"
   rm -rf "$out/evals"
+  # Local policy wrapper (registry/policies/<skill>.md) is injected right after the frontmatter.
+  local pol="$ROOT/registry/policies/$(basename "$up").md"
+  if [ -f "$pol" ]; then
+    python3 - "$out/SKILL.md" "$pol" <<'PY2'
+import sys,re
+p,pol=sys.argv[1:3]; t=open(p,encoding='utf-8').read(); w=open(pol,encoding='utf-8').read()
+m=re.match(r'^---\n.*?\n---\n',t,re.S)
+open(p,'w',encoding='utf-8').write(t[:m.end()]+"\n"+w+t[m.end():].lstrip("\n"))
+PY2
+  fi
   python3 - "$out" "$up" "$sha" "$url" <<'PY'
 import os,re,sys,posixpath
 out,up,sha,url=sys.argv[1:5]
@@ -58,13 +68,17 @@ case "$cmd" in
   export_skill "$repo" "$cur" "$up" "$tmp/old" "$url"
   [ -d "$dest" ] || mkdir -p "$dest"   # first import
   if [ -n "$(ls -A "$dest")" ] && ! diff -r "$tmp/old" "$dest" >/dev/null 2>&1; then
-    echo "WARNING: vendored copy differs from reviewed upstream $cur (local modifications):"; diff -ru "$tmp/old" "$dest" | head -40
+    echo "WARNING: vendored copy differs from reviewed upstream $cur (local modifications):"; { diff -ru "$tmp/old" "$dest" | head -40; } || true
     [ "${FORCE:-0}" = 1 ] || { [ "$cmd" = diff ] || { echo "Refusing to overwrite. Re-run with FORCE=1 after reviewing."; exit 3; }; }
   fi
   export_skill "$repo" "$new" "$up" "$tmp/new" "$url"
   echo "== $skill: $cur -> $new"; git -C "$repo" log --oneline "$cur..$new" -- "$up" | head -20
   diff -ruN "$dest" "$tmp/new" || true
   if [ "$cmd" = apply ]; then
+    case "$(git -C "$ROOT" branch --show-current)" in main|master|dev) echo "Refusing to apply on a protected branch; use a feature branch." >&2; exit 4;; esac
+    if [ "${CONFIRM:-}" != "${new:0:12}" ]; then
+      echo "NOT APPLIED. Review the diff above (it is the live, symlinked skill that would change), then re-run with CONFIRM=${new:0:12}" >&2; exit 5
+    fi
     rsync -a --delete "$tmp/new/" "$dest/"
     awk -F'\t' -v OFS='\t' -v k="$skill" -v s="$new" '$1==k{$5=s}1' "$REG" > "$REG.new" && mv "$REG.new" "$REG"
     echo "Applied to working tree. Review 'git diff', update UPSTREAM.md (scripts/upstream.sh table), then commit yourself."
