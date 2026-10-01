@@ -1,8 +1,9 @@
 # Upstream provenance
 
 Source of truth: `registry/skills.tsv`. Regenerate this table with `scripts/upstream.sh table`.
-Local modifications to all vendored skills: `evals/` directories not vendored; relative links pointing outside the skill
-directory (`../../tools/...`) rewritten to URLs pinned to the reviewed commit. Nothing else changed.
+Local modifications to vendored skills: `evals/` directories not vendored; relative links pointing outside the skill
+directory (`../../tools/...`) rewritten to URLs pinned to the reviewed commit; for `restricted` skills, a Local policy block
+(`registry/policies/<skill>.md`) injected after the frontmatter. Nothing else changed.
 
 Audit (2026-10-01): all vendored skills are Markdown only. No scripts, hooks, MCP config, package manifests or network
 calls. Not vendored and not audited/executed: marketingskills `tools/`, `scripts/`, `validate-*.sh`; emilkowalski `.pl`.

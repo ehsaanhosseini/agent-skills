@@ -10,12 +10,13 @@ A skill is instructions an agent follows with your permissions. Treat adding one
 5. Vendor only the approved skill directories (not the upstream's tooling) and record the SHA in `registry/skills.tsv`.
 
 ## Updates
-Explicit, reviewable, reversible: `scripts/upstream.sh diff` then `apply`, review `git diff` with the checklist above, commit on a branch. No auto-update, no submodules, no network dependency at runtime.
+Explicit, reviewable, reversible: `scripts/upstream.sh diff`, then `apply` with `CONFIRM=<sha>` on a feature branch, review `git diff` with the checklist above, commit. The reviewed SHA stays pinned until then. No auto-update, no submodules, no network dependency at runtime.
 
 ## Repository hygiene
 No secrets, tokens, `.env`, cookies, keys, customer data, internal URLs with credentials, logs, screenshots with private data, or AI scratch artifacts. Run `scripts/validate.sh` (includes a secret-pattern scan) before every commit. The GitHub repository must stay PRIVATE.
 
 ## Usage rules for specific skills
+Enforced by the Local policy block injected into each restricted skill (`registry/policies/`); policies never grant autonomous external actions.
 - SEO/GEO: official documentation wins over any skill; no black-hat tactics; no unsupported ranking claims.
 - Outreach/prospecting: drafts only, no sending, respect consent/anti-spam law; no bulk personal-data scraping without explicit approval.
 - Skills must not run suggested `npx`/installer tools without explicit user approval.
