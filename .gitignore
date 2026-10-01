@@ -1,0 +1,28 @@
+# OS / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Secrets - never commit
+.env
+.env.*
+*.pem
+*.key
+*.p12
+credentials*
+secrets*
+id_rsa*
+id_ed25519*
+
+# Scratch / agent artifacts / generated
+tmp/
+scratch/
+.cache/
+*.log
+node_modules/
+.claude/
+.cursor/
+.codex/
+.agents/
+plans/
