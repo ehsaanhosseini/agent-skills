@@ -1,0 +1,5 @@
+Source: https://github.com/coreyhaines31/marketingskills
+License: MIT (see LICENSE)
+Reviewed commit: 5b2c0007766c6a1cf1d53fd8fc73e979e0821022
+Vendored skills: see registry/skills.tsv
+Not vendored/not audited: tools/, scripts/, validate-*.sh, evals/

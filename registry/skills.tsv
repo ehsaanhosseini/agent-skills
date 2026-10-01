@@ -1,0 +1,21 @@
+skill	category	source	upstream_path	reviewed_sha	status	notes
+product-marketing	marketing	marketingskills	skills/product-marketing	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	restricted	Writes .agents/product-marketing.md into the current project only when invoked; links rewritten
+content-strategy	marketing	marketingskills	skills/content-strategy	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	active	tools/ links rewritten to pinned upstream URLs
+customer-research	marketing	marketingskills	skills/customer-research	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	active	tools/ links rewritten to pinned upstream URLs
+competitor-profiling	marketing	marketingskills	skills/competitor-profiling	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	restricted	Public information only
+prospecting	marketing	marketingskills	skills/prospecting	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	restricted	Follow references/compliance.md; no bulk personal-data scraping without explicit approval; tools/ links rewritten
+cold-email	marketing	marketingskills	skills/cold-email	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	restricted	Draft only; never send without explicit user approval
+cro	marketing	marketingskills	skills/cro	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	active	
+analytics	marketing	marketingskills	skills/analytics	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	restricted	Respect consent/privacy law before adding tracking
+seo-audit	seo-geo	marketingskills	skills/seo-audit	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	active	Official search-engine docs are authoritative
+ai-seo	seo-geo	marketingskills	skills/ai-seo	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	restricted	Workflow aid only; do not run suggested npx tools without approval; no unsupported ranking claims; tools/ link rewritten
+schema	seo-geo	marketingskills	skills/schema	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	active	Validate against schema.org / Google docs
+site-architecture	seo-geo	marketingskills	skills/site-architecture	5b2c0007766c6a1cf1d53fd8fc73e979e0821022	active	
+emil-design-eng	design	emilkowalski-skills	skills/emil-design-eng	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	
+apple-design	design	emilkowalski-skills	skills/apple-design	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	
+animate	design	emilkowalski-skills	skills/animate	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	
+review-animations	design	emilkowalski-skills	skills/review-animations	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	Manual-invocation only (upstream flag)
+improve-animations	design	emilkowalski-skills	skills/improve-animations	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	restricted	Writes plan files under plans/ in the target project; read-only on source
+prototype	design	emilkowalski-skills	skills/prototype	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	restricted	Manual-invocation only; adds then deletes a prototype route in the target project
+pick-ui-library	design	emilkowalski-skills	skills/pick-ui-library	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	Manual-invocation only (upstream flag)
+mobile-native	design	emilkowalski-skills	skills/mobile-native	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	

@@ -1,0 +1,5 @@
+Source: https://github.com/emilkowalski/skills
+License: MIT (see LICENSE)
+Reviewed commit: d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128
+Vendored skills: see registry/skills.tsv
+Not vendored: performance-cheatsheet.md, write-swift, animate-expo, animation-vocabulary, ask-sonner, find-animation-opportunities
