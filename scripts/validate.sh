@@ -64,9 +64,9 @@ PY
 # 3b. instruction-override tripwire over every file under skills/. Always fatal (--strict does not change this).
 # A regex tripwire, not a guarantee: see SECURITY.md for residual risks. Multi-line aware (whole-file normalized text) and scanned in
 # two views (markup chars -> space, markup chars deleted). Lines are folded first (HTML entities, NFKC, format chars dropped).
-# Also fatal: symlinks, words mixing Latin with Greek/Cyrillic. Allowlist = exact full source line per skill; stale/malformed entries fail.
+# Also fatal: symlinks, Unicode tag characters, NUL/UTF-16/32 files, words mixing Latin with Greek/Cyrillic (mu/Omega unit symbols excepted). Allowlist = exact full source line per skill; stale/malformed entries fail.
 python3 - registry/override-allowlist.tsv <<'PY' && pass "no unreviewed instruction-override patterns in skills/" || fail "unreviewed instruction-override patterns or invalid override allowlist"
-import bisect,html,os,re,sys,unicodedata
+import bisect,codecs,html,os,re,string,sys,unicodedata
 allow_path=sys.argv[1]
 PATS=[r"ignore (?:[a-z]+ ){0,3}(previous|prior|above|earlier|preceding) (instructions|rules|guidelines|prompts|directions)",
  r"disregard [^.!?]{0,400}(system|session|instructions)",r"override [^.!?]{0,400}(system|session|instructions)",
@@ -76,8 +76,13 @@ rx=re.compile("|".join("(?:%s)"%q for q in PATS),re.I)
 norm=lambda s:re.sub(r"\s+"," ",s).strip()
 fold=lambda s:"".join(c for c in unicodedata.normalize("NFKC",html.unescape(s)) if unicodedata.category(c)!="Cf")
 MD=re.compile(r"[*_`~|\\\[\]()<>#]")
-NONLAT="%s-%s%s-%s"%(chr(0x370),chr(0x3ff),chr(0x400),chr(0x4ff))
-MIXED=re.compile(r"(?=\w*[A-Za-z])(?=\w*[%s])\w+"%NONLAT)
+WORD=re.compile(r"\w+"); LAT=frozenset(string.ascii_letters); UNITS=frozenset(chr(c) for c in (0x3bc,0x3a9))  # mu, Omega: unit symbols
+TAGS=re.compile("[%s-%s]"%(chr(0xe0000),chr(0xe007f))); BOMS=(codecs.BOM_UTF16_LE,codecs.BOM_UTF16_BE,codecs.BOM_UTF32_LE,codecs.BOM_UTF32_BE)
+def mixed(t):  # linear: one pass over words, set membership per word (no nested scans)
+    for m in WORD.finditer(t):
+        u=set(m.group())
+        if u&LAT and any(0x400<=ord(c)<=0x4ff or (0x370<=ord(c)<=0x3ff and c not in UNITS) for c in u): return True
+    return False
 MARK=re.compile(r"^(?:\s*(?:>|[-*+](?=\s)|\d+[.)](?=\s)))+")
 bad=0; allow={}
 if not os.path.isfile(allow_path): print("  missing",allow_path); sys.exit(1)
@@ -96,8 +101,12 @@ for dp,dn,fs in os.walk("skills"):
     for f in sorted(fs):
         p=os.path.join(dp,f); parts=p.split(os.sep); skill=parts[1+1] if len(parts)>3 else ""
         if os.path.islink(p): print("  symlink not allowed: %s"%p); bad+=1; continue
-        lines=open(p,encoding="utf-8",errors="strict" if f.endswith(".md") else "replace").read().splitlines()
-        if any(MIXED.search(fold(l)) for l in lines): print("  word mixing Latin with Greek/Cyrillic (homoglyph?): %s"%p); bad+=1
+        raw=open(p,"rb").read()
+        if b"\0" in raw or raw.startswith(BOMS): print("  NUL bytes or UTF-16/32 BOM (unscannable encoding): %s"%p); bad+=1; continue
+        try: lines=raw.decode("utf-8",errors="strict" if f.endswith(".md") else "replace").splitlines()
+        except UnicodeDecodeError: print("  invalid UTF-8 in markdown file: %s"%p); bad+=1; continue
+        if TAGS.search(html.unescape("".join(lines))): print("  Unicode tag characters (invisible text): %s"%p); bad+=1
+        if any(mixed(fold(l)) for l in lines): print("  word mixing Latin with Greek/Cyrillic (homoglyph?): %s"%p); bad+=1
         hits={}
         for view in (" ",""):
             text="";starts=[];lineno=[]
