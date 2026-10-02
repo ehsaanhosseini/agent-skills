@@ -7,7 +7,7 @@ so this repository never contains a literal override sentence. Nothing here touc
 
   python3 tests/override_scanner_test.py
 """
-import os, shutil, subprocess, sys, tempfile, time
+import atexit, os, shutil, subprocess, sys, tempfile, time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VALIDATE = os.environ.get("VALIDATE_SH", os.path.join(ROOT, "scripts", "validate.sh"))   # override only to prove the tests bite
@@ -24,23 +24,29 @@ def extract_scanner():
     return "\n".join(out) + "\n"
 
 TMP = tempfile.mkdtemp(prefix="override-scanner-test-")
+atexit.register(shutil.rmtree, TMP, True)        # always removed, including when the suite crashes
+print("scanner under test: %s" % VALIDATE)
+if "VALIDATE_SH" in os.environ:
+    print("NOTICE: VALIDATE_SH is set; the pattern tests run against that file, not scripts/validate.sh (end-to-end checks still use the repo's own).")
 SCANNER = os.path.join(TMP, "scanner.py")
 open(SCANNER, "w", encoding="utf-8").write(extract_scanner())
 HEADER = "skill\texact_line\tjustification\n"
 
 def scan(files, links=(), allow=HEADER, timeout=60):
     d = tempfile.mkdtemp(dir=TMP)
-    os.makedirs(d + "/registry")
-    open(d + "/registry/override-allowlist.tsv", "w", encoding="utf-8").write(allow)
-    for p, c in files.items():
-        fp = os.path.join(d, p); os.makedirs(os.path.dirname(fp), exist_ok=True)
-        open(fp, "wb").write(c if isinstance(c, bytes) else c.encode("utf-8"))
-    for p, t in links:
-        fp = os.path.join(d, p); os.makedirs(os.path.dirname(fp), exist_ok=True); os.symlink(t, fp)
-    r = subprocess.run([sys.executable, SCANNER, "registry/override-allowlist.tsv"], cwd=d,
-                       capture_output=True, text=True, timeout=timeout)
-    shutil.rmtree(d)
-    return r.returncode, r.stdout + r.stderr
+    try:
+        os.makedirs(d + "/registry")
+        open(d + "/registry/override-allowlist.tsv", "w", encoding="utf-8").write(allow)
+        for p, c in files.items():
+            fp = os.path.join(d, p); os.makedirs(os.path.dirname(fp), exist_ok=True)
+            open(fp, "wb").write(c if isinstance(c, bytes) else c.encode("utf-8"))
+        for p, t in links:
+            fp = os.path.join(d, p); os.makedirs(os.path.dirname(fp), exist_ok=True); os.symlink(t, fp)
+        r = subprocess.run([sys.executable, SCANNER, "registry/override-allowlist.tsv"], cwd=d,
+                           capture_output=True, text=True, timeout=timeout)
+        return r.returncode, r.stdout + r.stderr
+    finally:
+        shutil.rmtree(d, ignore_errors=True)
 
 results = []
 def check(name, ok, detail=""):
@@ -129,8 +135,35 @@ for ext in (".md", ".txt", ".sh", ".py", ".js", ".json", ".yaml", ".html", ".mar
 must_fail("hidden file", {SK: "ok\n", "skills/c/s/.notes": PAYLOAD})
 must_fail("skills/<cat>/loose.md (no skill dir)", {"skills/c/loose.md": PAYLOAD})
 must_fail("invalid UTF-8 in .md fails closed", {SK: b"ok \xff\xfe\n"})
-must_pass("invalid UTF-8 in non-.md decodes leniently", {SK: "ok\n", "skills/c/s/blob.bin": b"ok \xff\xfe\x00\n"})
+must_pass("invalid UTF-8 in non-.md decodes leniently", {SK: "ok\n", "skills/c/s/blob.bin": b"ok \xff\xfe\n"})
 must_fail("payload in non-.md after invalid UTF-8", {SK: "ok\n", "skills/c/s/blob.txt": b"\xff\xfe\n" + PAYLOAD.encode()})
+
+# --- 4b. mixed-script rule, unit symbols, tag characters, unscannable encodings ------------------------------------------
+MU, OHM_SIGN, MICRO_SIGN, ALPHA, BETA, OMEGA_LOW = chr(0x3BC), chr(0x2126), chr(0xB5), chr(0x3B1), chr(0x3B2), chr(0x3C9)
+must_fail("Greek alpha inside a Latin word", {SK: "Keep the c%sde clean\n" % ALPHA})
+must_fail("Greek beta inside a Latin word", {SK: "Set x%s to 1\n" % BETA})
+must_fail("unit symbol mixed with another Greek letter", {SK: "Set k%s%s here\n" % (MU, ALPHA)})
+must_fail("lowercase omega inside a Latin word (only mu and Omega are exempt)", {SK: "Set k%s here\n" % OMEGA_LOW})
+must_fail("Cyrillic letter inside a Latin word (.json)", {SK: "ok\n", "skills/c/s/d.json": '{"k": "c%sde"}\n' % CYR_O})
+must_pass("unit symbol: mu followed by s", {SK: "Typical latency is 5 %ss.\n" % MU})
+must_pass("unit symbol: micro sign (folds to mu)", {SK: "Pitch is 3 %sm.\n" % MICRO_SIGN})
+must_pass("unit symbol: ohm sign (folds to Omega)", {SK: "Resistor 10 k%s 1%%.\n" % OHM_SIGN})
+must_pass("unit symbol in a non-.md file", {SK: "ok\n", "skills/c/s/d.json": '{"u": "5 %ss"}\n' % MU})
+PHRASE = " ".join((A, B, C))
+TAGS = "".join(chr(0xE0000 + ord(ch)) for ch in PHRASE)
+TAGS_ENT = "".join("&#x%X;" % (0xE0000 + ord(ch)) for ch in PHRASE)
+must_fail("payload written in Unicode tag characters (.md)", {SK: "Hello" + TAGS + "\n"})
+must_fail("payload written in Unicode tag characters (.txt)", {SK: "ok\n", "skills/c/s/n.txt": "Hello" + TAGS + "\n"})
+must_fail("payload written as tag-character entities", {SK: "Hello" + TAGS_ENT + "\n"})
+must_fail("single tag character", {SK: "Hello" + chr(0xE0041) + "\n"})
+must_pass("same text without tag characters", {SK: "Hello\n"})
+must_pass("zero-width space alone is folded, not rejected", {SK: "Hello" + ZW + " world\n"})
+for name, body in (("UTF-16 with BOM", ("# " + PHRASE + "\n").encode("utf-16")), ("UTF-16 LE no BOM, NUL-interleaved", ("# " + PHRASE + "\n").encode("utf-16-le")),
+                   ("UTF-32 with BOM", ("# " + PHRASE + "\n").encode("utf-32")), ("ASCII with NUL bytes", b"ok\x00\nmore\n")):
+    for ext in (".txt", ".json"):
+        must_fail("%s in %s" % (name, ext), {SK: "ok\n", "skills/c/s/n" + ext: body})
+must_pass("UTF-8 with BOM in .txt", {SK: "ok\n", "skills/c/s/n.txt": b"\xef\xbb\xbf" + SAFE.encode()})
+must_pass("plain UTF-8 clean text in .json", {SK: "ok\n", "skills/c/s/n.json": SAFE})
 
 # --- 5. symlinks ----------------------------------------------------------------------------------------------------
 must_fail("symlinked file", {"ext/x.md": SAFE, SK: "ok\n"}, links=[("skills/c/s/ref.md", "../../../../ext/x.md")])
@@ -167,10 +200,18 @@ for label, body in (("2 MB of repeated lead word, no keyword", D * 200000), ("2 
     t = time.time(); rc, _ = scan({SK: body}); dt = time.time() - t
     print("INFO  timing: %s: %.2fs" % (label, dt))
     check("perf: %s finishes in < 10s" % label, rc == 0 and dt < 10, "rc=%d, %.1fs" % (rc, dt))
+for size, nm in ((200000, "200 KB"), (1000000, "1 MB")):
+    for fn in ("SKILL.md", "data.json"):
+        t = time.time(); rc, _ = scan({SK: "ok\n", "skills/c/s/" + fn: "a" * size}); dt = time.time() - t
+        print("INFO  timing: unbroken word %s in %s: %.2fs" % (nm, fn, dt))
+        check("perf: unbroken word %s in %s finishes in < 5s" % (nm, fn), rc == 0 and dt < 5, "rc=%d, %.1fs" % (rc, dt))
+t = time.time(); rc, _ = scan({SK: "a" * 200000 + CYR_O}); dt = time.time() - t
+check("perf: 200 KB word ending in a Cyrillic letter is flagged in < 5s", rc != 0 and dt < 5, "rc=%d, %.1fs" % (rc, dt))
 
 # --- 10. end-to-end through validate.sh: always fatal, no --strict needed -------------------------------------------
 def e2e(inject):
     d = tempfile.mkdtemp(dir=TMP)
+    atexit.register(shutil.rmtree, d, True)
     # copy the working tree without any dot-directory or .git entry (a worktree has a .git *file*), then init a private repo
     shutil.copytree(ROOT, d + "/r", ignore=lambda cur, names: [n for n in names if n == ".git" or (n.startswith(".") and os.path.isdir(os.path.join(cur, n)))])
     if inject:
@@ -185,6 +226,12 @@ c = e2e(False); check("validate.sh --repo-only (no --strict) on clean copy exits
 n = e2e(True)
 check("validate.sh --repo-only (no --strict) with injected line exits non-zero", n.returncode != 0 and "override pattern" in n.stdout, n.stdout[-300:])
 
-shutil.rmtree(TMP, ignore_errors=True)
+# --- 11. crash path leaves no temp dirs -----------------------------------------------------------------------------
+probe = tempfile.mkdtemp(dir=TMP)
+subprocess.run([sys.executable, os.path.abspath(__file__)], env=dict(os.environ, VALIDATE_SH=os.path.join(probe, "missing.sh"), TMPDIR=probe),
+               capture_output=True, text=True)
+left = [n for n in os.listdir(probe) if n.startswith("override-scanner-test-")]
+check("forced crash (missing VALIDATE_SH) leaves no override-scanner-test-* dirs", not left, "left behind: %r" % left)
+
 print("\n%d/%d checks passed" % (sum(results), len(results)))
 sys.exit(0 if all(results) else 1)
