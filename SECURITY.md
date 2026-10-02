@@ -12,6 +12,21 @@ A skill is instructions an agent follows with your permissions. Treat adding one
 ## Updates
 Explicit, reviewable, reversible: `scripts/upstream.sh diff`, then `apply` with `CONFIRM=<sha>` on a feature branch, review `git diff` with the checklist above, commit. The reviewed SHA stays pinned until then. No auto-update, no submodules, no network dependency at runtime.
 
+## Override check: a tripwire, not a guarantee
+`scripts/validate.sh` scans every file under `skills/` for instruction-override phrasing. It is a regex tripwire that catches careless or lazy injection. It does **not** prove a skill is safe, and a passing run is never a substitute for review.
+
+What it does: matches a fixed set of phrases (finite gaps of up to 400 characters between key terms) after folding HTML entities, Unicode compatibility forms and zero-width/format characters, in two views of each file (Markdown markup replaced by a space, and deleted). It rejects symlinks, and words that mix Latin with Greek/Cyrillic letters. Findings are always fatal, with or without `--strict`. The only exemption is an exact full-line entry in `registry/override-allowlist.tsv`.
+
+Accepted residual risks (it will not catch these):
+- Encoded or obfuscated payloads (base64, rot13, other encodings, images, binary files).
+- Padding: key terms separated by more than 400 characters, or by a sentence-ending character. The gap must stay finite; an unbounded gap makes the scan quadratic and slow.
+- Content spliced between the words of a phrase, such as an HTML comment, a link target, a hyphenated line break or a `<br>` tag.
+- Paraphrase, synonyms and non-English text.
+- Behaviour hidden in scripts or hooks that is not written as an override phrase. Text in them is scanned, but their logic is not analysed.
+- An exact allowlisted line reused elsewhere in the same skill. Allowlist entries are scoped per skill, not per file.
+
+Human review of every vendored or upstream diff, using the checklist above, stays mandatory.
+
 ## Repository hygiene
 No secrets, tokens, `.env`, cookies, keys, customer data, internal URLs with credentials, logs, screenshots with private data, or AI scratch artifacts. Run `scripts/validate.sh` (includes a secret-pattern scan) before every commit. The GitHub repository must stay PRIVATE.
 

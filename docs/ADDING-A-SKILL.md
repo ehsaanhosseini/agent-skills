@@ -37,7 +37,7 @@ default. Only a specifically reviewed, documented exception can override it.
 Any instruction that overrides or discounts the agent's system/session instructions, or grants itself permission to
 spawn subagents or act without asking, is an automatic reject.
 
-`scripts/validate.sh` enforces this with a pattern check over all vendored markdown:
+`scripts/validate.sh` enforces this with a pattern check over every file under `skills/`:
 - Findings are always fatal, with or without `--strict`.
 - The scan is multi-line aware: each file is normalized (whitespace collapsed, blockquote and list markers stripped)
   before matching, so wrapped phrases are caught. Matches are reported as `file:line` of where they start.
@@ -45,8 +45,11 @@ spawn subagents or act without asking, is an automatic reject.
   line, whitespace-normalized, must equal the entry. Substring matching is not used and a multi-line finding is never
   exempted. All three columns are mandatory, and an entry that matches no current line is a failure, so upstream
   edits force a re-review.
-- Limitation: this is a regex tripwire, not a guarantee. Paraphrased or non-English override text can evade it, so
-  human review of every vendored change remains mandatory.
+- Lines are folded before matching (HTML entities, Unicode compatibility forms, zero-width characters), Markdown
+  markup is scanned in two views, and symlinks and words mixing Latin with Greek/Cyrillic are rejected.
+- Limitation: this is a regex tripwire, not a guarantee. Encoded text, long padding, content spliced between words
+  and paraphrased or non-English override text can evade it (see `SECURITY.md`), so human review of every vendored
+  change remains mandatory.
 
 ### d) Pinning and side effects
 - Exact version or SHA pinning; no `@latest`.
