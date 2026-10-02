@@ -67,7 +67,7 @@ Skills marked `restricted` in `registry/skills.tsv` carry a **Local policy** blo
 `product-marketing` writes business context to `.agents/product-marketing.md` in the **current project** (only when that skill runs, and only after approval per its policy). That file holds positioning/ICP/competitor information. This repo does not decide whether a project commits or ignores it; decide per project (and never add it to a global gitignore).
 
 ## Validate
-`scripts/validate.sh [--strict] [--repo-only] [--online]` is read-only: registry/skill/provenance consistency, link integrity for both discovery dirs, secret-pattern scan of tracked files and history (no scanner needed; gitleaks/trufflehog are used if installed), git state, and (with `--online`) that the GitHub repo is PRIVATE.
+`scripts/validate.sh [--strict] [--repo-only] [--online]` is read-only: registry/skill/provenance consistency, link integrity for both discovery dirs, secret-pattern scan of tracked files and history (no scanner needed; gitleaks/trufflehog are used if installed), git state, and (with `--online`) that the GitHub repo is PRIVATE. It also runs an instruction-override tripwire over every file under `skills/`; this is a regex check that catches careless injection only, not a guarantee, and human review of every vendored or upstream diff stays mandatory (accepted residual risks: see `SECURITY.md`). Regression tests for the tripwire: `python3 tests/override_scanner_test.py` (builds its payloads at runtime in a temp directory).
 
 ## Notes
 - Skills with `disable-model-invocation: true` upstream only run when invoked explicitly.

@@ -61,17 +61,28 @@ for dp,_,fs in os.walk('skills'):
 sys.exit(1 if bad else 0)
 PY
 
-# 3b. instruction-override patterns in vendored markdown. Always fatal (--strict does not change this).
-# Multi-line aware (whole-file normalized text); allowlist = exact full source line per skill, stale/malformed entries fail.
+# 3b. instruction-override tripwire over every file under skills/. Always fatal (--strict does not change this).
+# A regex tripwire, not a guarantee: see SECURITY.md for residual risks. Multi-line aware (whole-file normalized text) and scanned in
+# two views (markup chars -> space, markup chars deleted). Lines are folded first (HTML entities, NFKC, format chars dropped).
+# Also fatal: symlinks, Unicode tag characters, NUL/UTF-16/32 files, words mixing Latin with Greek/Cyrillic (mu/Omega unit symbols excepted). Allowlist = exact full source line per skill; stale/malformed entries fail.
 python3 - registry/override-allowlist.tsv <<'PY' && pass "no unreviewed instruction-override patterns in skills/" || fail "unreviewed instruction-override patterns or invalid override allowlist"
-import bisect,os,re,sys
+import bisect,codecs,html,os,re,string,sys,unicodedata
 allow_path=sys.argv[1]
-PATS=[r"ignore (all )?(previous|prior|above) instructions",r"ignore (all )?(previous|prior|above) (rules|guidelines)",
- r"disregard [^.!?]{0,80}(system|session|instructions)",r"override [^.!?]{0,80}(system|session|instructions)",
- r"spawn [^.!?]{0,80}sub-?agents?",r"without (asking|confirmation|permission)",r"do not (ask|tell) the user",
- r"treat [^.!?]{0,80} as (user )?permission",r"you are now (in )?(developer|dan|jailbreak) mode"]
+PATS=[r"ignore (?:[a-z]+ ){0,3}(previous|prior|above|earlier|preceding) (instructions|rules|guidelines|prompts|directions)",
+ r"disregard [^.!?]{0,400}(system|session|instructions)",r"override [^.!?]{0,400}(system|session|instructions)",
+ r"spawn [^.!?]{0,400}sub-?agents?",r"without (asking|confirmation|permission)",r"do not (ask|tell) the user",
+ r"treat [^.!?]{0,400} as (user )?permission",r"you are now (in )?(developer|dan|jailbreak) mode"]
 rx=re.compile("|".join("(?:%s)"%q for q in PATS),re.I)
 norm=lambda s:re.sub(r"\s+"," ",s).strip()
+fold=lambda s:"".join(c for c in unicodedata.normalize("NFKC",html.unescape(s)) if unicodedata.category(c)!="Cf")
+MD=re.compile(r"[*_`~|\\\[\]()<>#]")
+WORD=re.compile(r"\w+"); LAT=frozenset(string.ascii_letters); UNITS=frozenset(chr(c) for c in (0x3bc,0x3a9))  # mu, Omega: unit symbols
+TAGS=re.compile("[%s-%s]"%(chr(0xe0000),chr(0xe007f))); BOMS=(codecs.BOM_UTF16_LE,codecs.BOM_UTF16_BE,codecs.BOM_UTF32_LE,codecs.BOM_UTF32_BE)
+def mixed(t):  # linear: one pass over words, set membership per word (no nested scans)
+    for m in WORD.finditer(t):
+        u=set(m.group())
+        if u&LAT and any(0x400<=ord(c)<=0x4ff or (0x370<=ord(c)<=0x3ff and c not in UNITS) for c in u): return True
+    return False
 MARK=re.compile(r"^(?:\s*(?:>|[-*+](?=\s)|\d+[.)](?=\s)))+")
 bad=0; allow={}
 if not os.path.isfile(allow_path): print("  missing",allow_path); sys.exit(1)
@@ -84,23 +95,33 @@ for i,l in enumerate(rows[1:],2):
     if len(c)!=3 or not all(x.strip() for x in c): print("  allowlist line %d malformed (need 3 non-empty columns)"%i); bad+=1; continue
     allow[(c[0].strip(),norm(c[1]))]=i
 seen=set()
-for dp,_,fs in os.walk("skills"):
+for dp,dn,fs in os.walk("skills"):
+    for d in dn:
+        if os.path.islink(os.path.join(dp,d)): print("  symlinked directory not allowed: %s"%os.path.join(dp,d)); bad+=1
     for f in sorted(fs):
-        if not f.endswith(".md"): continue
         p=os.path.join(dp,f); parts=p.split(os.sep); skill=parts[1+1] if len(parts)>3 else ""
-        lines=open(p,encoding="utf-8").read().splitlines()
-        text="";starts=[];lineno=[]
-        for n,line in enumerate(lines,1):
-            seen.add((skill,norm(line)))
-            s=norm(MARK.sub("",line))
-            if not s: continue
-            if text: text+=" "
-            starts.append(len(text)); lineno.append(n); text+=s
-        for m in rx.finditer(text):
-            a=bisect.bisect_right(starts,m.start())-1; e=bisect.bisect_right(starts,max(m.end()-1,m.start()))-1
-            la,le=lineno[a],lineno[e]
+        if os.path.islink(p): print("  symlink not allowed: %s"%p); bad+=1; continue
+        raw=open(p,"rb").read()
+        if b"\0" in raw or raw.startswith(BOMS): print("  NUL bytes or UTF-16/32 BOM (unscannable encoding): %s"%p); bad+=1; continue
+        try: lines=raw.decode("utf-8",errors="strict" if f.endswith(".md") else "replace").splitlines()
+        except UnicodeDecodeError: print("  invalid UTF-8 in markdown file: %s"%p); bad+=1; continue
+        if TAGS.search(html.unescape("".join(lines))): print("  Unicode tag characters (invisible text): %s"%p); bad+=1
+        if any(mixed(fold(l)) for l in lines): print("  word mixing Latin with Greek/Cyrillic (homoglyph?): %s"%p); bad+=1
+        hits={}
+        for view in (" ",""):
+            text="";starts=[];lineno=[]
+            for n,line in enumerate(lines,1):
+                seen.add((skill,norm(line)))
+                s=norm(MD.sub(view,fold(MARK.sub("",line))))
+                if not s: continue
+                if text: text+=" "
+                starts.append(len(text)); lineno.append(n); text+=s
+            for m in rx.finditer(text):
+                a=bisect.bisect_right(starts,m.start())-1; e=bisect.bisect_right(starts,max(m.end()-1,m.start()))-1
+                hits.setdefault((lineno[a],lineno[e]),m.group(0)[:90])
+        for (la,le),g in sorted(hits.items()):
             if la==le and (skill,norm(lines[la-1])) in allow: continue
-            print("  override pattern: %s:%d (%s) \"%s\""%(p,la,"single-line" if la==le else "multi-line, to line %d"%le,m.group(0)[:90])); bad+=1
+            print("  override pattern: %s:%d (%s) \"%s\""%(p,la,"single-line" if la==le else "multi-line, to line %d"%le,g)); bad+=1
 for (s,l),i in allow.items():
     if (s,l) not in seen: print("  stale allowlist entry (line %d, skill %s): no such source line"%(i,s)); bad+=1
 sys.exit(1 if bad else 0)
