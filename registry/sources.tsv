@@ -1,3 +1,6 @@
 source	repo	license	local_dir
 marketingskills	https://github.com/coreyhaines31/marketingskills	MIT	upstream/marketingskills
 emilkowalski-skills	https://github.com/emilkowalski/skills	MIT	upstream/emilkowalski-skills
+anthropic-frontend-design	https://github.com/anthropics/skills	Apache-2.0	upstream/anthropic-frontend-design
+xias	https://github.com/plugin87/ux-ui-agent-skills	MIT	upstream/xias
+ui-ux-pro-max	https://github.com/nextlevelbuilder/ui-ux-pro-max-skill	MIT	upstream/ui-ux-pro-max

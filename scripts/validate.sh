@@ -3,7 +3,7 @@
 #   validate.sh [--strict] [--repo-only] [--online]
 #   --strict     dirty git working tree is a FAIL (default: WARN)
 #   --repo-only  skip checks of ~/.agents/skills and ~/.claude/skills (e.g. before first link on a new Mac)
-#   --online     also verify GitHub visibility is PRIVATE via gh
+#   --online     also verify GitHub visibility is PUBLIC via gh
 # Secret matches are reported as file/commit only - values are never printed.
 set -uo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"; cd "$ROOT" || exit 2
@@ -152,7 +152,7 @@ if [ "$dirty" = 0 ]; then pass "git working tree clean"; elif [ $strict = 1 ]; t
 if [ $online = 1 ]; then
   if command -v gh >/dev/null 2>&1; then
     vis=$(gh repo view --json visibility -q .visibility 2>/dev/null)
-    [ "$vis" = PRIVATE ] && pass "GitHub repository visibility: PRIVATE" || fail "GitHub visibility is '${vis:-unknown}' (expected PRIVATE)"
+    [ "$vis" = PUBLIC ] && pass "GitHub repository visibility: PUBLIC" || fail "GitHub visibility is '${vis:-unknown}' (expected PUBLIC)"
   else warn "gh not available; visibility not checked"; fi
 fi
 echo "----"; [ $fails = 0 ] && echo "RESULT: PASS ($warns warning(s))" || echo "RESULT: FAIL ($fails failed check(s), $warns warning(s))"

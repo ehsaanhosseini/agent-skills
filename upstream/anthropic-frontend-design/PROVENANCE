@@ -1,0 +1,7 @@
+Source: https://github.com/anthropics/skills
+Reviewed commit: dbd4588f9e1033efb41dad4bef2f7947c8993d44
+Copied path: skills/frontend-design/SKILL.md and skills/frontend-design/LICENSE.txt
+Local path: skills/design/frontend-design/
+Local changes: none to the upstream files.
+License: Apache-2.0 (LICENSE and LICENSE.txt retained).
+Audit: Markdown instructions only; no script, hook, dependency, or automatic network operation bundled.

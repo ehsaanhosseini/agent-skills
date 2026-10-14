@@ -59,7 +59,7 @@ need(){ [ -n "$(field "$skill" 1)" ] || { echo "unknown skill: $skill" >&2; exit
 case "$cmd" in
  table)
   echo "| Skill | Source Repository | Upstream Path | Reviewed Commit | Local Status | Notes |"; echo "|---|---|---|---|---|---|"
-  awk -F'\t' 'NR==FNR{if(FNR>1)r[$1]=$2;next} FNR>1{printf "| %s | %s | `%s` | `%s` | %s | %s |\n",$1,r[$3],$4,substr($5,1,12),$6,$7}' "$SRC" "$REG";;
+  awk -F'\t' 'NR==FNR{if(FNR>1)r[$1]=$2;next} FNR>1{if($3=="local"){repo="Local adaptation";path="-";sha="-"}else{repo=r[$3];path=$4;sha=substr($5,1,12)}printf "| %s | %s | `%s` | `%s` | %s | %s |\n",$1,repo,path,sha,$6,$7}' "$SRC" "$REG";;
  diff|apply)
   need; source_id="$(field "$skill" 3)"; up="$(field "$skill" 4)"; cur="$(field "$skill" 5)"; cat_="$(field "$skill" 2)"
   url="$(srcf "$source_id" 2)"; dest="$ROOT/skills/$cat_/$skill"; repo="$(fetch "$source_id")"

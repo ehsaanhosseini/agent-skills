@@ -1,6 +1,6 @@
-# HoccoTech private skills
+# HoccoTech reusable skills
 
-Placeholder for future private, reusable HoccoTech skills. No skills exist here yet and none should be
+Placeholder for future public-safe, reusable HoccoTech skills. No skills exist here yet and none should be
 invented without real, agreed business rules.
 
 Candidates (not started): engineering QA, production safety, SEO/AEO/GEO methodology, lead discovery,

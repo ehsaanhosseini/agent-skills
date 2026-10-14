@@ -1,6 +1,6 @@
 # Adding a skill or tool (vetting process)
 
-Private internal infrastructure. `registry/skills.tsv` and `scripts/validate.sh` are the source of truth.
+Public shared skills library. `registry/skills.tsv` and `scripts/validate.sh` are the source of truth. Keep private project context and customer data outside this repository.
 See also `SECURITY.md` (threat model) and `UPSTREAM.md` (provenance table).
 
 ## Flow

@@ -13,7 +13,7 @@ A skill is instructions an agent follows with your permissions. Treat adding one
 Explicit, reviewable, reversible: `scripts/upstream.sh diff`, then `apply` with `CONFIRM=<sha>` on a feature branch, review `git diff` with the checklist above, commit. The reviewed SHA stays pinned until then. No auto-update, no submodules, no network dependency at runtime.
 
 ## Repository hygiene
-No secrets, tokens, `.env`, cookies, keys, customer data, internal URLs with credentials, logs, screenshots with private data, or AI scratch artifacts. Run `scripts/validate.sh` (includes a secret-pattern scan) before every commit. The GitHub repository must stay PRIVATE.
+No secrets, tokens, `.env`, cookies, keys, customer data, internal URLs with credentials, logs, screenshots with private data, or AI scratch artifacts. Run `scripts/validate.sh` (includes a secret-pattern scan) before every commit. This repository is PUBLIC by the owner's choice; never add private material to it.
 
 ## Usage rules for specific skills
 Enforced by the Local policy block injected into each restricted skill (`registry/policies/`); policies never grant autonomous external actions.

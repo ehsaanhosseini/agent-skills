@@ -60,6 +60,8 @@ Before writing any code, list the set: a name and an axis for each. Names descri
 
 **Completion criterion:** every variant has a name and a stated axis, and no two variants share an axis position.
 
+When the exploration involves a multi-step journey, an error path, or a planned usability session, also read [JOURNEY-TESTS.md](JOURNEY-TESTS.md). Keep the picker and variant workflow above; this reference adds scenario coverage rather than a competing prototype method.
+
 ### Phase 4 — Build the picker harness
 
 Two branches, by what exists:
