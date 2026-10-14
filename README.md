@@ -1,77 +1,94 @@
 # agent-skills
 
-One curated, audited Agent Skills library shared by Claude Code, OpenAI Codex and Cursor on this Mac.
-No per-project copies.
+**One curated skill library for better product work.** The same reviewed instructions are shared by Claude Code, Codex, and Cursor through a single local checkout. Skills are scoped to real tasks, so a design review does not load a marketing playbook or an unrelated framework guide.
 
+**30 skills** · **Design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
+
+> This repository is public. It contains reusable workflows, not customer data, secrets, project files, or private business context.
+
+## Find the right skill
+
+Use the skill that matches the job. A few useful pairings: `frontend-design` sets visual direction; `emil-design-eng` polishes implementation. `design-critique` judges a rendered screen; `design-qa` checks measurable defects. `data-dashboard` decides what an operational view should show; `design-reference-search` only supplies optional reference rows.
+
+### Product design and engineering
+
+| Skill | Use it for | What it adds |
+|---|---|---|
+| [frontend-design](skills/design/frontend-design/SKILL.md) | A web page needs a distinctive visual direction | Brief-led typography, layout, palette, and self-critique |
+| [data-dashboard](skills/design/data-dashboard/SKILL.md) | CMS, PMS, analytics, or monitoring screens | Decision-led hierarchy, honest metrics, meaningful charts, and the full page journey |
+| [design-critique](skills/design/design-critique/SKILL.md) | Reviewing a rendered screen or prototype | Prioritized visual and UX findings tied to visible evidence |
+| [a11y-audit](skills/design/a11y-audit/SKILL.md) | Auditing accessibility | Keyboard, semantics, contrast, reflow, and clear tested/unverified evidence |
+| [design-qa](skills/design/design-qa/SKILL.md) | Preventing UI regressions | Project-aware checks for states, tokens, overflow, contrast, and breakpoints |
+| [design-tokens](skills/design/design-tokens/SKILL.md) | Building a consistent design system | Semantic tokens and validation across web, Figma, and Flutter workflows |
+| [design-component](skills/design/design-component/SKILL.md) | Specifying or building reusable components | Anatomy, variants, states, accessibility, and implementation API |
+| [design-reference-search](skills/design/design-reference-search/SKILL.md) | Looking up a chart, style, palette, or pattern | An offline, pinned Pro Max catalog with cautious matching |
+| [react-performance](skills/design/react-performance/SKILL.md) | React or Next.js performance work | Evidence-led fetching, bundle, rendering, and rerender decisions |
+| [react-composition](skills/design/react-composition/SKILL.md) | React component APIs becoming hard to maintain | Clear state ownership, variants, and compound composition |
+
+### Interaction and craft
+
+| Skill | Use it for | What it adds |
+|---|---|---|
+| [emil-design-eng](skills/design/emil-design-eng/SKILL.md) | Polishing product UI implementation | Component detail, motion, and interaction craft |
+| [apple-design](skills/design/apple-design/SKILL.md) | Gesture-driven or physical-feeling web interactions | Springs, interruption, momentum, and accessible motion |
+| [animate](skills/design/animate/SKILL.md) | Creating purposeful UI animation | A deliberate choice of behavior, tool, timing, and exit |
+| [review-animations](skills/design/review-animations/SKILL.md) | Reviewing existing motion | Specific quality findings and verdicts; explicit invocation only |
+| [improve-animations](skills/design/improve-animations/SKILL.md) | Planning motion improvements across a codebase | A read-only source audit and implementation plans |
+| [prototype](skills/design/prototype/SKILL.md) | Comparing distinct UI directions | Full-size variants in a visual picker; optional journey and error-path tests; explicit invocation only |
+| [pick-ui-library](skills/design/pick-ui-library/SKILL.md) | Choosing a frontend dependency | A fit-based library choice using the project's existing stack; explicit invocation only |
+| [mobile-native](skills/design/mobile-native/SKILL.md) | Making mobile web feel native | Touch, viewport, safe-area, keyboard, and device-specific fixes |
+
+### Marketing and research
+
+| Skill | Use it for | What it adds |
+|---|---|---|
+| [product-marketing](skills/marketing/product-marketing/SKILL.md) | Defining product positioning and audience | Reusable project context, created only under its local policy |
+| [content-strategy](skills/marketing/content-strategy/SKILL.md) | Planning what to publish | Topics, priorities, and a coherent content plan |
+| [customer-research](skills/marketing/customer-research/SKILL.md) | Learning from interviews, surveys, or feedback | Evidence-backed customer needs and patterns |
+| [competitor-profiling](skills/marketing/competitor-profiling/SKILL.md) | Researching a competitor from public sources | Structured strengths, gaps, and positioning context |
+| [prospecting](skills/marketing/prospecting/SKILL.md) | Finding and qualifying potential customers | A research-first prospect list within its data-use limits |
+| [cold-email](skills/marketing/cold-email/SKILL.md) | Drafting outbound email | Clear, relevant drafts and follow-ups; no automatic sending |
+| [cro](skills/marketing/cro/SKILL.md) | Improving a landing page or conversion flow | Friction analysis and testable improvements |
+| [analytics](skills/marketing/analytics/SKILL.md) | Planning or auditing measurement | Events, attribution, and tracking requirements with consent in mind |
+
+### Search and site structure
+
+| Skill | Use it for | What it adds |
+|---|---|---|
+| [seo-audit](skills/seo-geo/seo-audit/SKILL.md) | Diagnosing search visibility | Technical and content findings grounded in current search-engine guidance |
+| [ai-seo](skills/seo-geo/ai-seo/SKILL.md) | Improving visibility in AI answers | Sourceability and answer-engine content guidance without ranking guarantees |
+| [schema](skills/seo-geo/schema/SKILL.md) | Adding or checking structured data | Appropriate schema markup and validation |
+| [site-architecture](skills/seo-geo/site-architecture/SKILL.md) | Planning page hierarchy and internal links | Clear navigation, URLs, and information structure |
+
+`skills/hoccotech/` is reserved for future reusable, public-safe HoccoTech skills; none are registered yet.
+
+## How the library works
+
+```text
+GitHub main ──pull──> one local checkout
+                       ├── ~/.agents/skills/<name>  → Codex, Cursor, compatible agents
+                       └── ~/.claude/skills/<name>  → Claude Code
 ```
-public GitHub repo (source of truth, backup, sharing)
-   -> canonical local clone: ~/Dev Projects/agent-skills   (the runtime library)
-        -> ~/.agents/skills/<name>  symlinks: Codex, Cursor and other agents that read the shared path
-        -> ~/.claude/skills/<name>  symlinks: Claude Code (reads only this path)
-   -> all local projects (no per-project copies)
-```
 
-- **GitHub is not a runtime dependency.** Agents read the local clone; nothing is fetched at runtime or on shell startup.
-- **Upstream updates are review-gated** (see below). Nothing updates itself.
-- **Project-specific rules stay inside their projects.** Global skills hold reusable workflows only.
-- **Restricted skills do not grant autonomous external actions** (sending, scraping, tracking changes, writing into projects). See "Restricted skills".
+Each link points to the same skill folder. GitHub is the source of truth and backup; agents read the local checkout. There are no per-project copies, automatic updates, startup installs, or required network calls when a skill runs. Project-specific rules stay in their own project.
 
-## Layout
-| Path | Purpose |
-|---|---|
-| `skills/<category>/<skill>/` | Skill packages (`SKILL.md` + supporting files). Categories: `design`, `marketing`, `seo-geo`, `hoccotech` (reusable public-safe guidance only). |
-| `registry/skills.tsv` | Every skill: category, source, upstream path, reviewed SHA, status, notes. |
-| `registry/sources.tsv` | Upstream repositories + licence. |
-| `upstream/<source>/` | Upstream LICENSE + PROVENANCE only (skills live under `skills/`). |
-| `scripts/` | `link.sh`, `validate.sh`, `upstream.sh`. |
-| `UPSTREAM.md`, `SECURITY.md` | Provenance table; third-party review policy. |
+### Set up on a Mac
 
-The design additions are task-specific: `frontend-design` for web art direction, `data-dashboard` for operational screens, `design-critique` for visual review, `a11y-audit` and `design-qa` for evidence-based checks, `design-tokens` and `design-component` for reusable systems, `react-performance` and `react-composition` for React/Next code, and `design-reference-search` for optional offline lookup. Existing design skills remain available. Load only the skill relevant to the current task.
-
-## How each agent discovers the skills
-Verified against current official docs (2026-10-01):
-- **Claude Code** reads `~/.claude/skills/<name>/SKILL.md` only (not `~/.agents`). Symlinked skill folders are followed. `link.sh` creates one symlink per skill.
-- **Codex** reads `$HOME/.agents/skills` and follows symlinks. `link.sh` creates the same per-skill symlinks there.
-- **Cursor** reads `~/.agents/skills` and `~/.cursor/skills`, and, "for compatibility", `~/.claude/skills` and `~/.codex/skills`. Its intended route here is `~/.agents/skills`. Because it also scans `~/.claude/skills`, the same skill is reachable by two paths. Whether Cursor de-duplicates them is **UNRESOLVED**: the docs are silent and it cannot be tested without driving the Cursor UI. If duplicates ever appear in Cursor, both entries are symlinks to the same canonical file (no divergent copies), so the impact is cosmetic; Claude Code needs `~/.claude/skills`, so it is not removed.
-
-Links are flat (`~/.agents/skills/<name>`) even though the repo is categorised, because agents expect `<root>/<name>/SKILL.md`.
-Existing app-managed entries (`~/.claude/skills/synced`, `~/.codex/skills/.system`, `~/.cursor/skills-cursor`) are never touched.
-
-## Common tasks
-**Install on a new Mac**
 ```bash
-mkdir -p ~/Dev && git clone git@github.com:<you>/agent-skills.git ~/Dev/agent-skills   # or any path
-cd ~/Dev/agent-skills && scripts/validate.sh && scripts/link.sh --dry-run && scripts/link.sh
+git clone https://github.com/ehsaanhosseini/agent-skills.git "$HOME/Dev Projects/agent-skills"
+cd "$HOME/Dev Projects/agent-skills"
+scripts/validate.sh --repo-only
+scripts/link.sh --dry-run
+scripts/link.sh
 ```
-`link.sh` skips (and reports) any name that already exists and is not its own link.
 
-**Add a skill**: create `skills/<category>/<name>/SKILL.md` (frontmatter `name` = directory name), add a row to `registry/skills.tsv` (source `local`), then `scripts/validate.sh && scripts/link.sh`, commit on a branch.
+The linking script skips existing paths it does not own. On an existing installation, pull the latest `main`, review the link preview, and run `scripts/link.sh` to expose newly added skills. Restart an agent if it caches its available-skill list.
 
-**Add a third-party skill**: audit it first (see SECURITY.md), add rows to `registry/skills.tsv` with the reviewed SHA, run `INITIAL=1 scripts/upstream.sh apply <skill>`, regenerate the UPSTREAM.md table.
+### Choose, update, and verify
 
-**Update / audit an upstream skill**
-```bash
-scripts/upstream.sh diff  <skill> [ref]   # fetches upstream, shows commits + file diff; changes nothing
-CONFIRM=<12-char sha shown> scripts/upstream.sh apply <skill> [ref]   # shows diff first; writes only with the matching CONFIRM; refuses on main/master
-git diff                                   # review, including scripts/hooks/network/credential changes (SECURITY.md)
-scripts/upstream.sh table                  # refresh the UPSTREAM.md table
-```
-`apply` runs on a feature branch only, never commits or pushes, and refuses if the vendored copy has local edits beyond the documented link rewrite and policy block (override with `FORCE=1` after review). The reviewed SHA in the registry stays pinned until an apply succeeds. Nothing runs on shell startup.
-Roll back with `git revert` / `git checkout -- skills/...`.
+- `registry/skills.tsv` is the complete inventory, including source, reviewed commit, status, and local restrictions. Run `scripts/inventory.sh` for a compact table.
+- [UPSTREAM.md](UPSTREAM.md) records provenance and local adaptations. [SECURITY.md](SECURITY.md) sets the review and public-repository hygiene rules.
+- [docs/ADDING-A-SKILL.md](docs/ADDING-A-SKILL.md) explains how to add a skill. Changes are reviewed on a feature branch before merging to `main`.
+- Run `scripts/validate.sh --strict --repo-only` for a clean checkout. `--online` also checks the public GitHub visibility when `gh` is authenticated.
 
-**Disable / remove a skill**: `rm ~/.agents/skills/<name> ~/.claude/skills/<name>` (symlinks only), or delete the skill from the repo and its registry row. `scripts/link.sh --unlink` removes all links this repo made.
-
-**Provenance**: `registry/skills.tsv` holds the exact reviewed upstream commit per skill; `upstream/<source>/PROVENANCE` and LICENSE are kept; the only local modification to upstream skills is rewriting links that escaped the skill dir into SHA-pinned upstream URLs, and dropping `evals/`.
-
-## Restricted skills
-Skills marked `restricted` in `registry/skills.tsv` carry a **Local policy** block, injected right after the frontmatter of their `SKILL.md` (so the agent reads it before the upstream body). The policy text lives in `registry/policies/<skill>.md`, is re-applied automatically by `scripts/upstream.sh` on every update, and `validate.sh` fails if it is missing. Upstream text is otherwise unchanged. These are instructions to the agent, not a technical sandbox: your agent permission settings remain the enforcement layer.
-
-`product-marketing` writes business context to `.agents/product-marketing.md` in the **current project** (only when that skill runs, and only after approval per its policy). That file holds positioning/ICP/competitor information. This repo does not decide whether a project commits or ignores it; decide per project (and never add it to a global gitignore).
-
-## Validate
-`scripts/validate.sh [--strict] [--repo-only] [--online]` is read-only: registry/skill/provenance consistency, link integrity for both discovery dirs, secret-pattern scan of tracked files and history (no scanner needed; gitleaks/trufflehog are used if installed), git state, and (with `--online`) that the GitHub repo is PUBLIC.
-
-## Notes
-- Skills with `disable-model-invocation: true` upstream only run when invoked explicitly.
-- "restricted" skills in the registry have usage limits recorded in `notes`.
-- SEO/GEO skills are workflow aids; official search-engine documentation is authoritative.
+Some skills carry a local policy block because their tasks can write into a project or involve outreach or tracking. Those instructions do not grant extra permissions. The relevant skill's own scope and the user's task authorization still apply. Copied third-party material retains its recorded license; locally authored adaptations cite their reviewed sources.
