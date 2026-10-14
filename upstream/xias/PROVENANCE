@@ -1,0 +1,6 @@
+Source: https://github.com/plugin87/ux-ui-agent-skills
+Reviewed commit: 62092bd83bc3df0bcb9a2b3b643305ab11c547da
+Use: concepts adapted into original local skills and prototype/JOURNEY-TESTS.md.
+Copied upstream skill files, scripts, hooks, MCP, node dependencies: none.
+License: MIT copy retained for provenance; original adapted text cites source and commit.
+Audit: XIAS kit-dependent paths and automatic setup are intentionally excluded.

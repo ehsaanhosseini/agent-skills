@@ -19,3 +19,13 @@ improve-animations	design	emilkowalski-skills	skills/improve-animations	d16ebe60
 prototype	design	emilkowalski-skills	skills/prototype	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	restricted	Manual-invocation only; adds then deletes a prototype route in the target project
 pick-ui-library	design	emilkowalski-skills	skills/pick-ui-library	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	Manual-invocation only (upstream flag)
 mobile-native	design	emilkowalski-skills	skills/mobile-native	d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128	active	
+frontend-design	design	anthropic-frontend-design	skills/frontend-design	dbd4588f9e1033efb41dad4bef2f7947c8993d44	active	Pinned standalone web art direction; upstream Apache-2.0 license retained
+data-dashboard	design	local	-	-	active	Original XIAS-informed dashboard workflow; no kit dependency
+design-critique	design	local	-	-	active	Original XIAS-informed rendered critique
+a11y-audit	design	local	-	-	active	Evidence-led accessibility audit; no external engine bundled
+design-qa	design	local	-	-	active	Project-aware measurable checks; no automatic installation
+design-tokens	design	local	-	-	active	Semantic token architecture for web Figma and Flutter
+design-component	design	local	-	-	active	Component anatomy states accessibility and API
+react-performance	design	local	-	-	active	React/Next only; original Vercel-informed adaptation
+react-composition	design	local	-	-	active	React only; original Vercel-informed adaptation
+design-reference-search	design	local	-	-	active	Offline Pro Max CSV subset and bounded local search

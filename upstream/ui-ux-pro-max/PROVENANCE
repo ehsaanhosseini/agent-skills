@@ -1,0 +1,7 @@
+Source: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+Reviewed commit: 7246805992a42b7bba37d4cac83b01416f0c6c44
+Copied path: src/ui-ux-pro-max/data/{products,app-interface,styles,colors,typography,charts,ux-guidelines,landing}.csv
+Local path: skills/design/design-reference-search/data/
+Local changes: none to CSV contents. The search script and SKILL.md are original local adaptations.
+License: MIT copy retained. No fonts, updater, generator, network code, or install scripts bundled.
+Known limit: three-brief audit found category/pattern mismatches; search results require human fit checks.

@@ -26,6 +26,8 @@ private GitHub repo (source of truth, backup, sharing)
 | `scripts/` | `link.sh`, `validate.sh`, `upstream.sh`. |
 | `UPSTREAM.md`, `SECURITY.md` | Provenance table; third-party review policy. |
 
+The design additions are task-specific: `frontend-design` for web art direction, `data-dashboard` for operational screens, `design-critique` for visual review, `a11y-audit` and `design-qa` for evidence-based checks, `design-tokens` and `design-component` for reusable systems, `react-performance` and `react-composition` for React/Next code, and `design-reference-search` for optional offline lookup. Existing design skills remain available. Load only the skill relevant to the current task.
+
 ## How each agent discovers the skills
 Verified against current official docs (2026-10-01):
 - **Claude Code** reads `~/.claude/skills/<name>/SKILL.md` only (not `~/.agents`). Symlinked skill folders are followed. `link.sh` creates one symlink per skill.
