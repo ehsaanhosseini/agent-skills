@@ -4,7 +4,7 @@ One curated, audited Agent Skills library shared by Claude Code, OpenAI Codex an
 No per-project copies.
 
 ```
-private GitHub repo (source of truth, backup, sharing)
+public GitHub repo (source of truth, backup, sharing)
    -> canonical local clone: ~/Dev Projects/agent-skills   (the runtime library)
         -> ~/.agents/skills/<name>  symlinks: Codex, Cursor and other agents that read the shared path
         -> ~/.claude/skills/<name>  symlinks: Claude Code (reads only this path)
@@ -19,7 +19,7 @@ private GitHub repo (source of truth, backup, sharing)
 ## Layout
 | Path | Purpose |
 |---|---|
-| `skills/<category>/<skill>/` | Skill packages (`SKILL.md` + supporting files). Categories: `design`, `marketing`, `seo-geo`, `hoccotech` (private). |
+| `skills/<category>/<skill>/` | Skill packages (`SKILL.md` + supporting files). Categories: `design`, `marketing`, `seo-geo`, `hoccotech` (reusable public-safe guidance only). |
 | `registry/skills.tsv` | Every skill: category, source, upstream path, reviewed SHA, status, notes. |
 | `registry/sources.tsv` | Upstream repositories + licence. |
 | `upstream/<source>/` | Upstream LICENSE + PROVENANCE only (skills live under `skills/`). |
@@ -69,7 +69,7 @@ Skills marked `restricted` in `registry/skills.tsv` carry a **Local policy** blo
 `product-marketing` writes business context to `.agents/product-marketing.md` in the **current project** (only when that skill runs, and only after approval per its policy). That file holds positioning/ICP/competitor information. This repo does not decide whether a project commits or ignores it; decide per project (and never add it to a global gitignore).
 
 ## Validate
-`scripts/validate.sh [--strict] [--repo-only] [--online]` is read-only: registry/skill/provenance consistency, link integrity for both discovery dirs, secret-pattern scan of tracked files and history (no scanner needed; gitleaks/trufflehog are used if installed), git state, and (with `--online`) that the GitHub repo is PRIVATE.
+`scripts/validate.sh [--strict] [--repo-only] [--online]` is read-only: registry/skill/provenance consistency, link integrity for both discovery dirs, secret-pattern scan of tracked files and history (no scanner needed; gitleaks/trufflehog are used if installed), git state, and (with `--online`) that the GitHub repo is PUBLIC.
 
 ## Notes
 - Skills with `disable-model-invocation: true` upstream only run when invoked explicitly.
