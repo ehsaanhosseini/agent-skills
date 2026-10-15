@@ -29,3 +29,4 @@ design-component	design	local	-	-	active	Component anatomy states accessibility 
 react-performance	design	local	-	-	active	React/Next only; original Vercel-informed adaptation
 react-composition	design	local	-	-	active	React only; original Vercel-informed adaptation
 design-reference-search	design	local	-	-	active	Offline Pro Max CSV subset and bounded local search
+figma-deliverables	design	local	-	-	active	Cross-platform Figma handoff orchestration; mobile-first and standard tracks; native apps in same project
