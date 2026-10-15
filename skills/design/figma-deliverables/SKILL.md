@@ -1,17 +1,18 @@
 ---
 name: figma-deliverables
-description: Plan, design, audit, and hand off complete Figma deliverables for responsive websites, dashboards, and native mobile apps. Use for new or revised product designs, whether mobile-first or desktop-first.
+description: Plan, design, audit, and hand off complete Figma deliverables for responsive websites, dashboards, and native mobile apps. Use for new or revised product designs, whether mobile-first or desktop-first, including native-only iOS/Android projects.
 ---
 
 # Figma Design Deliverables — Engineering-Ready
 
-**Purpose:** ensure a designer or design agent delivers implementable, auditable UI/UX rather than disconnected attractive screens. Apply automatically when scoping, creating, revising, or auditing an entire Figma product design. Use proportionate depth; do not inflate simple projects.
+**Purpose:** ensure a designer or design agent delivers implementable, auditable UI/UX rather than disconnected attractive screens. Apply automatically when scoping, creating, revising, or auditing an entire Figma product design. Use proportionate depth; do not inflate simple projects. Follow the active task scope and session instructions; this checklist grants no additional permissions or tool capabilities.
 
 ## 1. Scope first
 
 - Identify in-scope surfaces independently: desktop web, tablet web, mobile web, iOS app, Android app, admin/back office.
 - Choose **Mobile-first** when mobile is the primary web journey; **Standard (desktop-first)** when desktop is primary. This changes design order, never the obligation to cover other in-scope surfaces.
 - A native app is **not** a responsive web frame. If iOS/Android is in scope, design its own navigation, screens, platform interactions, permissions, system states, and handoff in the **same Figma project**, using shared foundations and platform-specific patterns.
+- For native-only scope, mark the web track N/A and sequence the scoped native journeys directly; do not invent web deliverables. Record the approved target OS versions, device classes and platform guidance before specifying native patterns.
 - Select complexity: **Foundation** (simple site), **Product** (marketplace/app/CMS), **Enterprise** (multi-role/complex operational system). These change depth, not the baseline clarity requirement.
 - Inventory screens, features, roles, content, integrations, decisions, critical journeys, and intentionally excluded platforms. Flag unresolved requirements as decisions, not fabricated designs.
 
@@ -26,10 +27,10 @@ For each item mark PASS / WARN / FAIL / N/A, link evidence to the Figma page/fra
 5. **Components:** reusable components, variants/properties, states, focus, responsiveness, behavior notes, accessible labels and usage constraints.
 6. **Final UI:** all in-scope core screens with realistic representative content and shared component instances.
 7. **State coverage:** loading/skeleton, empty, error/retry, success, disabled, validation, session/authorization/permission, partial data, timeout/offline wherever applicable; use centralized component states, screen-specific examples only where behavior differs.
-8. **Responsive/adaptive:** representative frames plus explicit fluid/container/min-max/overflow/wrapping/reflow rules and intermediate-width behavior; avoid treating three screenshots as responsive proof.
+8. **Responsive/adaptive:** representative frames plus explicit fluid/container/min-max/overflow/wrapping/reflow rules and intermediate-width behavior, including widths immediately below/at/above each content-driven breakpoint; avoid treating three screenshots as responsive proof.
 9. **Interaction:** clickable core and high-risk flows, input validation, navigation and back/escape, dialog dismissal, scrolling, keyboard and error recovery documented.
 10. **Localization & content:** language/RTL-LTR when scoped, text expansion, dates/numbers/currencies, missing/long content and content ownership.
-11. **Accessibility:** WCAG 2.2 AA targets where applicable; test contrast, logical focus, keyboard, reflow, labels, and platform input. WCAG 2.5.8 sets a 24 CSS px minimum with exceptions; prefer 44×44 CSS px as an internal touch design target when feasible, not a universal WCAG minimum.
+11. **Accessibility:** for Figma-only work, inspect design properties and specify intended focus, semantics and assistive-technology behavior; mark runtime checks untested until implementation. For native apps, specify platform text scaling, screen-reader order/labels, target sizes, safe areas and system back/gesture behavior against the approved platform guidance. WCAG 2.2 AA targets where applicable; test contrast, logical focus, keyboard, reflow, labels, and platform input. WCAG 2.5.8 sets a 24 CSS px minimum with exceptions; prefer 44×44 CSS px as an internal touch design target when feasible, not a universal WCAG minimum.
 12. **Handoff:** named layers, maintainable Auto Layout where appropriate, documented component/token mappings (CSS/Tailwind/Flutter etc.), exportable assets, interaction contracts, responsive specs, decisions and unresolved risks.
 13. **Quality evidence:** review findings and owners; mark not-tested/unverifiable items as WARN or FAIL according to impact, never PASS by assumption.
 
@@ -65,15 +66,15 @@ For every checked criterion record ID, applicability, severity (blocker or advis
 
 ## 6. Reuse existing specialist skills
 
-- `design-tokens`: token architecture/mapping.
-- `design-component`: component anatomy, properties, states and API.
-- `a11y-audit`: accessibility evaluation.
-- `design-qa`: measurable design quality checks.
-- `mobile-native`: device behavior, safe areas, viewport and keyboard.
-- `data-dashboard`: high-density operational screens.
-- `design-critique`: qualitative visual critique.
+- [design-tokens](../design-tokens/SKILL.md): token architecture/mapping.
+- [design-component](../design-component/SKILL.md): component anatomy, properties, states and API.
+- [a11y-audit](../a11y-audit/SKILL.md): accessibility evaluation.
+- [design-qa](../design-qa/SKILL.md): measurable design quality checks.
+- [mobile-native](../mobile-native/SKILL.md): mobile-web device behavior, safe areas, viewport and keyboard; it does not provide native iOS/Android design guidance.
+- [data-dashboard](../data-dashboard/SKILL.md): high-density operational screens.
+- [design-critique](../design-critique/SKILL.md): qualitative visual critique.
 
-These specialist skills remain sources of detail; do not duplicate or override them. Respect project-specific design language and already approved decisions.
+Load only specialists relevant to the scoped task, preserving their own invocation and implementation boundaries. For native app details, use the approved platform guidance rather than applying mobile-web CSS rules. These specialist skills remain sources of detail; do not duplicate or override them. Respect project-specific design language and already approved decisions.
 
 ## Completion report
 
