@@ -2,7 +2,7 @@
 
 **One curated skill library for better product work.** The same reviewed instructions are shared by Claude Code, Codex, and Cursor through a single local checkout. Skills are scoped to real tasks, so a design review does not load a marketing playbook or an unrelated framework guide.
 
-**30 skills** · **Design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
+**31 skills** · **Design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
 
 > This repository is public. It contains reusable workflows, not customer data, secrets, project files, or private business context.
 
@@ -14,6 +14,7 @@ Use the skill that matches the job. A few useful pairings: `frontend-design` set
 
 | Skill | Use it for | What it adds |
 |---|---|---|
+| [figma-deliverables](skills/design/figma-deliverables/SKILL.md) | Full Figma project delivery for responsive web and native iOS/Android | Mobile-first or desktop-first checklists, shared foundations, screen/state completeness and handoff gates |
 | [frontend-design](skills/design/frontend-design/SKILL.md) | A web page needs a distinctive visual direction | Brief-led typography, layout, palette, and self-critique |
 | [data-dashboard](skills/design/data-dashboard/SKILL.md) | CMS, PMS, analytics, or monitoring screens | Decision-led hierarchy, honest metrics, meaningful charts, and the full page journey |
 | [design-critique](skills/design/design-critique/SKILL.md) | Reviewing a rendered screen or prototype | Prioritized visual and UX findings tied to visible evidence |
@@ -89,6 +90,6 @@ The linking script skips existing paths it does not own. On an existing installa
 - `registry/skills.tsv` is the complete inventory, including source, reviewed commit, status, and local restrictions. Run `scripts/inventory.sh` for a compact table.
 - [UPSTREAM.md](UPSTREAM.md) records provenance and local adaptations. [SECURITY.md](SECURITY.md) sets the review and public-repository hygiene rules.
 - [docs/ADDING-A-SKILL.md](docs/ADDING-A-SKILL.md) explains how to add a skill. Changes are reviewed on a feature branch before merging to `main`.
-- Run `scripts/validate.sh --strict --repo-only` for a clean checkout. `--online` also checks the public GitHub visibility when `gh` is authenticated.
+- Run `scripts/validate.sh --strict --repo-only` for a clean checkout. `--online` also checks public GitHub visibility using authenticated `gh`, or the official public REST API when `gh` is unavailable. Network errors, invalid responses, and a repository identity or visibility mismatch fail the check.
 
 Some skills carry a local policy block because their tasks can write into a project or involve outreach or tracking. Those instructions do not grant extra permissions. The relevant skill's own scope and the user's task authorization still apply. Copied third-party material retains its recorded license; locally authored adaptations cite their reviewed sources.

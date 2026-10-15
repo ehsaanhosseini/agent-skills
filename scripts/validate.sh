@@ -3,7 +3,7 @@
 #   validate.sh [--strict] [--repo-only] [--online]
 #   --strict     dirty git working tree is a FAIL (default: WARN)
 #   --repo-only  skip checks of ~/.agents/skills and ~/.claude/skills (e.g. before first link on a new Mac)
-#   --online     also verify GitHub visibility is PUBLIC via gh
+#   --online     also verify GitHub visibility is PUBLIC via gh or the GitHub REST API
 # Secret matches are reported as file/commit only - values are never printed.
 set -uo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"; cd "$ROOT" || exit 2
@@ -153,7 +153,29 @@ if [ $online = 1 ]; then
   if command -v gh >/dev/null 2>&1; then
     vis=$(gh repo view --json visibility -q .visibility 2>/dev/null)
     [ "$vis" = PUBLIC ] && pass "GitHub repository visibility: PUBLIC" || fail "GitHub visibility is '${vis:-unknown}' (expected PUBLIC)"
-  else warn "gh not available; visibility not checked"; fi
+  else
+    python3 - <<'PYVIS' && pass "GitHub repository visibility: PUBLIC (REST API)" || fail "GitHub REST visibility check failed (expected PUBLIC)"
+import json,re,subprocess,sys,urllib.request
+try:
+    remote=subprocess.check_output(['git','remote','get-url','origin'],text=True).strip()
+    match=re.fullmatch(r'(?:https://github\.com/|git@github\.com:)([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+?)(?:\.git)?/?',remote)
+    if not match:
+        raise ValueError('origin must be a canonical GitHub URL without credentials')
+    expected=match.group(1)
+    request=urllib.request.Request('https://api.github.com/repos/'+expected,
+        headers={'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','User-Agent':'skill-library-validator'})
+    with urllib.request.urlopen(request,timeout=20) as response:
+        if response.status != 200:
+            raise ValueError('repository API did not return HTTP 200')
+        data=json.load(response)
+    if (not isinstance(data,dict) or data.get('full_name','').lower()!=expected.lower()
+        or data.get('visibility')!='public' or data.get('private') is not False):
+        raise ValueError('repository identity or public visibility was not confirmed')
+except Exception as exc:
+    print('  online visibility verification failed: '+type(exc).__name__)
+    sys.exit(1)
+PYVIS
+  fi
 fi
 echo "----"; [ $fails = 0 ] && echo "RESULT: PASS ($warns warning(s))" || echo "RESULT: FAIL ($fails failed check(s), $warns warning(s))"
 exit $((fails>0))
