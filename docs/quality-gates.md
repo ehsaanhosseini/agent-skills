@@ -2,7 +2,7 @@
 
 ## Repeatable commands
 
-Run from the repository root. `scripts/validate.sh --strict --repo-only --online` is the release gate; `--repo-only` omits the workstation link check. `python3 scripts/quality_check.py` checks Agent Skills metadata, registry coverage, local links and the approved executable inventory. `bash scripts/upstream.sh check` verifies provenance/registry drift. Run shell syntax and Python compilation for repository scripts, inspect changes with `git diff --check`, and review the final PR diff. Online validation requires access to pinned upstream commits and fails closed on unavailable network; report unavailability rather than calling it a pass.
+Run from the repository root. `scripts/validate.sh --strict --repo-only --online` is the release gate; `--repo-only` omits the workstation link check. `python3 scripts/quality_check.py` checks Agent Skills metadata, registry coverage, local links and the approved executable inventory. `bash scripts/upstream.sh table` regenerates the provenance table for comparison with `UPSTREAM.md`; the validator checks registry SHA provenance. Run shell syntax and Python compilation for repository scripts, inspect changes with `git diff --check`, and review the final PR diff. Online validation requires access to GitHub and fails closed on unavailable network; report unavailability rather than calling it a pass.
 
 | Gate | Evidence required | What it does not prove |
 |---|---|---|
@@ -13,6 +13,8 @@ Run from the repository root. `scripts/validate.sh --strict --repo-only --online
 | Compatibility | Claude/Codex/Cursor skill discovery links and registry routes; no vendor-only frontmatter required | Identical behavior across agent models |
 | Behavior desk review | Ten scenario traces in `engineering-behavior-evaluations.md` | Independent agent execution |
 | PR review | Passing checks, reviewed diff, clean base, no branch protection bypass | Product-owner approval of `main` |
+
+The quality gate was also exercised against disposable copies: a deliberately broken reference and a modified approved script both failed for the expected reason. These mutation checks test detection, not skill behavior.
 
 ## Contributor quality bar
 
