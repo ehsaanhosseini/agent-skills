@@ -5,10 +5,12 @@ description: Audit a UI for accessibility with evidence from code, rendered page
 
 # Accessibility audit
 
-Define the target standard and sample representative screens, components, and states. Start with semantic structure and accessible names; then inspect keyboard order, visible focus, controls and state announcements, text and non-text contrast, resizing and reflow, forms and errors, motion preferences, and charts/tables. Check both normal and error/loading/disabled states where relevant.
+Set the product's target standard and version (for example WCAG 2.2 AA), platforms, user journeys, and evidence available. Inspect representative page templates and states, including authentication, forms, errors, overlays, and responsive layouts. Read [test protocol](references/test-protocol.md) for the manual matrix and [findings and remediation](references/findings-and-remediation.md) for evidence and acceptance criteria. This skill audits; it does not certify whole-site conformance.
 
-Use automated scans only as one evidence source. Inspect the rendered page for computed contrast, overlays, zoom, and responsive behavior; run keyboard and screen-reader checks when the environment permits. For Figma-only work, limit claims to inspectable properties such as visible contrast, text fit, and proposed semantics. Never report a static design as WCAG-conformant.
+1. Inventory controls, landmarks, headings, links, images, forms, dialogs, live updates, tables, and charts. Map each relevant criterion to a test and mark out-of-scope criteria explicitly.
+2. Test keyboard-only operation: logical focus order, visible and unobscured focus, activation, escape/close, focus restoration, and traps. Test at normal size and zoom/reflow; keyboard success alone does not prove screen-reader behavior.
+3. Inspect semantic roles, computed names, states, instructions, errors, and announcements with the accessibility tree and an available assistive technology. Measure rendered color contrast for actual states; scan tools are supplemental.
+4. Reproduce each issue with URL/component, viewport, input method, observed result, expected result, criterion, severity, and evidence. Distinguish verified findings from probable issues and untested checks.
+5. After remediation, rerun the failing path and adjacent states. Report tested browser/AT combinations, criteria not tested, and residual risks.
 
-Record each finding as `verified`, `flagged for human check`, or `not tested`, with location, impact, criterion if known, and the smallest credible fix. Recheck fixes. Do not invent alt text, labels, or behavior without understanding the content's purpose.
-
-Combines the useful sampling and evidence categories of XIAS `a11y-audit` and AccessLint `accessibility-audit`/`accessibility-inspect`, reviewed at commits `62092bd83bc3df0bcb9a2b3b643305ab11c547da` and `2e9d7336678302d0bc08848e92542560295b34d3`. Their runtime tools are not bundled.
+For Figma-only work, limit claims to inspectable visual properties and proposed semantics. Do not invent alt text or an accessible name without knowing the content's purpose. This expands the existing XIAS/AccessLint adaptation; their runtime tools remain unbundled.

@@ -5,8 +5,12 @@ description: Review or improve React and Next.js rendering, data fetching, and b
 
 # React performance
 
-Measure the slow path and identify whether delay comes from serial fetches, large client bundles, server work, hydration, or avoidable rerenders. Prioritize independent fetches running in parallel, server/client boundary placement, and loading only code needed for the current route or interaction. Inspect bundle output before adding dynamic imports; extra splitting has costs. Use framework APIs supported by the project's pinned React/Next versions.
+Identify a user-visible symptom and measurement environment before changing code. Read [diagnosis and decisions](references/diagnosis-and-decisions.md) for network/render/bundle triage and [verification and regressions](references/verification-and-regressions.md) for experimental controls.
 
-For rerenders, locate the expensive subtree with profiler evidence before adding memoization. Keep state near consumers, derive values during render when safe, and avoid effects that merely mirror props/state. Preserve correctness of caching, authentication, and request isolation. Verify with the project's tests plus before/after timings or bundle sizes; report the measurement environment and any uncertainty.
+1. Capture baseline route, device, network, data size, React/Next versions and profiler or browser trace. Distinguish server time, serial requests, bundle/parse, hydration and expensive updates.
+2. Choose a change tied to the measured bottleneck. Parallelize only independent requests; split code only when transfer and parse savings exceed extra round trips; memoize only a demonstrated expensive subtree with stable dependencies.
+3. Preserve request identity, authorization and cache freshness. For Next.js, verify installed version's server/client and caching semantics with `nextjs-developer` when route behavior is central.
+4. Test normal and failure paths, including stale data, changed props, slow network and hydration. Guard against a faster but incorrect UI.
+5. Compare before/after runs under matched conditions and report median/distribution, bundle change and uncertainty. Revert or revise when improvement is noise or shifts cost to another route.
 
-Original concise adaptation of selected Vercel `react-best-practices` guidance at commit `063bee94c3f4df8453406c830b0a7df0f2860278`; no live rule fetch or dependency is required.
+Do not introduce blanket `useMemo`, dynamic imports or cache directives. This expands the existing Vercel-informed adaptation at `063bee94c3f4df8453406c830b0a7df0f2860278`; no live rule fetch is required.
