@@ -1,5 +1,7 @@
 # Engineering skills vetting — 2026-10-26
 
+> Historical record of the first six-candidate, three-skill integration on PR #6. The subsequent full 12-candidate review, 34-skill baseline audit, and revised decisions are in [Jeffallan candidate assessment](jeffallan-candidate-assessment.md) and [existing skills audit](existing-skills-audit.md). Decisions below describe that earlier change, not the current library.
+
 Decision: add three locally authored, cross-agent adaptations. Source snapshot: [Jeffallan/claude-skills at `504bb9a`](https://github.com/Jeffallan/claude-skills/tree/504bb9a067c5c7ea6bf868c7cc337164b213fa57). The commit has a verified GitHub signature; the root license is MIT. The source paths and exclusions are recorded in `upstream/jeffallan-claude-skills/PROVENANCE`.
 
 ## Existing library audit

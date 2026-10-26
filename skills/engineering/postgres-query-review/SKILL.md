@@ -1,6 +1,6 @@
 ---
 name: postgres-query-review
-description: Diagnose PostgreSQL query plans and propose query or index changes when a measured database performance issue is in scope. Use for slow SQL, planner estimates, index choice, JSONB access, and migration review; not for general SQL syntax help.
+description: Diagnose PostgreSQL query plans and propose measured SQL, index, or statistics changes. Use for slow queries, planner estimates, JSONB access, and migration review; not for general SQL syntax help or autonomous database administration.
 ---
 
 ### Local policy (agent-skills)
@@ -9,11 +9,12 @@ description: Diagnose PostgreSQL query plans and propose query or index changes 
 
 # PostgreSQL query review
 
-Establish the PostgreSQL version, schema, row counts, query parameters, workload, and current measurements. Redact sensitive values from plans and reports.
+Read [plan analysis](references/plan-analysis.md) when diagnosing SQL and [change planning](references/change-planning.md) when a query, index, or configuration change is proposed. Establish server version, schema, cardinality, indexes, representative parameters, data skew, latency distribution, and whether the environment contains sensitive data.
 
-1. Start with existing query text, statistics, and a plain `EXPLAIN` plan. Compare estimated rows, actual observations already available, I/O, sort or join cost, and existing indexes.
-2. Use `EXPLAIN (ANALYZE, BUFFERS)` only in an authorized safe environment after checking whether the statement mutates data, triggers side effects, takes locks, or creates unacceptable load. `ANALYZE` executes the statement.
-3. Propose the smallest query, index, or statistics change supported by the evidence. Account for write overhead, disk, locks, migration rollback, and version-specific behavior. A sequential scan is not automatically a defect.
-4. Test the candidate against representative data and compare plans and latency under similar conditions. State uncertainty when production-scale verification is unavailable.
+1. Capture the baseline SQL, a plain `EXPLAIN` plan, and available `pg_stat_statements` or application timings. Redact literals and identifiers as needed. Do not infer production performance from a tiny test table.
+2. Separate planner-estimate errors from actual work: row estimate versus observed rows, join order, sort/spill, buffers, and total latency. A sequential scan on a small or low-selectivity table can be correct.
+3. Compare the smallest plausible alternatives: predicate or join rewrite, query shape, statistics, or an index aligned to the predicate and ordering. Estimate disk, write amplification, lock behavior, and migration cost.
+4. Use `EXPLAIN (ANALYZE, BUFFERS)` only on an authorized safe environment with a controlled statement and workload. It executes the statement. For mutations, prefer a rollbackable test transaction only after assessing triggers and nontransactional side effects.
+5. Verify before and after under comparable parameters and warm/cold cache conditions. Include both latency and plan evidence; report when representative data is unavailable.
 
-For production changes, prepare a reviewable migration and rollout plan. Execute DDL, maintenance, extension, replication, or configuration changes only with task authorization and the project's change controls. Never run destructive recovery commands from an upstream example. Do not assume `CREATE INDEX CONCURRENTLY` works inside a transaction or that one index type fits every JSONB query.
+Prepare production DDL or maintenance as a reviewable plan with rollback, monitoring, and acceptance thresholds. `CREATE INDEX CONCURRENTLY` cannot run inside a transaction block and can leave an invalid index on failure. Do not perform DDL, `VACUUM FULL`, extension changes, replication steps, or destructive recovery based on a reference example. Report exact version-dependent assumptions.

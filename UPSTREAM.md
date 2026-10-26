@@ -4,7 +4,7 @@ Source of truth: `registry/skills.tsv`. Regenerate this table with `scripts/upst
 
 ## Engineering integration (2026-10-26)
 
-`typescript-safety`, `postgres-query-review`, and `security-code-review` are locally authored adaptations informed by Jeffallan/claude-skills at `504bb9a067c5c7ea6bf868c7cc337164b213fa57` (MIT). Their upstream paths, exclusions, and license are in `upstream/jeffallan-claude-skills/PROVENANCE`. No upstream executable or reference file is vendored. These adaptations are not eligible for `scripts/upstream.sh apply`; review a new source commit and adapt manually. See `docs/engineering-skills-vetting.md` for selection and security review.
+Ten engineering skills are locally authored adaptations informed by Jeffallan/claude-skills at `504bb9a067c5c7ea6bf868c7cc337164b213fa57` (MIT). Their upstream paths, exclusions, and license are in `upstream/jeffallan-claude-skills/PROVENANCE`. No upstream executable or reference file is vendored. These adaptations are not eligible for `scripts/upstream.sh apply`; review a new source commit and adapt manually. See `docs/engineering-skills-vetting.md` for the first integration and `docs/jeffallan-candidate-assessment.md` for the full 12-candidate review.
 Local modifications to vendored skills: `evals/` directories not vendored; relative links pointing outside the skill
 directory (`../../tools/...`) rewritten to URLs pinned to the reviewed commit; for `restricted` skills, a Local policy block
 (`registry/policies/<skill>.md`) injected after the frontmatter. The 2026-10-14 design additions are separately documented below; adapted skills are locally authored and are not eligible for the verbatim upstream update command.
@@ -60,3 +60,10 @@ Rejected: `find-animation-opportunities` (overlaps `improve-animations`). Not se
 | typescript-safety | https://github.com/Jeffallan/claude-skills | `skills/typescript-pro` | `504bb9a067c5` | active | Locally authored adaptation; runtime boundary validation and scoped type checks |
 | postgres-query-review | https://github.com/Jeffallan/claude-skills | `skills/postgres-pro` | `504bb9a067c5` | restricted | Locally authored adaptation; plan first; database operations follow project controls |
 | security-code-review | https://github.com/Jeffallan/claude-skills | `skills/security-reviewer` | `504bb9a067c5` | restricted | Locally authored adaptation; scoped source review; active testing separately authorized |
+| nextjs-developer | https://github.com/Jeffallan/claude-skills | `skills/nextjs-developer` | `504bb9a067c5` | active | Locally authored adaptation; version-aware App Router and Pages Router workflow |
+| api-designer | https://github.com/Jeffallan/claude-skills | `skills/api-designer` | `504bb9a067c5` | active | Locally authored adaptation; contract and compatibility workflow; RFC 9457 |
+| architecture-designer | https://github.com/Jeffallan/claude-skills | `skills/architecture-designer` | `504bb9a067c5` | active | Locally authored adaptation; decision and failure-mode workflow |
+| test-master | https://github.com/Jeffallan/claude-skills | `skills/test-master` | `504bb9a067c5` | restricted | Locally authored adaptation; risk-based testing; load and security tests controlled |
+| playwright-expert | https://github.com/Jeffallan/claude-skills | `skills/playwright-expert` | `504bb9a067c5` | restricted | Locally authored adaptation; browser testing; authorized test targets only |
+| monitoring-expert | https://github.com/Jeffallan/claude-skills | `skills/monitoring-expert` | `504bb9a067c5` | restricted | Locally authored adaptation; observability; privacy and rollout controls |
+| spec-miner | https://github.com/Jeffallan/claude-skills | `skills/spec-miner` | `504bb9a067c5` | active | Locally authored adaptation; evidence-backed specification recovery |
