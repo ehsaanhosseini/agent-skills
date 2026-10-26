@@ -2,7 +2,7 @@
 
 **One curated skill library for better product work.** The same reviewed instructions are shared by Claude Code, Codex, and Cursor through a single local checkout. Skills are scoped to real tasks, so a design review does not load a marketing playbook or an unrelated framework guide.
 
-**34 skills** · **Engineering, design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
+**41 skills** · **Engineering, design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
 
 > This repository is public. It contains reusable workflows, not customer data, secrets, project files, or private business context.
 
@@ -33,6 +33,13 @@ Use the skill that matches the job. A few useful pairings: `frontend-design` set
 | [typescript-safety](skills/engineering/typescript-safety/SKILL.md) | TypeScript API boundaries and unsafe type assumptions | Runtime validation, precise narrowing, and project-aware type checks |
 | [postgres-query-review](skills/engineering/postgres-query-review/SKILL.md) | Measured PostgreSQL query issues | Safe plan interpretation and reviewable query or index proposals |
 | [security-code-review](skills/engineering/security-code-review/SKILL.md) | Scoped application source review | Evidence-backed findings, redaction, and controlled testing scope |
+| [nextjs-developer](skills/engineering/nextjs-developer/SKILL.md) | Next.js routes, data, and mutations | Version-aware server/client and security decisions |
+| [api-designer](skills/engineering/api-designer/SKILL.md) | HTTP API contracts and evolution | Resource semantics, failures, compatibility, and contract checks |
+| [architecture-designer](skills/engineering/architecture-designer/SKILL.md) | System boundaries and tradeoffs | ADRs with failure and operational verification |
+| [test-master](skills/engineering/test-master/SKILL.md) | Risk-based test strategy | Layer selection, edge cases, and failure analysis |
+| [playwright-expert](skills/engineering/playwright-expert/SKILL.md) | Browser test implementation | Stable locators, fixtures, traces, and flake diagnosis |
+| [monitoring-expert](skills/engineering/monitoring-expert/SKILL.md) | Service observability | Defined signals, actionable alerts, and rollout checks |
+| [spec-miner](skills/engineering/spec-miner/SKILL.md) | Recovering legacy behavior | Evidence-linked rules and uncertainty tracking |
 
 ### Interaction and craft
 
@@ -97,7 +104,7 @@ The linking script skips existing paths it does not own. On an existing installa
 
 - `registry/skills.tsv` is the complete inventory, including source, reviewed commit, status, and local restrictions. Run `scripts/inventory.sh` for a compact table.
 - [UPSTREAM.md](UPSTREAM.md) records provenance and local adaptations. [SECURITY.md](SECURITY.md) sets the review and public-repository hygiene rules.
-- [Engineering vetting](docs/engineering-skills-vetting.md) records the 31-skill overlap audit, pinned upstream shortlist, and integration decisions.
+- [Existing skills audit](docs/existing-skills-audit.md) covers the 34-skill baseline; [Jeffallan candidate assessment](docs/jeffallan-candidate-assessment.md) records all 12 pinned candidates and naming decisions. [Engineering behavior evaluations](docs/engineering-behavior-evaluations.md) and [quality gates](docs/quality-gates.md) describe the review evidence and its limits. The [first integration record](docs/engineering-skills-vetting.md) remains for history.
 - [docs/ADDING-A-SKILL.md](docs/ADDING-A-SKILL.md) explains how to add a skill. Changes are reviewed on a feature branch before merging to `main`.
 - Run `scripts/validate.sh --strict --repo-only` for a clean checkout. `--online` also checks public GitHub visibility using authenticated `gh`, or the official public REST API when `gh` is unavailable. Network errors, invalid responses, and a repository identity or visibility mismatch fail the check.
 

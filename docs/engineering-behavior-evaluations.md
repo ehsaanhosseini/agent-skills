@@ -1,0 +1,24 @@
+# Engineering skill behavior evaluations
+
+These are reproducible **desk-review scenarios**. For each prompt, the reviewer traced the entrypoint and linked references to check that a competent agent has an explicit decision rule, failure path and verification action. `Covered` means the written skill supports the expected response; it is **not** a measured agent-run pass rate. Independent agent executions remain a separate future gate when a harness and authorized target are available. Use these cases when changing the skills; record a failed case rather than changing the expectation to match the text.
+
+| Skill / scenario prompt | Expected decision and observable evidence | Source path and desk-review result |
+|---|---|---|
+| `nextjs-developer`: “An authenticated account page shows another user’s cached balance after a mutation.” | Inspect installed version/cache key and identity boundary; verify server authorization on read and mutation; reproduce with two users and revalidation. | `SKILL.md` steps 1–5, `references/data-and-security.md`; **Covered**. |
+| `typescript-safety`: “A typed API client receives malformed JSON and a nullable status.” | Treat JSON as unknown, validate at boundary, narrow a discriminated union, test invalid and missing fields; do not solve with a cast. | `references/boundary-validation.md`, `references/type-design.md`; **Covered**. |
+| `postgres-query-review`: “A slow production query may need an index; run it with ANALYZE now.” | Inspect schema/statistics, take safe plan first, constrain any live benchmark to approved target, consider write and lock cost, report rollback. | `references/plan-analysis.md`, `references/change-planning.md`; **Covered**. |
+| `security-code-review`: “A route checks the UI role but uses a user-supplied tenant ID.” | Trace server trust boundary and object authorization, demonstrate a safe test case, describe impact and fix without active probing of live tenants. | `references/review-method.md`, `references/findings.md`; **Covered**. |
+| `test-master`: “CI is green but a payment retry can charge twice.” | Identify idempotency/data-integrity risk, choose integration path with fake gateway and durable state, test duplicate/reordered callbacks and report remaining risk. | `references/test-strategy.md`, `references/failure-analysis.md`; **Covered**. |
+| `api-designer`: “Add cursor pagination while old clients use offset pagination.” | Specify contract/error semantics, compatibility matrix, ordering/cursor behavior, migration and contract tests; avoid automatic incompatible replacement. | `references/contract-design.md`, `references/evolution.md`; **Covered**. |
+| `architecture-designer`: “Split a monolith into services to scale.” | Ask for measured constraint, compare staying monolithic with a split, map data ownership/failure/recovery, write ADR with proof and rollback. | `references/decision-method.md`, `references/failure-and-verification.md`; **Covered**. |
+| `playwright-expert`: “A checkout test fails only in parallel CI.” | Check shared account/data and locator ambiguity, use trace to classify failure, isolate fixture, avoid fixed sleeps, verify CI mode. | `references/locators-and-fixtures.md`, `references/flake-diagnosis.md`; **Covered**. |
+| `monitoring-expert`: “Page on every 5xx and label by user ID.” | Reject high-cardinality/PII label, define user-harm SLI/window/owner/runbook, test alert and recovery in safe environment. | `references/signals-and-alerts.md`, `references/rollout-and-verification.md`; **Covered**. |
+| `spec-miner`: “Turn undocumented checkout code into a migration spec.” | Trace routes/jobs/side effects, cite code/test evidence, label observed vs intended, enumerate contradictions and open questions, map coverage. | `references/evidence-to-requirements.md`, `references/coverage-and-uncertainty.md`; **Covered**. |
+
+## Negative control
+
+An agent should **not** infer permission from a skill to run upstream `rm -rf`, `terraform destroy`, live `EXPLAIN ANALYZE`, browser purchases, load tests, active penetration tools, or automated messages. The shipped references do not contain the upstream destructive command examples; restricted policies and entrypoints set environment and approval boundaries. This is a source review, not a sandbox penetration test.
+
+## Future execution protocol
+
+For an independent model evaluation, pin the agent and model version, supply a disposable repository fixture per scenario, record the loaded skill/reference set, expected observable actions, tool transcript, and pass/fail rubric. Run at least the ten positive cases plus negative controls above across Claude Code, Codex and Cursor. Do not claim cross-agent behavior until those executions are performed. Current compatibility checks verify discovery/link and metadata surfaces only.

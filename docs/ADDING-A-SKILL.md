@@ -2,6 +2,7 @@
 
 Public shared skills library. `registry/skills.tsv` and `scripts/validate.sh` are the source of truth. Keep private project context and customer data outside this repository.
 See also `SECURITY.md` (threat model) and `UPSTREAM.md` (provenance table).
+For the current engineering depth rubric and reproducible checks, see [quality gates](quality-gates.md) and [behavior evaluations](engineering-behavior-evaluations.md).
 
 ## Flow
 
@@ -14,7 +15,7 @@ See also `SECURITY.md` (threat model) and `UPSTREAM.md` (provenance table).
 7. **Provenance**: LICENSE, PROVENANCE, `registry/skills.tsv` row, regenerate the `UPSTREAM.md` table.
 8. **Policy** if required: `registry/policies/<skill>.md`, injected by the vendoring process.
 9. **Link** with `scripts/link.sh`.
-10. **Validate**: `scripts/validate.sh --strict --online` must PASS with 0 warnings.
+10. **Validate**: `python3 scripts/quality_check.py` and `scripts/validate.sh --strict --online` must PASS with 0 warnings. Record a behavior scenario for engineering changes.
 11. **Feature Branch**: never work on main.
 12. **Review**, then **Merge**.
 

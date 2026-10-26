@@ -33,3 +33,10 @@ figma-deliverables	design	local	-	-	active	Cross-platform Figma handoff orchestr
 typescript-safety	engineering	jeffallan-claude-skills	skills/typescript-pro	504bb9a067c5c7ea6bf868c7cc337164b213fa57	active	Locally authored adaptation; runtime boundary validation and scoped type checks
 postgres-query-review	engineering	jeffallan-claude-skills	skills/postgres-pro	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored adaptation; plan first; database operations follow project controls
 security-code-review	engineering	jeffallan-claude-skills	skills/security-reviewer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored adaptation; scoped source review; active testing separately authorized
+nextjs-developer	engineering	jeffallan-claude-skills	skills/nextjs-developer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	active	Locally authored adaptation; version-aware App Router and Pages Router workflow
+api-designer	engineering	jeffallan-claude-skills	skills/api-designer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	active	Locally authored adaptation; contract and compatibility workflow; RFC 9457
+architecture-designer	engineering	jeffallan-claude-skills	skills/architecture-designer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	active	Locally authored adaptation; decision and failure-mode workflow
+test-master	engineering	jeffallan-claude-skills	skills/test-master	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored adaptation; risk-based testing; load and security tests controlled
+playwright-expert	engineering	jeffallan-claude-skills	skills/playwright-expert	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored adaptation; browser testing; authorized test targets only
+monitoring-expert	engineering	jeffallan-claude-skills	skills/monitoring-expert	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored adaptation; observability; privacy and rollout controls
+spec-miner	engineering	jeffallan-claude-skills	skills/spec-miner	504bb9a067c5c7ea6bf868c7cc337164b213fa57	active	Locally authored adaptation; evidence-backed specification recovery

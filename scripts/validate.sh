@@ -45,6 +45,7 @@ dirs=$(for f in skills/*/*/SKILL.md; do basename "$(dirname "$f")"; done | sort)
 [ -z "$(echo "$dirs" | uniq -d)" ] || fail "duplicate skill names"
 [ $bad = 0 ] && pass "registry fields, SKILL.md, frontmatter names, SHA provenance, restricted policies"
 for s in $(awk -F'\t' 'NR>1{print $1}' "$SRC"); do [ -f "upstream/$s/LICENSE" ] && [ -f "upstream/$s/PROVENANCE" ] || fail "upstream/$s missing LICENSE/PROVENANCE"; done
+python3 scripts/quality_check.py || fail "quality_check.py failed"
 
 # 3. relative links inside skills
 python3 - <<'PY' && pass "no broken relative links in skills/" || fail "broken relative links in skills/"
