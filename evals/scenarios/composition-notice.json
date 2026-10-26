@@ -1,0 +1,14 @@
+{
+  "id": "composition-notice",
+  "prompt": "A React Notice has success, error and warning booleans; one call site passes success and error together. Refactor the public API without silently changing consumers.",
+  "expected_skill": "react-composition",
+  "references": [
+    "references/composition-decisions.md",
+    "references/migration-and-verification.md"
+  ],
+  "rubric": [
+    "Chooses explicit mutually exclusive variant with state ownership rationale.",
+    "Handles invalid old combination and migration inventory.",
+    "Tests semantics, call sites and keyboard/focus behavior."
+  ]
+}

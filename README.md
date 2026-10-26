@@ -2,7 +2,7 @@
 
 **One curated skill library for better product work.** The same reviewed instructions are shared by Claude Code, Codex, and Cursor through a single local checkout. Skills are scoped to real tasks, so a design review does not load a marketing playbook or an unrelated framework guide.
 
-**31 skills** · **Design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
+**51 skills** · **Engineering, design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
 
 > This repository is public. It contains reusable workflows, not customer data, secrets, project files, or private business context.
 
@@ -25,6 +25,31 @@ Use the skill that matches the job. A few useful pairings: `frontend-design` set
 | [design-reference-search](skills/design/design-reference-search/SKILL.md) | Looking up a chart, style, palette, or pattern | An offline, pinned Pro Max catalog with cautious matching |
 | [react-performance](skills/design/react-performance/SKILL.md) | React or Next.js performance work | Evidence-led fetching, bundle, rendering, and rerender decisions |
 | [react-composition](skills/design/react-composition/SKILL.md) | React component APIs becoming hard to maintain | Clear state ownership, variants, and compound composition |
+
+### Engineering
+
+| Skill | Use it for | What it adds |
+|---|---|---|
+| [typescript-safety](skills/engineering/typescript-safety/SKILL.md) | TypeScript API boundaries and unsafe type assumptions | Runtime validation, precise narrowing, and project-aware type checks |
+| [postgres-query-review](skills/engineering/postgres-query-review/SKILL.md) | Measured PostgreSQL query issues | Safe plan interpretation and reviewable query or index proposals |
+| [security-code-review](skills/engineering/security-code-review/SKILL.md) | Scoped application source review | Evidence-backed findings, redaction, and controlled testing scope |
+| [nextjs-developer](skills/engineering/nextjs-developer/SKILL.md) | Next.js routes, data, and mutations | Version-aware server/client and security decisions |
+| [api-designer](skills/engineering/api-designer/SKILL.md) | HTTP API contracts and evolution | Resource semantics, failures, compatibility, and contract checks |
+| [architecture-designer](skills/engineering/architecture-designer/SKILL.md) | System boundaries and tradeoffs | ADRs with failure and operational verification |
+| [test-master](skills/engineering/test-master/SKILL.md) | Risk-based test strategy | Layer selection, edge cases, and failure analysis |
+| [playwright-expert](skills/engineering/playwright-expert/SKILL.md) | Browser test implementation | Stable locators, fixtures, traces, and flake diagnosis |
+| [monitoring-expert](skills/engineering/monitoring-expert/SKILL.md) | Service observability | Defined signals, actionable alerts, and rollout checks |
+| [spec-miner](skills/engineering/spec-miner/SKILL.md) | Recovering legacy behavior | Evidence-linked rules and uncertainty tracking |
+| [postgres-concurrency](skills/engineering/postgres-concurrency/SKILL.md) | MVCC, isolation, locks and deadlocks | Safe two-session diagnosis and invariant checks |
+| [postgres-schema-migrations](skills/engineering/postgres-schema-migrations/SKILL.md) | Schema and migration review | Constraint, lock, backfill and rollback analysis |
+| [postgres-reliability](skills/engineering/postgres-reliability/SKILL.md) | WAL, replication, backup and recovery | Isolated restore drills and failover planning |
+| [postgres-capacity](skills/engineering/postgres-capacity/SKILL.md) | Pooling and database capacity | Read-only telemetry and guarded experiments |
+| [ci-cd-engineering](skills/engineering/ci-cd-engineering/SKILL.md) | Pipeline and release gates | PR trust boundaries and artifact provenance |
+| [container-engineering](skills/engineering/container-engineering/SKILL.md) | Container image and runtime review | Build, secret and runtime verification |
+| [infrastructure-code-review](skills/engineering/infrastructure-code-review/SKILL.md) | IaC plan review | Replacement, drift and sensitive-state analysis |
+| [deployment-recovery](skills/engineering/deployment-recovery/SKILL.md) | Rollout and rollback planning | Staged release and recovery criteria |
+| [configuration-secrets](skills/engineering/configuration-secrets/SKILL.md) | Config and credential lifecycle | Schema, rotation and exposure review |
+| [incident-runbooks](skills/engineering/incident-runbooks/SKILL.md) | Production incident planning | Evidence-led containment and recovery checks |
 
 ### Interaction and craft
 
@@ -89,6 +114,8 @@ The linking script skips existing paths it does not own. On an existing installa
 
 - `registry/skills.tsv` is the complete inventory, including source, reviewed commit, status, and local restrictions. Run `scripts/inventory.sh` for a compact table.
 - [UPSTREAM.md](UPSTREAM.md) records provenance and local adaptations. [SECURITY.md](SECURITY.md) sets the review and public-repository hygiene rules.
+- [Existing skills audit](docs/existing-skills-audit.md) covers the 34-skill baseline; [Jeffallan candidate assessment](docs/jeffallan-candidate-assessment.md) records all 12 pinned candidates and naming decisions. [Engineering behavior evaluations](docs/engineering-behavior-evaluations.md) and [quality gates](docs/quality-gates.md) describe the review evidence and its limits. The [first integration record](docs/engineering-skills-vetting.md) remains for history.
+- [Professional quality rubric](docs/professional-quality-rubric.md), [remediation review](docs/remediation-review.md), [PostgreSQL/DevOps coverage](docs/postgres-devops-coverage.md), [evaluation results](docs/evaluation-results.md), [governance](docs/engineering-governance.md), and [improvement backlog](docs/improvement-backlog.md) track the next quality pass. GitHub CI runs structural, provenance and security checks; agent behavior evidence is reviewed separately.
 - [docs/ADDING-A-SKILL.md](docs/ADDING-A-SKILL.md) explains how to add a skill. Changes are reviewed on a feature branch before merging to `main`.
 - Run `scripts/validate.sh --strict --repo-only` for a clean checkout. `--online` also checks public GitHub visibility using authenticated `gh`, or the official public REST API when `gh` is unavailable. Network errors, invalid responses, and a repository identity or visibility mismatch fail the check.
 

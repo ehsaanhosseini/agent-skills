@@ -16,9 +16,10 @@ LINKDIRS=("$HOME/.agents/skills" "$HOME/.claude/skills")
 tab=$'\t'
 
 # 1. canonical repo + layout
-[ -d .git ] && [ -d skills ] && [ -f "$REG" ] && [ -f "$SRC" ] && pass "canonical repo present: $ROOT" || fail "canonical repo layout (.git, skills/, registry/*.tsv)"
+git_root=$(git rev-parse --show-toplevel 2>/dev/null || true)
+[ "$git_root" = "$ROOT" ] && [ -d skills ] && [ -f "$REG" ] && [ -f "$SRC" ] && pass "canonical repo present: $ROOT" || fail "canonical repo layout (Git checkout, skills/, registry/*.tsv)"
 for f in README.md SECURITY.md UPSTREAM.md .gitignore skills/hoccotech/README.md; do [ -f "$f" ] || fail "missing $f"; done
-for c in design marketing seo-geo hoccotech; do [ -d "skills/$c" ] || fail "missing skills/$c"; done
+for c in design marketing seo-geo engineering hoccotech; do [ -d "skills/$c" ] || fail "missing skills/$c"; done
 
 # 2. registry <-> skill directories <-> SKILL.md <-> frontmatter name
 reg_names=$(awk -F'\t' 'NR>1{print $1}' "$REG")
@@ -45,6 +46,7 @@ dirs=$(for f in skills/*/*/SKILL.md; do basename "$(dirname "$f")"; done | sort)
 [ -z "$(echo "$dirs" | uniq -d)" ] || fail "duplicate skill names"
 [ $bad = 0 ] && pass "registry fields, SKILL.md, frontmatter names, SHA provenance, restricted policies"
 for s in $(awk -F'\t' 'NR>1{print $1}' "$SRC"); do [ -f "upstream/$s/LICENSE" ] && [ -f "upstream/$s/PROVENANCE" ] || fail "upstream/$s missing LICENSE/PROVENANCE"; done
+python3 scripts/quality_check.py || fail "quality_check.py failed"
 
 # 3. relative links inside skills
 python3 - <<'PY' && pass "no broken relative links in skills/" || fail "broken relative links in skills/"
@@ -150,9 +152,12 @@ br=$(git branch --show-current); dirty=$(git status --porcelain | wc -l | tr -d 
 echo "INFO  branch: $br; remote: $(git remote get-url origin 2>/dev/null | sed -E 's#https://[^@/]*@#https://#')"
 if [ "$dirty" = 0 ]; then pass "git working tree clean"; elif [ $strict = 1 ]; then fail "git working tree has $dirty uncommitted change(s)"; else warn "git working tree has $dirty uncommitted change(s)"; fi
 if [ $online = 1 ]; then
+  vis=
   if command -v gh >/dev/null 2>&1; then
-    vis=$(gh repo view --json visibility -q .visibility 2>/dev/null)
-    [ "$vis" = PUBLIC ] && pass "GitHub repository visibility: PUBLIC" || fail "GitHub visibility is '${vis:-unknown}' (expected PUBLIC)"
+    vis=$(gh repo view --json visibility -q .visibility 2>/dev/null || true)
+  fi
+  if [ "$vis" = PUBLIC ]; then
+    pass "GitHub repository visibility: PUBLIC"
   else
     python3 - <<'PYVIS' && pass "GitHub repository visibility: PUBLIC (REST API)" || fail "GitHub REST visibility check failed (expected PUBLIC)"
 import json,re,subprocess,sys,urllib.request

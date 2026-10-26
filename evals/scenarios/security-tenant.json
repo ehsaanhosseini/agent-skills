@@ -1,0 +1,14 @@
+{
+  "id": "security-tenant",
+  "prompt": "Review source code for an API route that checks a UI role but accepts a user-supplied tenant ID to fetch another tenant's invoice. Give an evidence-based finding and safe verification plan. Do not probe live tenants.",
+  "expected_skill": "security-code-review",
+  "references": [
+    "references/review-method.md",
+    "references/findings.md"
+  ],
+  "rubric": [
+    "Traces server-side authorization and object/tenant boundary.",
+    "Gives minimal safe fixture or source test, not live exploitation.",
+    "States impact, confidence, fix and recheck with redaction."
+  ]
+}

@@ -5,12 +5,12 @@ description: Design or review operational dashboards and dense data screens wher
 
 # Data dashboard
 
-Start with the reader, their decision, the reporting period, and the source of each metric. If these are unknown, label assumptions and sample data. Choose the lead metric by decision value, then arrange context, diagnosis, and actions in that order. Give repeated cards different visual weight only when their importance differs.
+Identify the audience, decision, time horizon, data owner and refresh promise before drawing cards. Read [metric contracts](references/metric-contracts.md) for grain and reconciliation, then [interaction and verification](references/interaction-and-verification.md) for charts, states and acceptance checks. Use sample data only when clearly labeled.
 
-For every metric, define numerator, denominator, unit, comparison period, update cadence, and the action it supports. Show freshness and uncertainty when they affect interpretation. Keep counts reconcilable across summary cards, charts, and tables. A donut represents parts of one whole and must total that whole. A line chart needs axes or an explicit period and scale; zero baselines matter for bars. Use chart types for their meaning, not variety alone.
+1. Define each metric's grain, numerator, denominator, units, inclusion/exclusion rules, timezone, update cadence and source query. Reconcile card, chart and table totals against the same filtered population.
+2. Rank information by decision value: status, change, cause, exception and action. Choose a chart only when it improves comparison or diagnosis; a table may be better for exact values.
+3. Design filtering, comparison periods, drill-down, permissions and actions as one state model. Show freshness and data-quality warnings; distinguish zero, missing, delayed and unauthorized data.
+4. Check chart semantics: axes, units, baselines, totals, color meaning and accessible alternatives. Keep dense data usable on narrow screens without hiding the most important decision.
+5. Verify with a fixed dataset containing normal, boundary and failure cases. Inspect rendered desktop/mobile states, keyboard order, tooltips and the reconciliation assertions in the references.
 
-Design the full journey below the first viewport: summary, trend/composition, operational exceptions, prioritized findings, detail table, and recent activity where the brief supports them. Avoid inventing sections to fill space. Give each action a destination. Keep filters, sort state, empty/error/loading states, permissions, and drill-down behavior coherent. On narrow screens, preserve decision order; let dense tables scroll or switch to a meaningful row summary rather than shrinking all columns.
-
-Give each chart an accessible text summary and a tabular route to exact values when users need them. Do not use color alone to encode status. Inspect rendered desktop and mobile layouts, including labels inside donuts, legends, tooltips, and button text. Use `design-critique` for judgment and `design-qa` for measured checks when those tasks are in scope.
-
-This is an adaptation of the dashboard decision and chart-integrity methods in XIAS `data-dashboard` at commit `62092bd83bc3df0bcb9a2b3b643305ab11c547da`; it does not depend on the XIAS kit, scripts, or Claude-specific paths.
+Use `design-critique` for qualitative judgment and `design-qa` for measurable UI checks when in scope. This expands the existing XIAS dashboard adaptation without importing its kit or scripts.

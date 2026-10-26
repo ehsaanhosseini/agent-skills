@@ -1,0 +1,14 @@
+{
+  "id": "critique-occupancy",
+  "prompt": "Critique a rendered occupancy dashboard whose illustration dominates while stale values and unresolved exceptions are below the fold. You only have desktop/mobile screenshots, not interaction data.",
+  "expected_skill": "design-critique",
+  "references": [
+    "references/critique-method.md",
+    "references/findings-and-recheck.md"
+  ],
+  "rubric": [
+    "Uses brief/task/evidence to prioritize concrete visible changes.",
+    "Separates screenshot observation from usability hypothesis.",
+    "Specifies a matched before/after recheck and untested interactions."
+  ]
+}

@@ -2,6 +2,8 @@
 
 Public shared skills library. `registry/skills.tsv` and `scripts/validate.sh` are the source of truth. Keep private project context and customer data outside this repository.
 See also `SECURITY.md` (threat model) and `UPSTREAM.md` (provenance table).
+For the current engineering depth rubric and reproducible checks, see [quality gates](quality-gates.md) and [behavior evaluations](engineering-behavior-evaluations.md).
+New and substantially revised skills must also meet the [professional quality rubric](professional-quality-rubric.md), include a regression scenario in `evals/scenarios/`, and follow [engineering governance](engineering-governance.md).
 
 ## Flow
 
@@ -14,9 +16,13 @@ See also `SECURITY.md` (threat model) and `UPSTREAM.md` (provenance table).
 7. **Provenance**: LICENSE, PROVENANCE, `registry/skills.tsv` row, regenerate the `UPSTREAM.md` table.
 8. **Policy** if required: `registry/policies/<skill>.md`, injected by the vendoring process.
 9. **Link** with `scripts/link.sh`.
-10. **Validate**: `scripts/validate.sh --strict --online` must PASS with 0 warnings.
+10. **Validate**: `python3 scripts/quality_check.py` and `scripts/validate.sh --strict --online` must PASS with 0 warnings. Record a behavior scenario for engineering changes.
 11. **Feature Branch**: never work on main.
 12. **Review**, then **Merge**.
+
+## Cross-agent compatibility
+
+Every new skill needs a portable `SKILL.md` with `name` and a task-specific `description`. Keep instructions usable in Claude Code, Codex, and Cursor Agent through the shared symlink layout. Agent-specific frontmatter or tool names may be added only when the other agents still have a clear, functional path. Do not treat a tool allowlist, invocation flag, or example command as a grant of permission. Verify the three discovery paths and relative links before merging. Locally authored adaptations of upstream skills must record the pinned source commit and must not use the verbatim upstream update command.
 
 ## Mandatory review rules
 

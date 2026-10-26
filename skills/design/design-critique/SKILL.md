@@ -5,10 +5,12 @@ description: Critique a rendered product screen or prototype and prioritize conc
 
 # Design critique
 
-Inspect the actual rendered artifact at its intended sizes and states. State the audience, primary task, and what evidence is available. Judge the screen against its own brief and product language, not a universal style preference.
+Inspect the rendered artifact and brief at intended sizes and states. Read [critique method](references/critique-method.md) for task-led judgment and [findings and recheck](references/findings-and-recheck.md) for severity and evidence. State audience, primary task, constraints and available evidence before making recommendations.
 
-Review in this order: (1) first glance and information hierarchy, (2) task path and action clarity, (3) typography and spacing, (4) chart and data semantics, (5) states and feedback, (6) visual identity and consistency. Identify where the eye goes first, what the user can infer, and what remains ambiguous. For each issue, cite the visible element, explain the user impact, and propose a specific change. Rank by impact and effort; cap the main list to the few changes that would materially improve the screen.
+1. Trace the first-glance hierarchy and actual task path: what is seen first, what action follows, and where uncertainty enters.
+2. Review wording, grouping, typography, spacing, visual emphasis, data/chart meaning, feedback states and product identity against the brief. Separate functional defects from taste.
+3. For each finding, cite a visible element/state, explain user impact, propose a concrete change and state what would verify it. Rank by impact, confidence and effort; keep the lead list focused.
+4. Show a counterexample or competing design option when the recommendation is subjective. Preserve constraints such as brand, accessibility and established patterns.
+5. Reinspect after edits at the same viewport/data/state and report what changed and what still needs functional or accessibility testing.
 
-Separate observed defects from hypotheses. A screenshot can reveal clipping, weak hierarchy, and ambiguous labels; it cannot prove keyboard behavior, real data accuracy, or conversion outcomes. Reinspect after edits and report what improved and what remains unverified. Do not use a numerical score without calibrated criteria.
-
-Adapted from XIAS `critique` and `design-review` at commit `62092bd83bc3df0bcb9a2b3b643305ab11c547da`. No XIAS agent, hook, or kit dependency is required.
+A screenshot cannot prove keyboard operation, data correctness or conversion outcomes. Use `design-qa` or `a11y-audit` for those measured tasks. This expands the existing XIAS `critique`/`design-review` adaptation at `62092bd83bc3df0bcb9a2b3b643305ab11c547da`.

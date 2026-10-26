@@ -1,0 +1,14 @@
+{
+  "id": "component-search",
+  "prompt": "Specify a reusable search field with async suggestions, clear button, long translated text, and an error state. Explain API/state ownership and acceptance tests.",
+  "expected_skill": "design-component",
+  "references": [
+    "references/component-contract.md",
+    "references/interaction-and-acceptance.md"
+  ],
+  "rubric": [
+    "Defines anatomy, state transitions and controlled/uncontrolled contract.",
+    "Covers stale async response, keyboard/focus and accessible names.",
+    "Checks host integration and narrow/long-content state."
+  ]
+}

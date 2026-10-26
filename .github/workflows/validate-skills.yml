@@ -1,0 +1,37 @@
+name: Validate skills
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout pinned action
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Runtime versions
+        run: |
+          python3 --version
+          bash --version | head -n 1
+      - name: Syntax and diff
+        run: |
+          bash -n scripts/*.sh
+          PYTHONPYCACHEPREFIX=/tmp/skill-pycache python3 -m py_compile scripts/*.py skills/design/design-reference-search/scripts/search.py
+          git diff --check
+      - name: Skill, provenance, security and online validation
+        run: bash scripts/validate.sh --strict --repo-only --online
+      - name: Static gate negative controls
+        run: python3 scripts/test_quality_check.py
+      - name: Evaluation fixture contracts
+        run: python3 scripts/agent_eval.py validate
