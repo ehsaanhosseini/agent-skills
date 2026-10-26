@@ -1,0 +1,7 @@
+# Migration safety
+
+Use an ordered runbook with expected locks, time bounds, observability and recovery. Example: a new required column on a busy orders table. First add a nullable column, deploy dual-write or derived behavior, backfill in small idempotent batches, verify null count and application reads, then add/validate the invariant using the version-appropriate method. Only after old application versions are gone should the old path be removed. The exact SQL and lock levels depend on server version and schema; rehearse them.
+
+`CREATE INDEX CONCURRENTLY` reduces some blocking but cannot run inside a transaction block and may leave an invalid index on failure. `ALTER TABLE` may acquire strong locks even for seemingly small metadata changes; a long transaction can make a brief lock wait cascade. Set an approved lock timeout for rehearsal, monitor blockers, and define a stop condition. Do not execute an `EXPLAIN ANALYZE` of a mutating migration against production.
+
+Verification fixture: representative row count and skew, concurrent writes, one interrupted backfill, old and new app versions, lagging replica and rollback rehearsal. Assert row counts, uniqueness, null/invalid counts, read compatibility and backfill resumability. A rollback may require forward-fix when data shape has changed; label irreversible steps before approval. Record measured duration, WAL/disk change and unknowns.
