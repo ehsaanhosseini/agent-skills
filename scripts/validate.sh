@@ -18,7 +18,7 @@ tab=$'\t'
 # 1. canonical repo + layout
 [ -d .git ] && [ -d skills ] && [ -f "$REG" ] && [ -f "$SRC" ] && pass "canonical repo present: $ROOT" || fail "canonical repo layout (.git, skills/, registry/*.tsv)"
 for f in README.md SECURITY.md UPSTREAM.md .gitignore skills/hoccotech/README.md; do [ -f "$f" ] || fail "missing $f"; done
-for c in design marketing seo-geo hoccotech; do [ -d "skills/$c" ] || fail "missing skills/$c"; done
+for c in design marketing seo-geo engineering hoccotech; do [ -d "skills/$c" ] || fail "missing skills/$c"; done
 
 # 2. registry <-> skill directories <-> SKILL.md <-> frontmatter name
 reg_names=$(awk -F'\t' 'NR>1{print $1}' "$REG")

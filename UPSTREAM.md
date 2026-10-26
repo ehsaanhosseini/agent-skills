@@ -1,6 +1,10 @@
 # Upstream provenance
 
 Source of truth: `registry/skills.tsv`. Regenerate this table with `scripts/upstream.sh table`.
+
+## Engineering integration (2026-10-26)
+
+`typescript-safety`, `postgres-query-review`, and `security-code-review` are locally authored adaptations informed by Jeffallan/claude-skills at `504bb9a067c5c7ea6bf868c7cc337164b213fa57` (MIT). Their upstream paths, exclusions, and license are in `upstream/jeffallan-claude-skills/PROVENANCE`. No upstream executable or reference file is vendored. These adaptations are not eligible for `scripts/upstream.sh apply`; review a new source commit and adapt manually. See `docs/engineering-skills-vetting.md` for selection and security review.
 Local modifications to vendored skills: `evals/` directories not vendored; relative links pointing outside the skill
 directory (`../../tools/...`) rewritten to URLs pinned to the reviewed commit; for `restricted` skills, a Local policy block
 (`registry/policies/<skill>.md`) injected after the frontmatter. The 2026-10-14 design additions are separately documented below; adapted skills are locally authored and are not eligible for the verbatim upstream update command.
@@ -52,3 +56,7 @@ Rejected: `find-animation-opportunities` (overlaps `improve-animations`). Not se
 | react-performance | Local adaptation | `-` | `-` | active | React/Next only; original Vercel-informed adaptation |
 | react-composition | Local adaptation | `-` | `-` | active | React only; original Vercel-informed adaptation |
 | design-reference-search | Local adaptation | `-` | `-` | active | Offline Pro Max CSV subset and bounded local search |
+| figma-deliverables | Local adaptation | `-` | `-` | active | Cross-platform Figma handoff orchestration; mobile-first and standard tracks; native apps in same project |
+| typescript-safety | https://github.com/Jeffallan/claude-skills | `skills/typescript-pro` | `504bb9a067c5` | active | Locally authored adaptation; runtime boundary validation and scoped type checks |
+| postgres-query-review | https://github.com/Jeffallan/claude-skills | `skills/postgres-pro` | `504bb9a067c5` | restricted | Locally authored adaptation; plan first; database operations follow project controls |
+| security-code-review | https://github.com/Jeffallan/claude-skills | `skills/security-reviewer` | `504bb9a067c5` | restricted | Locally authored adaptation; scoped source review; active testing separately authorized |
