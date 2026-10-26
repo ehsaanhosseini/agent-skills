@@ -2,6 +2,8 @@
 
 Baseline: 34 skills at `dev` commit `ab82c3c451ec9749471b0a23f7b700a13d19253b`. All entrypoints, local references, scripts, registry routes, and restricted policies were inspected. Ratings judge the current baseline, before this branch's engineering upgrades: **Strong** = actionable, bounded and verifiable; **Adequate** = useful but material gaps; **Weak** = insufficient guidance for independent professional use. Priority P0 warrants correction before relying on the skill for consequential work; P1 is the next quality pass; P2 is maintenance. A rating is a review judgment, not a measured agent success rate. No baseline skill is deleted.
 
+Follow-up (2026-10-26): the eight P0 design/React skills in this baseline received focused references, workflows and acceptance procedures in the production remediation branch. This table remains the original audit evidence; see `docs/remediation-review.md` for current source review and `docs/evaluation-results.md` for executed behavior cases. The remaining P1/P2 work is in `docs/improvement-backlog.md`.
+
 | Skill | Evidence inspected | Rating | Gap / concrete remediation | Priority |
 |---|---|---|---|---|
 | `analytics` | 315-line entrypoint; GA4, GTM, event-library references; restricted policy | Adequate | Add consent-mode and server-side identity examples, data QA fixtures, and current vendor-version checks. | P1 |

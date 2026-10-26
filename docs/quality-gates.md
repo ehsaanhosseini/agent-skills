@@ -6,15 +6,17 @@ Run from the repository root. `scripts/validate.sh --strict --repo-only --online
 
 | Gate | Evidence required | What it does not prove |
 |---|---|---|
-| Registry/provenance | 41 unique entries, 34 baseline IDs preserved, reviewed SHA and license for each source | Domain correctness |
+| Registry/provenance | 51 unique entries, 41 protected IDs preserved, reviewed SHA and license for each source | Domain correctness |
 | Metadata/resources | Valid frontmatter, descriptions, local links, referenced files, one hash-approved skill executable | Agent follows instructions |
 | Strict/online | Repository validator success with pinned remotes reachable | Upstream commands are safe to run |
 | Security review | All candidate references inspected; no imported scripts/hooks; policies on restricted work; script hash unchanged | Every future implementation is secure |
 | Compatibility | Claude/Codex/Cursor skill discovery links and registry routes; no vendor-only frontmatter required | Identical behavior across agent models |
-| Behavior desk review | Ten scenario traces in `engineering-behavior-evaluations.md` | Independent agent execution |
+| Behavior evidence | 13 fixture contracts, prior ten scenario desk reviews, and six executed Codex samples in `evaluation-results.md` | Statistical reliability or Claude/Cursor behavior |
 | PR review | Passing checks, reviewed diff, clean base, no branch protection bypass | Product-owner approval of `main` |
 
-The quality gate was also exercised against disposable copies: a deliberately broken reference and a modified approved script both failed for the expected reason. These mutation checks test detection, not skill behavior.
+The GitHub workflow `.github/workflows/validate-skills.yml` runs the repository validator and fixture-contract checks on PRs to `dev`/`main` and pushes to those branches with read-only token permissions. Actual agent runs are recorded in `docs/evaluation-results.md` and reviewed manually; CI does not claim model behavior success.
+
+The quality gate is exercised against disposable copies: a broken reference, modified approved script, stale provenance table, and removed protected skill ID each fail for the expected reason. These mutation checks test detection, not skill behavior.
 
 ## Contributor quality bar
 

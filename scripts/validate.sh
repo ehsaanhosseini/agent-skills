@@ -152,9 +152,12 @@ br=$(git branch --show-current); dirty=$(git status --porcelain | wc -l | tr -d 
 echo "INFO  branch: $br; remote: $(git remote get-url origin 2>/dev/null | sed -E 's#https://[^@/]*@#https://#')"
 if [ "$dirty" = 0 ]; then pass "git working tree clean"; elif [ $strict = 1 ]; then fail "git working tree has $dirty uncommitted change(s)"; else warn "git working tree has $dirty uncommitted change(s)"; fi
 if [ $online = 1 ]; then
+  vis=
   if command -v gh >/dev/null 2>&1; then
-    vis=$(gh repo view --json visibility -q .visibility 2>/dev/null)
-    [ "$vis" = PUBLIC ] && pass "GitHub repository visibility: PUBLIC" || fail "GitHub visibility is '${vis:-unknown}' (expected PUBLIC)"
+    vis=$(gh repo view --json visibility -q .visibility 2>/dev/null || true)
+  fi
+  if [ "$vis" = PUBLIC ]; then
+    pass "GitHub repository visibility: PUBLIC"
   else
     python3 - <<'PYVIS' && pass "GitHub repository visibility: PUBLIC (REST API)" || fail "GitHub REST visibility check failed (expected PUBLIC)"
 import json,re,subprocess,sys,urllib.request

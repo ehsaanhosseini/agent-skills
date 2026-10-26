@@ -1,0 +1,14 @@
+{
+  "id": "qa-modal",
+  "prompt": "A modal screenshot changed after a font update; at 400% zoom the close control may be clipped. Plan pre-release QA across states and viewports.",
+  "expected_skill": "design-qa",
+  "references": [
+    "references/coverage-matrix.md",
+    "references/visual-and-interaction-checks.md"
+  ],
+  "rubric": [
+    "Defines representative state/viewport/locale matrix.",
+    "Investigates visual diff rather than blindly updating baseline.",
+    "Tests zoom, keyboard close/focus and reports unmeasured cases."
+  ]
+}

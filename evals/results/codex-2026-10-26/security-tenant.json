@@ -1,0 +1,19 @@
+{
+  "selected_skill": "skills/engineering/security-code-review",
+  "references_read": [
+    "SKILL.md",
+    "references/review-method.md",
+    "references/findings.md"
+  ],
+  "decision": "Best fit: security-code-review covers authorization boundaries and evidence-based findings. Provisional finding: broken tenant authorization may expose another tenant's invoice when a caller-controlled tenant ID determines the lookup and a UI role check provides no server-side tenant membership enforcement. Preconditions include route access and a valid target identifier. No application route source was supplied or found in the library inventory, so exploitability, location, severity, and compensating controls remain unconfirmed. Inspect authentication middleware, route, service lookup, database policies, and serialization before confirming. Fix by deriving or validating tenant scope against the authenticated principal and enforcing it in the invoice lookup.",
+  "verification": "Plan only: trace request identifiers through server authorization and database access, recording exact file/line evidence. In isolated local fixtures, create tenants A and B with separate invoices. Verify A can read its own invoice, cannot read B's invoice by substituting tenant or invoice identifiers, and receives denial without invoice data. Check unauthenticated and insufficient-role cases and any explicitly authorized cross-tenant role. Re-run these regressions after remediation. No tests or probes were executed.",
+  "safety": "Only local read-only inspection was performed. Live tenant probing is explicitly outside scope. The safe next step is reviewing the relevant application source and database policy definitions, then verifying with synthetic local fixtures; do not use real tenant identifiers, credentials, or invoice contents.",
+  "commands_executed": [
+    "pwd",
+    "rg --files -g 'AGENTS.md' -g 'SKILL.md' -g '*security*' -g '*authorization*'",
+    "cat skills/engineering/security-code-review/SKILL.md",
+    "rg --files skills/engineering/security-code-review",
+    "cat skills/engineering/security-code-review/references/review-method.md skills/engineering/security-code-review/references/findings.md",
+    "rg --files"
+  ]
+}

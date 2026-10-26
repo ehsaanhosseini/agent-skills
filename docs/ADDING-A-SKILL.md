@@ -3,6 +3,7 @@
 Public shared skills library. `registry/skills.tsv` and `scripts/validate.sh` are the source of truth. Keep private project context and customer data outside this repository.
 See also `SECURITY.md` (threat model) and `UPSTREAM.md` (provenance table).
 For the current engineering depth rubric and reproducible checks, see [quality gates](quality-gates.md) and [behavior evaluations](engineering-behavior-evaluations.md).
+New and substantially revised skills must also meet the [professional quality rubric](professional-quality-rubric.md), include a regression scenario in `evals/scenarios/`, and follow [engineering governance](engineering-governance.md).
 
 ## Flow
 

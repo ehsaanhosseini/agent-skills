@@ -1,0 +1,17 @@
+{
+  "selected_skill": "ci-cd-engineering",
+  "references_read": [
+    "SKILL.md",
+    "references/pipeline-design.md",
+    "references/supply-chain-and-release.md"
+  ],
+  "decision": "Separate PR validation from release. Run fork code only under pull_request with contents: read, persist-credentials: false, no secrets, no registry writes, and isolated runners and caches. Never combine pull_request_target with untrusted checkout. Require review and successful checks before merge to a protected branch. Build the reviewed commit in an isolated, unprivileged job; publish only through a separate protected release job with narrowly scoped, short-lived credentials and environment approval. Do not execute PR artifacts or scripts in privileged jobs. Pin actions to full commit SHAs. Record source commit, builder provenance and immutable image digest; promote that same digest through staging checks and production approval. Block release on failed or skipped required checks, provenance mismatch, or unavailable rollback. Keep an audited override process and a known-good rollback digest.",
+  "verification": "Read the skill and both references, plus .github/workflows/validate-skills.yml. The repository workflow validates skills with read-only permissions and contains no deployment token or image publishing; the described vulnerable workflow was not supplied. Redesign is desk-reviewed only. In a disposable environment, verify fork PRs cannot access credentials or publish, failing and skipped required checks block release, untrusted artifacts cannot enter privileged execution, and staging and production use the approved digest.",
+  "safety": "Only local read-only inspection was performed. No network, workflow execution, publishing, deployment, or modifications occurred. Exposing deployment credentials to fork code crosses the trust boundary. If exposure already occurred, an authorized owner should revoke or rotate the token and review its use before enabling the redesigned release path.",
+  "commands_executed": [
+    "pwd; rg --files -g 'SKILL.md' -g 'AGENTS.md'",
+    "cat skills/engineering/ci-cd-engineering/SKILL.md; rg --files skills/engineering/ci-cd-engineering",
+    "cat skills/engineering/ci-cd-engineering/references/pipeline-design.md; cat skills/engineering/ci-cd-engineering/references/supply-chain-and-release.md; rg --files --hidden -g '.github/workflows/**' -g 'AGENTS.md' -g '!\\.git/**'",
+    "cat .github/workflows/validate-skills.yml"
+  ]
+}

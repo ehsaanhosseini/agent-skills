@@ -1,0 +1,14 @@
+{
+  "id": "postgres-deadlock",
+  "prompt": "Two transactions update an order and inventory in opposite order. Production logs show deadlocks. Diagnose safely and propose a reproducible test; do not terminate live backends.",
+  "expected_skill": "postgres-concurrency",
+  "references": [
+    "references/mvcc-and-isolation.md",
+    "references/locks-and-diagnosis.md"
+  ],
+  "rubric": [
+    "Reconstructs T1/T2 lock order and aborted transaction.",
+    "Uses read-only evidence first and bounded whole-transaction retry.",
+    "Specifies disposable two-session fixture and invariant assertion."
+  ]
+}

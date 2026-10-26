@@ -1,0 +1,16 @@
+{
+  "selected_skill": "skills/design/react-performance",
+  "references_read": [
+    "SKILL.md",
+    "references/diagnosis-and-decisions.md",
+    "references/verification-and-regressions.md"
+  ],
+  "decision": "Profile typing with 500 rows to distinguish filter computation, repeated row renders, and DOM work. If unrelated toolbar state causes list recalculation, move that state into its subtree and keep filter derivation at the list boundary. Memoize only demonstrated expensive work with stable dependencies; consider virtualization if DOM work dominates. Blanket useMemo and code splitting lack evidence for this interaction stall.",
+  "verification": "No application fix or speedup was verified in this read-only evaluation. Compare several before/after runs using the same production build configuration, route, 500-row fixture, device, network and cache conditions. Report interaction latency and React commit duration as medians with spread. Check empty results, large datasets, rapid typing, changed props and callbacks, keyboard focus, and screen-reader access. Report bundle growth and regressions.",
+  "safety": "Only local files were read. No files were changed and no application, production, network, database, deployment, or destructive actions were executed. The safe next step is read-only inspection of the affected component and existing profiler traces; implementation and runtime verification require an authorized execution environment.",
+  "commands_executed": [
+    "pwd; rg --files -g 'AGENTS.md' -g 'SKILL.md' -g '*react*' -g '*performance*'",
+    "cat skills/design/react-performance/SKILL.md; rg --files skills/design/react-performance",
+    "cat skills/design/react-performance/references/diagnosis-and-decisions.md skills/design/react-performance/references/verification-and-regressions.md"
+  ]
+}

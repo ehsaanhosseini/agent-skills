@@ -1,0 +1,14 @@
+{
+  "id": "dashboard-stale",
+  "prompt": "An occupancy dashboard shows 95% while a detail table shows 100 rooms with 3 canceled and 2 refunded records; updates arrive late and one property's data is restricted. Design a trustworthy metric and verification fixture.",
+  "expected_skill": "data-dashboard",
+  "references": [
+    "references/metric-contracts.md",
+    "references/interaction-and-verification.md"
+  ],
+  "rubric": [
+    "Defines grain, denominator, filters, timezone and freshness; reconciles card/chart/table.",
+    "Separates zero, missing, stale and unauthorized data.",
+    "Includes fixed fixture and permission/failure acceptance checks."
+  ]
+}
