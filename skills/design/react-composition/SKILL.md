@@ -5,8 +5,12 @@ description: Design or refactor reusable React component APIs when variants, sta
 
 # React composition
 
-Inspect real call sites before changing an API. When independent boolean props create contradictory combinations, use a small explicit variant, composed child components, or a compound component whose shared state has a clear owner. Do not replace a simple boolean with an elaborate provider merely to follow a pattern.
+Inspect installed React version, actual call sites and component responsibilities before changing an API. Read [composition decisions](references/composition-decisions.md) for variants, slots and state ownership, and [migration and verification](references/migration-and-verification.md) for compatibility and tests.
 
-Keep the state interface distinct from its implementation when multiple consumers or controlled usage require it. Make accessibility behavior and focus ownership survive composition. Prefer `children` for natural layout slots; use render props when the caller truly needs state or behavior from the component. Check React-version-specific APIs against the project's pinned version; do not apply React 19 advice to React 18 automatically.
+1. Identify the concrete pain: contradictory boolean combinations, duplicated layout, implicit shared state, or hard-to-test branches. Count real consumers and supported modes.
+2. Choose the simplest fitting interface: ordinary props for a small control, explicit variant for exclusive modes, slots/children for layout composition, context-backed compound components only when coordination is valuable. Do not add a provider to satisfy a pattern.
+3. Place each state at its lowest common owner. Specify controlled/uncontrolled behavior, event ordering and reset semantics. Preserve accessible names, focus and keyboard behavior through composition.
+4. Refactor with a migration map for every call site. Keep a compatibility wrapper if the public API cannot change atomically; avoid silent behavior changes in default props.
+5. Run type checks and behavior tests for normal, invalid combination, keyboard and edge-content cases. Inspect actual rendered consumers after migration.
 
-Verify migration against existing call sites and tests. Original concise adaptation of selected Vercel `composition-patterns` guidance at commit `063bee94c3f4df8453406c830b0a7df0f2860278`.
+Use the project's pinned React APIs. This expands the existing Vercel-informed adaptation at `063bee94c3f4df8453406c830b0a7df0f2860278`.

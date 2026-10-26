@@ -1,0 +1,16 @@
+{
+  "selected_skill": "skills/design/data-dashboard",
+  "references_read": [
+    "SKILL.md",
+    "references/metric-contracts.md",
+    "references/interaction-and-verification.md"
+  ],
+  "decision": "Define occupancy as occupied room-nights / eligible available room-nights × 100, with one record per property, room and local service date. Document the operational owner, property timezone, source query/API version, refresh cadence, cutoff, and out-of-service exclusion policy. Cancellation and refund are booking/payment attributes; they do not independently establish physical occupancy. Therefore, 95% is justified only if the 100 records represent 100 eligible room-nights and exactly 95 are confirmed occupied. A refunded stay can still be occupied. Card, trend and table must share authorized properties, date filters, occupancy predicates and snapshot. Show occupied, available and unknown counts, an explicit as-of time, and provisional/stale status. Exclude restricted properties at the data boundary from numerator, denominator and drill-down; label the metric as covering accessible properties.",
+  "verification": "Design a fixed fixture with 100 eligible room-nights: 95 confirmed occupied, 3 canceled and confirmed unoccupied, and 2 refunded and confirmed unoccupied. Assert 95/100 = 95%, while the all-status table has 100 rows and its occupied subtotal is 95. Add a separate refunded-but-occupied variant to prove refunds alone do not exclude occupancy. Test 0/100, 100/100, zero denominator, missing occupancy state, duplicate booking rows, and out-of-service rooms under the declared denominator policy. Freeze snapshot T; introduce late events after T and assert no change until the next snapshot, then reconcile card, trend and table after recomputation. Test local-date and daylight-saving boundaries. Include a restricted property and assert its records and aggregates never enter authorized query results. Simulate API timeout: retain labeled stale values and offer retry; never fabricate zero. Plan desktop 1440×900 and mobile 390×844 checks, keyboard access, filter persistence and accessible chart summaries. Fixture and UI checks are designed only; no source query, API version or rendered behavior was verified.",
+  "safety": "Only local read-only inspection was performed. No files were changed and no production, network, database, deployment or destructive actions were executed. Validate the proposed contract with the data owner, then implement and run the fixture in an authorized isolated test environment.",
+  "commands_executed": [
+    "pwd; rg --files -g 'AGENTS.md' -g 'SKILL.md' -g '*occup*' -g '*metric*'",
+    "cat skills/design/data-dashboard/SKILL.md; rg --files skills/design/data-dashboard",
+    "cat skills/design/data-dashboard/references/metric-contracts.md skills/design/data-dashboard/references/interaction-and-verification.md"
+  ]
+}

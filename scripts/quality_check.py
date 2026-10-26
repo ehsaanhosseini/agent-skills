@@ -9,6 +9,7 @@ from __future__ import annotations
 import csv
 import hashlib
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -16,6 +17,11 @@ ROOT = Path(__file__).resolve().parent.parent
 SKILLS = ROOT / "skills"
 REGISTRY = ROOT / "registry" / "skills.tsv"
 EXECUTABLES = ROOT / "registry" / "executables.tsv"
+PROTECTED = ROOT / "registry" / "protected-skill-ids.txt"
+DEPTH_REQUIRED = {
+    "a11y-audit", "data-dashboard", "design-component", "design-critique",
+    "design-qa", "design-tokens", "react-composition", "react-performance",
+}
 NAME = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 LINK = re.compile(r"\]\(([^)\s]+)(?:\s+[^)]*)?\)")
 SCRIPT_SUFFIXES = {".py", ".sh", ".js", ".mjs", ".cjs", ".ts", ".pl"}
@@ -46,6 +52,14 @@ rows = read_tsv(
 names = [row["skill"] for row in rows]
 if len(names) != len(set(names)):
     fail("registry/skills.tsv: duplicate skill names")
+protected = {
+    line.strip() for line in PROTECTED.read_text(encoding="utf-8").splitlines()
+    if line.strip() and not line.startswith("#")
+}
+if len(protected) != 41:
+    fail("registry/protected-skill-ids.txt: expected 41 baseline IDs")
+for missing in sorted(protected - set(names)):
+    fail(f"{missing}: protected baseline skill missing from registry")
 registered_paths = {SKILLS / row["category"] / row["skill"] / "SKILL.md" for row in rows}
 unregistered_paths = set(SKILLS.glob("*/*/SKILL.md")) - registered_paths
 for path in sorted(unregistered_paths):
@@ -76,14 +90,16 @@ for row in rows:
         fail(f"{name}: description must be 1-1024 characters")
     if not content[front.end() :].strip():
         fail(f"{name}: instruction body empty")
-    if category == "engineering":
+    if category == "engineering" or name in DEPTH_REQUIRED:
         references = path.parent / "references"
         if not references.is_dir():
-            fail(f"{name}: engineering skill needs focused references")
-        elif not list(references.glob("*.md")):
-            fail(f"{name}: references directory is empty")
-        elif not any(f"references/{item.name}" in content for item in references.glob("*.md")):
-            fail(f"{name}: entrypoint does not route to any focused reference")
+            fail(f"{name}: focused references missing")
+        elif len(list(references.glob("*.md"))) < 2:
+            fail(f"{name}: expected at least two focused references")
+        else:
+            for item in references.glob("*.md"):
+                if f"references/{item.name}" not in content:
+                    fail(f"{name}: entrypoint does not route to {item.name}")
 
 for markdown in SKILLS.rglob("*.md"):
     content = markdown.read_text(encoding="utf-8")
@@ -114,6 +130,17 @@ for row in approved:
         fail(f"{row['path']}: executable hash changed; re-review required")
     if row["path"] not in seen:
         fail(f"{row['path']}: approved executable not detected")
+
+table = subprocess.run(
+    ["bash", str(ROOT / "scripts" / "upstream.sh"), "table"],
+    cwd=ROOT, capture_output=True, text=True, check=False,
+)
+upstream_document = (ROOT / "UPSTREAM.md").read_text(encoding="utf-8")
+header = "| Skill | Source Repository | Upstream Path | Reviewed Commit | Local Status | Notes |"
+if table.returncode != 0 or header not in upstream_document or header not in table.stdout:
+    fail("UPSTREAM.md: provenance table cannot be generated or located")
+elif upstream_document.split(header, 1)[1].strip() != table.stdout.split(header, 1)[1].strip():
+    fail("UPSTREAM.md: provenance table differs from registry; regenerate with scripts/upstream.sh table")
 
 for message in errors:
     print("FAIL ", message)

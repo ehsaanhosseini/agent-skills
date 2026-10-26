@@ -1,0 +1,14 @@
+{
+  "id": "performance-filter",
+  "prompt": "A React product list with 500 rows stalls when typing into a filter. Someone proposes useMemo everywhere and code splitting. Diagnose and verify a targeted fix.",
+  "expected_skill": "react-performance",
+  "references": [
+    "references/diagnosis-and-decisions.md",
+    "references/verification-and-regressions.md"
+  ],
+  "rubric": [
+    "Measures the slow path with profiler/browser evidence before choosing a change.",
+    "Rejects blanket memoization/splitting and discusses correctness tradeoffs.",
+    "Compares matched before/after runs and regression/failure cases."
+  ]
+}

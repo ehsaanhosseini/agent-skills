@@ -1,0 +1,7 @@
+# WAL, replication and high availability
+
+WAL records changes needed for crash recovery and for replication/archiving at appropriate settings. The configured `wal_level`, archiving and replication slots affect what recovery paths are possible and how long WAL is retained. A broken archive command or stalled slot can fill disk; `max_wal_size` alone is not a hard cap on retained WAL in those cases. Confirm the installed version's [WAL configuration](https://www.postgresql.org/docs/current/wal-configuration.html) and [streaming replication](https://www.postgresql.org/docs/current/warm-standby.html).
+
+Example diagnosis: WAL disk rises while a standby is offline. Inspect archive success/failure, slot `restart_lsn`, sender/receiver state and measured lag. A lagging slot may retain WAL; deleting the slot can break the standby's ability to catch up. Prepare options with recovery consequences and disk/time thresholds; do not delete it as a quick fix.
+
+Failover review: identify who decides promotion, how the former primary is fenced, how clients switch endpoints, how timelines diverge, and how writes made near failure are reconciled. Asynchronous replication may lose acknowledged writes under primary loss; synchronous replication trades latency/availability for stronger durability when configured correctly. Test the actual topology, not a generic promise of zero data loss. Record read-only lag queries and alert thresholds based on RPO.

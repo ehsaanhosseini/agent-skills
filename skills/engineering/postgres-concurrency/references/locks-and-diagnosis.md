@@ -1,0 +1,7 @@
+# Locks, deadlocks and safe diagnosis
+
+Collect `pg_stat_activity` state, `wait_event_type`, `wait_event`, `xact_start` and blocker relationships with `pg_blocking_pids(pid)` where the installed version supports it. `pg_locks` shows granted and waiting locks; a waiting PID may be blocked by a transaction that appears idle in application logs. Query text can contain secrets, so redact before sharing. Read [explicit locking](https://www.postgresql.org/docs/current/explicit-locking.html) for mode conflicts and deadlock semantics.
+
+Example deadlock schedule: T1 updates order 1 then inventory 5; T2 updates inventory 5 then order 1. Each holds one row and waits for the other. PostgreSQL aborts one participant; do not depend on which. Fix by acquiring resources in a consistent order and retrying the aborted transaction with bounded backoff. Keep the transaction short; network calls inside a transaction extend lock lifetime.
+
+For a lock queue, identify the **root blocker**, affected requests, duration and business impact before proposing action. `pg_cancel_backend` and `pg_terminate_backend` are privileged, mutating operational actions with possible rollback/cascading effects; document consequences and require authorization. Test `lock_timeout` and `statement_timeout` in a disposable environment and distinguish their errors. Avoid increasing timeouts merely to conceal contention. Report observed wait graph, version, fixture and an invariant-preserving resolution.

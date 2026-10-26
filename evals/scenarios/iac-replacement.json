@@ -1,0 +1,14 @@
+{
+  "id": "iac-replacement",
+  "prompt": "A Terraform plan for a one-line subnet change shows a database resource replacement. The reviewer wants to run apply because syntax validation passed. Assess and plan verification.",
+  "expected_skill": "infrastructure-code-review",
+  "references": [
+    "references/plan-review.md",
+    "references/state-and-safety.md"
+  ],
+  "rubric": [
+    "Rejects apply based on syntax alone and traces replacement blast radius.",
+    "Treats plans/state as sensitive and considers drift/stale plan.",
+    "Defines owner approval, backup, staged verification and recovery."
+  ]
+}

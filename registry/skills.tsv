@@ -40,3 +40,13 @@ test-master	engineering	jeffallan-claude-skills	skills/test-master	504bb9a067c5c
 playwright-expert	engineering	jeffallan-claude-skills	skills/playwright-expert	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored adaptation; browser testing; authorized test targets only
 monitoring-expert	engineering	jeffallan-claude-skills	skills/monitoring-expert	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored adaptation; observability; privacy and rollout controls
 spec-miner	engineering	jeffallan-claude-skills	skills/spec-miner	504bb9a067c5c7ea6bf868c7cc337164b213fa57	active	Locally authored adaptation; evidence-backed specification recovery
+postgres-concurrency	engineering	jeffallan-claude-skills	skills/postgres-pro	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; MVCC isolation locking and concurrency
+postgres-schema-migrations	engineering	jeffallan-claude-skills	skills/postgres-pro	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; schema invariants and migration safety
+postgres-reliability	engineering	jeffallan-claude-skills	skills/postgres-pro	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; WAL replication backup and recovery
+postgres-capacity	engineering	jeffallan-claude-skills	skills/postgres-pro	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; pooling telemetry and capacity
+ci-cd-engineering	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; pipeline gates and artifact provenance
+container-engineering	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; image and runtime review
+infrastructure-code-review	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; IaC plan and state review
+deployment-recovery	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; rollout and rollback planning
+configuration-secrets	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; environment configuration and credential lifecycle
+incident-runbooks	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; incident diagnosis and recovery

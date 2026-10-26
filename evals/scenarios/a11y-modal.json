@@ -1,0 +1,14 @@
+{
+  "id": "a11y-modal",
+  "prompt": "A modal checkout form looks correct in a screenshot, but keyboard focus stays behind it and an error message is not announced. The product targets WCAG 2.2 AA. Produce an audit plan and finding; do not claim conformance from the screenshot.",
+  "expected_skill": "a11y-audit",
+  "references": [
+    "references/test-protocol.md",
+    "references/findings-and-remediation.md"
+  ],
+  "rubric": [
+    "Names keyboard focus placement, containment, Escape and restoration plus programmatic error association.",
+    "States browser/assistive-technology matrix and distinguishes observed from untested.",
+    "Provides repeatable finding and recheck without claiming full conformance."
+  ]
+}

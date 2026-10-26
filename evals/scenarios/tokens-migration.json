@@ -1,0 +1,14 @@
+{
+  "id": "tokens-migration",
+  "prompt": "The same blue primitive currently powers primary buttons and informational status. A brand change is coming; plan semantic-token migration across web, Figma and Flutter.",
+  "expected_skill": "design-tokens",
+  "references": [
+    "references/token-architecture.md",
+    "references/build-and-migration.md"
+  ],
+  "rubric": [
+    "Separates action and status semantics; validates aliases and modes.",
+    "Plans single source of truth, generated outputs and compatibility migration.",
+    "Verifies rendered contrast, round-trip/platform output and rollback."
+  ]
+}

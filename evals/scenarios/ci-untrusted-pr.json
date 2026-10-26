@@ -1,0 +1,14 @@
+{
+  "id": "ci-untrusted-pr",
+  "prompt": "A GitHub Actions PR workflow checks out fork code, exposes a deployment token, and publishes an image if tests pass. Redesign its trust and release gates.",
+  "expected_skill": "ci-cd-engineering",
+  "references": [
+    "references/pipeline-design.md",
+    "references/supply-chain-and-release.md"
+  ],
+  "rubric": [
+    "Separates untrusted PR checks from secret-bearing protected release.",
+    "Uses least permissions and immutable artifact provenance.",
+    "Tests failing fixture and proves PR cannot publish/deploy."
+  ]
+}

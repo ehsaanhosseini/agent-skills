@@ -4,7 +4,7 @@ Source of truth: `registry/skills.tsv`. Regenerate this table with `scripts/upst
 
 ## Engineering integration (2026-10-26)
 
-Ten engineering skills are locally authored adaptations informed by Jeffallan/claude-skills at `504bb9a067c5c7ea6bf868c7cc337164b213fa57` (MIT). Their upstream paths, exclusions, and license are in `upstream/jeffallan-claude-skills/PROVENANCE`. No upstream executable or reference file is vendored. These adaptations are not eligible for `scripts/upstream.sh apply`; review a new source commit and adapt manually. See `docs/engineering-skills-vetting.md` for the first integration and `docs/jeffallan-candidate-assessment.md` for the full 12-candidate review.
+Twenty engineering skills are locally authored adaptations informed by Jeffallan/claude-skills at `504bb9a067c5c7ea6bf868c7cc337164b213fa57` (MIT). Their upstream paths, exclusions, and license are in `upstream/jeffallan-claude-skills/PROVENANCE`. No upstream executable or reference file is vendored. These adaptations are not eligible for `scripts/upstream.sh apply`; review a new source commit and adapt manually. See `docs/engineering-skills-vetting.md` for the first integration, `docs/jeffallan-candidate-assessment.md` for the full 12-candidate review, and `docs/postgres-devops-coverage.md` for the later specialist split.
 Local modifications to vendored skills: `evals/` directories not vendored; relative links pointing outside the skill
 directory (`../../tools/...`) rewritten to URLs pinned to the reviewed commit; for `restricted` skills, a Local policy block
 (`registry/policies/<skill>.md`) injected after the frontmatter. The 2026-10-14 design additions are separately documented below; adapted skills are locally authored and are not eligible for the verbatim upstream update command.
@@ -67,3 +67,13 @@ Rejected: `find-animation-opportunities` (overlaps `improve-animations`). Not se
 | playwright-expert | https://github.com/Jeffallan/claude-skills | `skills/playwright-expert` | `504bb9a067c5` | restricted | Locally authored adaptation; browser testing; authorized test targets only |
 | monitoring-expert | https://github.com/Jeffallan/claude-skills | `skills/monitoring-expert` | `504bb9a067c5` | restricted | Locally authored adaptation; observability; privacy and rollout controls |
 | spec-miner | https://github.com/Jeffallan/claude-skills | `skills/spec-miner` | `504bb9a067c5` | active | Locally authored adaptation; evidence-backed specification recovery |
+| postgres-concurrency | https://github.com/Jeffallan/claude-skills | `skills/postgres-pro` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; MVCC isolation locking and concurrency |
+| postgres-schema-migrations | https://github.com/Jeffallan/claude-skills | `skills/postgres-pro` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; schema invariants and migration safety |
+| postgres-reliability | https://github.com/Jeffallan/claude-skills | `skills/postgres-pro` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; WAL replication backup and recovery |
+| postgres-capacity | https://github.com/Jeffallan/claude-skills | `skills/postgres-pro` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; pooling telemetry and capacity |
+| ci-cd-engineering | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; pipeline gates and artifact provenance |
+| container-engineering | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; image and runtime review |
+| infrastructure-code-review | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; IaC plan and state review |
+| deployment-recovery | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; rollout and rollback planning |
+| configuration-secrets | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; environment configuration and credential lifecycle |
+| incident-runbooks | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; incident diagnosis and recovery |
