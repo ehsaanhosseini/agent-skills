@@ -2,7 +2,7 @@
 BEGIN;
 DO $$
 BEGIN
-  IF current_database() NOT LIKE 'skill_eval_%' THEN
+  IF left(current_database(), length('skill_eval_')) <> 'skill_eval_' THEN
     RAISE EXCEPTION 'This fixture requires a disposable skill_eval_ database';
   END IF;
 END
