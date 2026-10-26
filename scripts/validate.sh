@@ -16,7 +16,8 @@ LINKDIRS=("$HOME/.agents/skills" "$HOME/.claude/skills")
 tab=$'\t'
 
 # 1. canonical repo + layout
-[ -d .git ] && [ -d skills ] && [ -f "$REG" ] && [ -f "$SRC" ] && pass "canonical repo present: $ROOT" || fail "canonical repo layout (.git, skills/, registry/*.tsv)"
+git_root=$(git rev-parse --show-toplevel 2>/dev/null || true)
+[ "$git_root" = "$ROOT" ] && [ -d skills ] && [ -f "$REG" ] && [ -f "$SRC" ] && pass "canonical repo present: $ROOT" || fail "canonical repo layout (Git checkout, skills/, registry/*.tsv)"
 for f in README.md SECURITY.md UPSTREAM.md .gitignore skills/hoccotech/README.md; do [ -f "$f" ] || fail "missing $f"; done
 for c in design marketing seo-geo engineering hoccotech; do [ -d "skills/$c" ] || fail "missing skills/$c"; done
 
