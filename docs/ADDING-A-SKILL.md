@@ -18,6 +18,10 @@ See also `SECURITY.md` (threat model) and `UPSTREAM.md` (provenance table).
 11. **Feature Branch**: never work on main.
 12. **Review**, then **Merge**.
 
+## Cross-agent compatibility
+
+Every new skill needs a portable `SKILL.md` with `name` and a task-specific `description`. Keep instructions usable in Claude Code, Codex, and Cursor Agent through the shared symlink layout. Agent-specific frontmatter or tool names may be added only when the other agents still have a clear, functional path. Do not treat a tool allowlist, invocation flag, or example command as a grant of permission. Verify the three discovery paths and relative links before merging. Locally authored adaptations of upstream skills must record the pinned source commit and must not use the verbatim upstream update command.
+
 ## Mandatory review rules
 
 ### a) Static review of SKILL.md alone is insufficient

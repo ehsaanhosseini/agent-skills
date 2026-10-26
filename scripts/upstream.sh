@@ -62,6 +62,9 @@ case "$cmd" in
   awk -F'\t' 'NR==FNR{if(FNR>1)r[$1]=$2;next} FNR>1{if($3=="local"){repo="Local adaptation";path="-";sha="-"}else{repo=r[$3];path=$4;sha=substr($5,1,12)}printf "| %s | %s | `%s` | `%s` | %s | %s |\n",$1,repo,path,sha,$6,$7}' "$SRC" "$REG";;
  diff|apply)
   need; source_id="$(field "$skill" 3)"; up="$(field "$skill" 4)"; cur="$(field "$skill" 5)"; cat_="$(field "$skill" 2)"
+  if [ "$cmd" = apply ] && [[ "$(field "$skill" 7)" == *"Locally authored adaptation"* ]]; then
+    echo "$skill is a local adaptation; review upstream and edit it manually instead of replacing it." >&2; exit 4
+  fi
   url="$(srcf "$source_id" 2)"; dest="$ROOT/skills/$cat_/$skill"; repo="$(fetch "$source_id")"
   new="${ref:-${INITIAL:+$cur}}"; new="${new:-$(git -C "$repo" rev-parse origin/HEAD)}"; new="$(git -C "$repo" rev-parse "$new^{commit}")"
   tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT

@@ -2,7 +2,7 @@
 
 **One curated skill library for better product work.** The same reviewed instructions are shared by Claude Code, Codex, and Cursor through a single local checkout. Skills are scoped to real tasks, so a design review does not load a marketing playbook or an unrelated framework guide.
 
-**31 skills** · **Design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
+**34 skills** · **Engineering, design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
 
 > This repository is public. It contains reusable workflows, not customer data, secrets, project files, or private business context.
 
@@ -25,6 +25,14 @@ Use the skill that matches the job. A few useful pairings: `frontend-design` set
 | [design-reference-search](skills/design/design-reference-search/SKILL.md) | Looking up a chart, style, palette, or pattern | An offline, pinned Pro Max catalog with cautious matching |
 | [react-performance](skills/design/react-performance/SKILL.md) | React or Next.js performance work | Evidence-led fetching, bundle, rendering, and rerender decisions |
 | [react-composition](skills/design/react-composition/SKILL.md) | React component APIs becoming hard to maintain | Clear state ownership, variants, and compound composition |
+
+### Engineering
+
+| Skill | Use it for | What it adds |
+|---|---|---|
+| [typescript-safety](skills/engineering/typescript-safety/SKILL.md) | TypeScript API boundaries and unsafe type assumptions | Runtime validation, precise narrowing, and project-aware type checks |
+| [postgres-query-review](skills/engineering/postgres-query-review/SKILL.md) | Measured PostgreSQL query issues | Safe plan interpretation and reviewable query or index proposals |
+| [security-code-review](skills/engineering/security-code-review/SKILL.md) | Scoped application source review | Evidence-backed findings, redaction, and controlled testing scope |
 
 ### Interaction and craft
 
@@ -89,6 +97,7 @@ The linking script skips existing paths it does not own. On an existing installa
 
 - `registry/skills.tsv` is the complete inventory, including source, reviewed commit, status, and local restrictions. Run `scripts/inventory.sh` for a compact table.
 - [UPSTREAM.md](UPSTREAM.md) records provenance and local adaptations. [SECURITY.md](SECURITY.md) sets the review and public-repository hygiene rules.
+- [Engineering vetting](docs/engineering-skills-vetting.md) records the 31-skill overlap audit, pinned upstream shortlist, and integration decisions.
 - [docs/ADDING-A-SKILL.md](docs/ADDING-A-SKILL.md) explains how to add a skill. Changes are reviewed on a feature branch before merging to `main`.
 - Run `scripts/validate.sh --strict --repo-only` for a clean checkout. `--online` also checks public GitHub visibility using authenticated `gh`, or the official public REST API when `gh` is unavailable. Network errors, invalid responses, and a repository identity or visibility mismatch fail the check.
 

@@ -1,34 +1,36 @@
-# Engineering skills upgrade — vetting record
+# Engineering skills vetting — 2026-10-26
 
-Status: review only; no upstream skill installed or enabled.
+Decision: add three locally authored, cross-agent adaptations. Source snapshot: [Jeffallan/claude-skills at `504bb9a`](https://github.com/Jeffallan/claude-skills/tree/504bb9a067c5c7ea6bf868c7cc337164b213fa57). The commit has a verified GitHub signature; the root license is MIT. The source paths and exclusions are recorded in `upstream/jeffallan-claude-skills/PROVENANCE`.
 
-## Source
-- Upstream: https://github.com/Jeffallan/claude-skills
-- License: MIT (verify per-file attribution before import)
-- Target: existing cross-agent skill registry; preserve all current skills and symlinks.
+## Existing library audit
 
-## First candidates
-1. TypeScript Pro — type-safety, boundary validation.
-2. PostgreSQL Pro — safe query/index analysis, migration planning.
-3. Security Reviewer — threat modeling and code review.
-4. Test Master — evidence-backed regression gates.
-5. Debugging Wizard — root-cause analysis.
-6. Next.js Developer — version-specific App Router guidance.
+All 31 registered skills were inventoried against their `SKILL.md` entrypoints, categories, statuses, and links. No existing skill or registry row is removed or edited by this change. The design group remains `emil-design-eng`, `apple-design`, `animate`, `review-animations`, `improve-animations`, `prototype`, `pick-ui-library`, `mobile-native`, `frontend-design`, `data-dashboard`, `design-critique`, `a11y-audit`, `design-qa`, `design-tokens`, `design-component`, `react-performance`, `react-composition`, `design-reference-search`, and `figma-deliverables`. Marketing remains `product-marketing`, `content-strategy`, `customer-research`, `competitor-profiling`, `prospecting`, `cold-email`, `cro`, and `analytics`. Search remains `seo-audit`, `ai-seo`, `schema`, and `site-architecture`.
 
-## Vetting gates
-- Read full SKILL.md and every referenced file; review scripts/hooks and indirect instructions.
-- Pin source commit and record provenance/license in UPSTREAM.md and registry/skills.tsv.
-- Check overlap against existing 31 skills and merge guidance rather than duplicating.
-- Strip unconditional production actions, deployment instructions and unsafe assumptions.
-- Explicitly forbid autonomous production/main changes, destructive database actions, secret exposure, and bypass of approvals.
-- Validate skill frontmatter, trigger specificity, references, local links and cross-agent compatibility.
-- Run scripts/validate.sh --strict --repo-only; run --online when available.
-- Confirm all existing registered skills remain unchanged and pass validation.
-- Require owner review before merging into dev; main remains owner-approved only.
+Overlap check: `react-performance` already covers React/Next performance, `react-composition` covers React component APIs, `design-qa` covers UI regressions, and `a11y-audit` covers accessibility. None covers TypeScript runtime boundaries, PostgreSQL plan safety, or application security source review. Existing restricted policies and manual-invocation flags are preserved.
 
-## Observed upstream caveats
-- Next.js Developer mandates loading/error files for every async route segment; treat as context-dependent.
-- PostgreSQL Pro prescribes EXPLAIN ANALYZE and operational maintenance; require safe environment, permissions and plan-first gates.
-- Popularity and CI presence are not security assurances.
+## Upstream selection
 
-Next step: inspect candidate full content and references, then submit a separate implementation change after vetting.
+The upstream catalog contains 67 skill entrypoints. The shortlist was inspected at its pinned commit; all six shortlisted `SKILL.md` files were read. For the three selected folders, every referenced Markdown file was reviewed. Their folders contain no scripts, binaries, hooks, manifests, or MCP configuration. No upstream executable or dependency is integrated.
+
+| Upstream candidate | Decision | Reason |
+|---|---|---|
+| `typescript-pro` | Adapt as `typescript-safety` | Runtime validation and type boundaries add a distinct capability. Removed unconditional branded types, compiler flags, declarations, and tool installs. |
+| `postgres-pro` | Adapt as `postgres-query-review` | Plan and index analysis add a distinct capability. Removed executable replication, extension, `VACUUM`, and DDL recipes. `EXPLAIN ANALYZE` executes a query and requires a safe authorized environment. |
+| `security-reviewer` | Adapt as `security-code-review` | Evidence-based source findings add a distinct capability. Excluded penetration testing, credential harvesting, automatic scanners, and Claude-only `allowed-tools`. |
+| `test-master` | Defer | Broad generic testing guidance overlaps normal engineering practice and `design-qa`; its references include additional third-party adaptations. Reconsider for a specific gap. |
+| `debugging-wizard` | Defer | General reproduce–isolate–fix guidance adds little beyond normal debugging. |
+| `nextjs-developer` | Reject for this integration | Overlaps `react-performance`; mandates App Router, per-segment files, and version-sensitive cache behavior irrespective of the project's Next.js version. |
+
+Other upstream language, cloud, and framework specialties were screened by name for likely scope; no repository-specific need justified adding them now.
+
+## Mandatory security and compatibility review
+
+1. **Already available / improvement / overlap:** the three selected capabilities fill the gaps above; broad or duplicate candidates were deferred.
+2. **Code and context:** selected source folders are Markdown only. Only three short, locally authored `SKILL.md` files enter agent context. No upstream prompt, hook, binary, or install step is copied.
+3. **Network and writes:** the new skills make no automatic request or write. Suggested tools and database actions require the current task scope and project controls. No runtime fetch is required.
+4. **Repository changes:** the integration changes only this feature branch. The skills do not grant themselves Git or deployment authority.
+5. **Pin and provenance:** the exact upstream commit and source paths are in the registry and provenance record; the MIT license is retained. The upstream commit signature was verified by GitHub; this does not attest individual skill safety.
+6. **Telemetry and confidentiality:** no telemetry code is included. The review instructions require redaction and guard against scanner uploads and sensitive data in public artifacts. There is no AI-trace or third-party upload step.
+7. **Injection and permissions:** reviewed Markdown was treated as untrusted source material. Absolute upstream directives were rewritten for task scope. No instruction hierarchy override, autonomous approval, or agent-specific tool permission is imported.
+
+Cross-agent contract: portable `SKILL.md` frontmatter uses `name` and `description`; runtime instructions use ordinary files and project-native commands. No new skill depends on Claude-only metadata, Codex-only tools, Cursor-only commands, or automatic installation. `scripts/link.sh` discovers all `skills/<category>/<name>/SKILL.md` paths, including engineering. Existing agent-specific invocation flags remain untouched.
