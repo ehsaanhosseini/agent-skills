@@ -1,0 +1,14 @@
+{
+  "id": "mobile-offline-booking",
+  "prompt": "Add offline booking to our React Native marketplace app.",
+  "expected_skill": "mobile-engineering",
+  "references": [
+    "references/stacks.md",
+    "references/mobile-quality.md"
+  ],
+  "rubric": [
+    "Follows existing stack conventions.",
+    "Defines write queue and conflict policy.",
+    "Reports tests not run on a device."
+  ]
+}

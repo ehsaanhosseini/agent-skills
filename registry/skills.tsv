@@ -50,3 +50,10 @@ infrastructure-code-review	engineering	jeffallan-claude-skills	skills/devops-eng
 deployment-recovery	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; rollout and rollback planning
 configuration-secrets	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; environment configuration and credential lifecycle
 incident-runbooks	engineering	jeffallan-claude-skills	skills/devops-engineer	504bb9a067c5c7ea6bf868c7cc337164b213fa57	restricted	Locally authored specialist adaptation; incident diagnosis and recovery
+product-domain-discovery	hoccotech	local	-	-	active	HoccoTech-authored; domain rules and first-slice discovery
+business-intelligence-advisor	hoccotech	local	-	-	active	HoccoTech-authored; decision-led business analysis
+kpi-analytics-engineering	hoccotech	local	-	-	active	HoccoTech-authored; KPI specs, tracking and validation
+data-modeling-engineering	hoccotech	local	-	-	active	HoccoTech-authored; domain schemas and pipelines
+business-workflow-operations	hoccotech	local	-	-	active	HoccoTech-authored; workflow state machines and exceptions
+mobile-engineering	hoccotech	local	-	-	active	HoccoTech-authored; React Native, Flutter, SwiftUI, Compose
+applied-ai-forecasting	hoccotech	local	-	-	active	HoccoTech-authored; forecasting and AI feature evaluation

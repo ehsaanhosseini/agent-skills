@@ -1,0 +1,14 @@
+{
+  "id": "kpi-occupancy-mismatch",
+  "prompt": "Occupancy differs between our PMS report and dashboard. Fix the metric.",
+  "expected_skill": "kpi-analytics-engineering",
+  "references": [
+    "references/metric-specs.md",
+    "references/validation.md"
+  ],
+  "rubric": [
+    "Writes a metric spec with grain and exclusions.",
+    "Reconciles to a source total.",
+    "Labels unvalidated results."
+  ]
+}

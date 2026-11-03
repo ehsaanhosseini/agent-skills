@@ -1,8 +1,8 @@
-# agent-skills
+# agent-skills — HoccoTech Agent Skills
 
 **One curated skill library for better product work.** The same reviewed instructions are shared by Claude Code, Codex, and Cursor through a single local checkout. Skills are scoped to real tasks, so a design review does not load a marketing playbook or an unrelated framework guide.
 
-**51 skills** · **Engineering, design, marketing, and SEO** · **Pinned sources** · **No runtime downloads**
+**58 skills** · **Engineering, design, marketing, SEO, and business systems** · **Pinned sources** · **No runtime downloads**
 
 > This repository is public. It contains reusable workflows, not customer data, secrets, project files, or private business context.
 
@@ -50,6 +50,20 @@ Use the skill that matches the job. A few useful pairings: `frontend-design` set
 | [deployment-recovery](skills/engineering/deployment-recovery/SKILL.md) | Rollout and rollback planning | Staged release and recovery criteria |
 | [configuration-secrets](skills/engineering/configuration-secrets/SKILL.md) | Config and credential lifecycle | Schema, rotation and exposure review |
 | [incident-runbooks](skills/engineering/incident-runbooks/SKILL.md) | Production incident planning | Evidence-led containment and recovery checks |
+
+### Business systems and data
+
+Generic patterns for PMS, marketplace, clinic, salon, and studio systems; see [skill routing](docs/skill-routing.md).
+
+| Skill | Use it for | What it adds |
+|---|---|---|
+| [product-domain-discovery](skills/hoccotech/product-domain-discovery/SKILL.md) | Unclear business system or scope | Actors, rules, states, and a measurable first slice |
+| [business-intelligence-advisor](skills/hoccotech/business-intelligence-advisor/SKILL.md) | Decisions from business data | Baselines, diagnosis, and calibrated recommendations |
+| [kpi-analytics-engineering](skills/hoccotech/kpi-analytics-engineering/SKILL.md) | KPI definitions and tracking | Metric specs and reconciliation |
+| [data-modeling-engineering](skills/hoccotech/data-modeling-engineering/SKILL.md) | Schemas and pipelines | Constraints, history, tenancy, idempotent ETL |
+| [business-workflow-operations](skills/hoccotech/business-workflow-operations/SKILL.md) | Bookings, approvals, billing flows | State machines, exceptions, audit |
+| [mobile-engineering](skills/hoccotech/mobile-engineering/SKILL.md) | React Native, Flutter, SwiftUI, Compose | Architecture, offline, security, release checks |
+| [applied-ai-forecasting](skills/hoccotech/applied-ai-forecasting/SKILL.md) | Forecasts and AI features | Baselines, validation, human oversight |
 
 ### Interaction and craft
 

@@ -1,7 +1,6 @@
 # HoccoTech reusable skills
 
-Placeholder for future public-safe, reusable HoccoTech skills. No skills exist here yet and none should be
-invented without real, agreed business rules.
+Public-safe, reusable HoccoTech business-system skills (discovery, BI, KPI, data, workflow, mobile, applied AI). See docs/skill-routing.md.
 
 Candidates (not started): engineering QA, production safety, SEO/AEO/GEO methodology, lead discovery,
 lead qualification, outreach, UI review.

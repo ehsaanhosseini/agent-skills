@@ -5,7 +5,7 @@ description: Design or revise HTTP API contracts with explicit resource semantic
 
 # API designer
 
-Inspect current consumers, authentication, data model, latency needs, API style, and versioning policy. Read [contract design](references/contract-design.md) for operations and examples; read [evolution](references/evolution.md) for compatibility and release planning. Keep GraphQL work aligned with an existing GraphQL schema rather than forcing REST conventions on it.
+Inspect current consumers, authentication, data model, latency needs, API style, and versioning policy. Read [contract design](references/contract-design.md) for operations and examples; read [evolution](references/evolution.md) for compatibility and release planning; read [integration reliability](references/integration-reliability.md) for third-party calls, webhooks, retries, and idempotency. Keep GraphQL work aligned with an existing GraphQL schema rather than forcing REST conventions on it.
 
 1. Define the resource, caller goal, allowed state transitions, and authorization boundary. Name resources consistently and use HTTP semantics intentionally; action endpoints can be justified for domain operations that are not CRUD.
 2. Specify request/response schemas, required versus optional fields, null behavior, status codes, error shape, pagination, idempotency, and rate/size limits that apply to the use case.

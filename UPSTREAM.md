@@ -77,3 +77,10 @@ Rejected: `find-animation-opportunities` (overlaps `improve-animations`). Not se
 | deployment-recovery | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; rollout and rollback planning |
 | configuration-secrets | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; environment configuration and credential lifecycle |
 | incident-runbooks | https://github.com/Jeffallan/claude-skills | `skills/devops-engineer` | `504bb9a067c5` | restricted | Locally authored specialist adaptation; incident diagnosis and recovery |
+| product-domain-discovery | Local adaptation | `-` | `-` | active | HoccoTech-authored; domain rules and first-slice discovery |
+| business-intelligence-advisor | Local adaptation | `-` | `-` | active | HoccoTech-authored; decision-led business analysis |
+| kpi-analytics-engineering | Local adaptation | `-` | `-` | active | HoccoTech-authored; KPI specs, tracking and validation |
+| data-modeling-engineering | Local adaptation | `-` | `-` | active | HoccoTech-authored; domain schemas and pipelines |
+| business-workflow-operations | Local adaptation | `-` | `-` | active | HoccoTech-authored; workflow state machines and exceptions |
+| mobile-engineering | Local adaptation | `-` | `-` | active | HoccoTech-authored; React Native, Flutter, SwiftUI, Compose |
+| applied-ai-forecasting | Local adaptation | `-` | `-` | active | HoccoTech-authored; forecasting and AI feature evaluation |

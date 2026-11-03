@@ -1,0 +1,14 @@
+{
+  "id": "domain-discovery-clinic",
+  "prompt": "We are planning a clinic management system but requirements are vague. Where do we start?",
+  "expected_skill": "product-domain-discovery",
+  "references": [
+    "references/domain-patterns.md",
+    "references/discovery-method.md"
+  ],
+  "rubric": [
+    "Lists actors, entities, states and rules before design.",
+    "Flags health-data compliance for human review.",
+    "Proposes one measurable first slice."
+  ]
+}

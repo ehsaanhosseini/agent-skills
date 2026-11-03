@@ -1,0 +1,14 @@
+{
+  "id": "rbac-clinic-audit",
+  "prompt": "Review role access and audit logging in our clinic app API.",
+  "expected_skill": "security-code-review",
+  "references": [
+    "references/rbac-auditability.md",
+    "references/review-method.md"
+  ],
+  "rubric": [
+    "Builds a role x action x resource test matrix.",
+    "Checks server-side and cross-tenant access.",
+    "Requires append-only audit without personal data."
+  ]
+}
