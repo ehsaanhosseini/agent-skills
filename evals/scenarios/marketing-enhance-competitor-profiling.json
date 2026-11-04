@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-competitor-profiling",
+  "prompt": "Research a competitor profile from authorized public documentation. A feature is not mentioned and the pricing page has no date. Can we state the feature is absent and price is unchanged?",
+  "expected_skill": "competitor-profiling",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Separate observation, inference and unknown; cite source/date; no nonpublic access.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

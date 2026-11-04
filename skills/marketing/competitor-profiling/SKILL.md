@@ -418,3 +418,7 @@ Only ask if not answered by context or input:
 - **sales-enablement**: For turning profiles into battle cards and sales collateral
 - **ads**: For analyzing competitor ad strategies
 - **pricing**: For deeper pricing analysis informed by competitor profiles
+
+## Focused integration guidance
+
+For research evidence quality, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

@@ -1,0 +1,13 @@
+{
+  "id": "marketing-public-relations",
+  "prompt": "A product launch pitch can explain a documented workflow improvement and offer a real demonstration; an incident statement should not claim root cause before investigation confirms it. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "public-relations",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Find an actual newsworthy angle and match it to the publication's audience and recent coverage. Prepare a concise evidence-backed pitch, supporting facts and spokesperson availability. For incidents, separate known facts, uncertainty, actions and next update; coordinate with the incident owner and avoid speculation.",
+    "Fact-check names, dates, statistics, quotes and commitments; review legal/privacy implications and approved disclosures. Measure relevant coverage and qualified impact without promising placement.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

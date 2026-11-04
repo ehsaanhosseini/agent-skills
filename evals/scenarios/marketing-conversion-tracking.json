@@ -1,0 +1,13 @@
+{
+  "id": "marketing-conversion-tracking",
+  "prompt": "For a React booking form, emit booking_confirmed only after the backend confirms the reservation; keep button clicks as separate intent events. Replay the same event ID to confirm it cannot count twice. Cross-domain bookings need an authorized handoff or webhook, not access to another domain's cookies. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "conversion-tracking",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Trace source success to event, transport, destination receipt and reporting separately. Use server-confirmed order/account creation or the vendor's supported success event, never submit clicks as completed outcomes. Prefer maintained native integrations where suitable. Define stable event/order IDs for browser/server deduplication, currency, value and refund rules. For iframe messages validate origin, source and schema; a visible thank-you page alone may be reachable without a real conversion.",
+    "Test confirmed success, validation failure, abandoned flow, reload, SPA navigation, duplicates, denied consent, iframe spoofing and destination receipt. Redact payloads; document reporting latency and distinguish a sent request from accepted conversion.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

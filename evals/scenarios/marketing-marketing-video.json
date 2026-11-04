@@ -1,0 +1,13 @@
+{
+  "id": "marketing-marketing-video",
+  "prompt": "For a PMS demo, record a sample reservation moving through a documented workflow, including realistic loading or error handling; do not stage nonexistent functionality as live product. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "marketing-video",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose screen recording, filmed demonstration, animation or generated footage by what must be proved. Write a beat sheet linking hook, problem, demonstration, evidence and action. For reference edits, describe timing/composition rather than copying protected assets. Record only synthetic or approved data and plan captions, voiceover rights and accessible delivery.",
+    "Review the rendered video for factual/UI fidelity, audio levels, captions, pacing, licensed media, safe areas and final CTA. Distinguish scripts/storyboards from produced footage and test delivery playback.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

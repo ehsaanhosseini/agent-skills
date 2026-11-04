@@ -1,0 +1,13 @@
+{
+  "id": "marketing-sales-enablement",
+  "prompt": "For a PMS demo, show a reservation-to-operations handoff relevant to the buyer; do not claim a nonexistent integration or expose a real guest's records. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "sales-enablement",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose the asset around a specific buyer decision. Frame discovery before demonstration; show a realistic buyer workflow and proof, then a clear next step. Answer objections honestly with evidence and limits. Separate observed win/loss reasons from salesperson conjecture and preserve confidentiality.",
+    "Check claims against the product, demo environment and pricing terms. Rehearse with synthetic data, failure paths and an alternative to live demos. Track asset usage and stage outcomes without attributing all wins to the asset.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

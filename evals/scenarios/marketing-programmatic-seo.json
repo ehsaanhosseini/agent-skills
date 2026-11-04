@@ -1,0 +1,13 @@
+{
+  "id": "marketing-programmatic-seo",
+  "prompt": "A hospitality directory should publish useful property pages with real availability context, not thousands of interchangeable city-keyword pages. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "programmatic-seo",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Validate that each page answers a distinct useful need with reliable information before templating. Define minimum data quality, original value, canonical rules and duplicate handling. Pilot a small representative set; inspect rendering, internal linking, empty inventory and indexability before scaling. Keep unsupported combinations unpublished or appropriately excluded under the approved policy.",
+    "Check data provenance, uniqueness, semantic HTML, crawlable links, canonicals, sitemap inclusion and current Google spam guidance. Monitor indexed useful pages and qualified outcomes rather than page count.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

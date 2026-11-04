@@ -1,0 +1,13 @@
+{
+  "id": "marketing-churn-prevention",
+  "prompt": "For accounts with failed renewal, use a hosted payment-update link and a bounded provider retry schedule. For low usage, offer assistance or a pause; measure retained revenue after the offer period, not clicks on the save button. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "churn-prevention",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Diagnose churn by cohort and tenure before selecting an intervention. Keep cancellation clear and reachable; allow optional reason capture and a relevant pause/downgrade offer without blocking exit. Use the billing provider's supported retry and payment-update flows. Model webhook retries and idempotency, and distinguish recovery from delayed cancellation.",
+    "Test cancellation success, declines, pause/resume, refunds, webhook replay and permission checks in a sandbox. Measure net revenue retention, re-churn, recovery rate, complaints and cancellation completion time.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

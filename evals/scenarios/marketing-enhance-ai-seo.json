@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-ai-seo",
+  "prompt": "Improve AI answer accuracy and visibility while preserving training-bot exclusion. Someone claims allowing GPTBot guarantees Google AI Overviews.",
+  "expected_skill": "ai-seo",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Distinguish search/training/user fetch and citation/recommendation; reject guarantee; no crawler changes.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "marketing-offers",
+  "prompt": "A services package can include an onboarding workshop and a documented delivery scope; promise the controllable service standard, not guaranteed revenue growth. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "offers",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Clarify outcome, likelihood, delay and customer effort rather than simply stacking discounts. Compare a focused bundle, service-assisted offer or trial against delivery economics. Make bonuses independently useful and guarantees specific, fulfillable and limited by clear terms. Scarcity must reflect actual capacity or deadlines.",
+    "Verify fulfillment capacity, margin, refund conditions, exclusions and claim evidence. Test qualified uptake and post-sale satisfaction, refunds and support load.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

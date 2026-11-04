@@ -1,6 +1,6 @@
 ---
 name: cro
-description: "When the user wants to optimize, improve, or increase conversions on any marketing page or form — including homepage, landing pages, pricing pages, feature pages, lead capture forms, or contact forms. Also use when the user says 'CRO,' 'conversion rate optimization,' 'this page isn't converting,' 'improve conversions,' 'why isn't this page working,' 'my landing page sucks,' 'form abandonment,' 'nobody's converting,' 'low conversion rate,' or 'this page needs work.' Use this even if the user just shares a URL and asks for feedback. For signup/registration flows, see signup. For post-signup activation, see onboarding. For popups/modals, see popups."
+description: "Diagnose and improve public marketing page, form and e-commerce conversion: product pages, cart, checkout, contact and lead capture. Use for journey friction and prioritized experiments. signup owns account registration, onboarding first value, paywalls in-product upgrades and popups interruption mechanics."
 metadata:
   version: 2.0.0
 ---
@@ -185,3 +185,7 @@ When recommending experiments, consider tests for:
 ## Form Optimization
 
 For detailed form CRO guidance — including field optimization, multi-step forms, error handling, and form-specific experiments — see [references/form.md](references/form.md).
+
+## Focused integration guidance
+
+For e-commerce and flow boundaries, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

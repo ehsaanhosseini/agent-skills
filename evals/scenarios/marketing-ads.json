@@ -1,0 +1,13 @@
+{
+  "id": "marketing-ads",
+  "prompt": "Plan a Google Search test for a hotel PMS: high-intent property-management terms, separate brand terms, negative job queries, demo landing page and qualified-demo outcome. Without economics or budget, present a bounded plan with missing inputs. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "ads",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Check conversion integrity before bidding advice. Separate brand from non-brand intent and map each ad group to a relevant landing page. Define exclusions, negative keywords, audience restrictions and a capped learning budget. For B2B, optimize qualified opportunities and payback rather than raw leads. Compare native campaign options against objectives and volume; do not prescribe a universal automation or bidding threshold.",
+    "Record observed facts, hypotheses and missing data separately. Review search terms, conversion lag, offline quality, marginal CPA and payback before scale/stop decisions. Check current official ad policies and settings.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

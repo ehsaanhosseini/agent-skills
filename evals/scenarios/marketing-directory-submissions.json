@@ -1,0 +1,13 @@
+{
+  "id": "marketing-directory-submissions",
+  "prompt": "For a professional-services portal, prioritize relevant industry associations and customer-used review sites over hundreds of generic startup directories. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "directory-submissions",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Select directories for real audience relevance, editorial standards and referral value; do not optimize for domain rating alone. Prepare a consistent entity and category profile, check existing listings to avoid duplication, and track owner, submission status, review requirements and renewal cost. Validate directory legitimacy before any payment or account creation.",
+    "Check published listing identity and destination only after authorized submission. Measure qualified referral sessions, leads and correction needs; link presence does not prove ranking improvement.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

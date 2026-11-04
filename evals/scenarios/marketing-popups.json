@@ -1,0 +1,13 @@
+{
+  "id": "marketing-popups",
+  "prompt": "An e-commerce offer banner may be better than an immediate fullscreen modal; an exit-intent hypothesis must not hide delivery terms or obstruct checkout. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "popups",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose the least interruptive suitable placement. Match trigger to user intent, suppress after conversion/dismissal and avoid stacking prompts. Make any consent request specific and optional; distinguish newsletter capture from cookie choices. Specify keyboard/focus behavior, mobile layout and frequency limits.",
+    "Test focus, Escape/dismissal, screen reader labels, small screens, suppressed repeat visits and successful/failed submission. Measure net conversion, bounce and complaints, not captures alone.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

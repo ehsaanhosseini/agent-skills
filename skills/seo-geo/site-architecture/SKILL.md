@@ -355,3 +355,7 @@ Mermaid diagram showing page relationships and navigation zones. Use `graph TD` 
 - **cro**: For optimizing individual pages for conversion
 - **schema**: For implementing breadcrumb and site navigation structured data
 - **competitors**: For comparison page frameworks and URL patterns
+
+## Focused integration guidance
+
+For platform-aware migration, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

@@ -74,7 +74,7 @@ Score every candidate against the ICP checklist. Add **evidence** (a source URL 
 - **Medium**: one credible source plus consistent search evidence
 - **Low**: incomplete or ambiguous evidence — flag what remains uncertain
 
-For email contacts (B2B / SaaS branches), **always verify deliverability before adding to the final list** — see Truelist integration in [references/data-sources.md](references/data-sources.md). Don't ship leads with invalid or risky emails.
+For email contacts, record source, suppression and verification status. External validation is optional and needs authorized data processing; no upload or paid service is implied. Label unverified addresses as research candidates, not ready-to-send contacts.
 
 ### Phase 4 — Score and prioritize
 
@@ -144,7 +144,7 @@ Full breakdown in [references/data-sources.md](references/data-sources.md). Quic
 | **Clearbit** | Email-to-company and company enrichment |
 | **ZoomInfo** | Enterprise B2B contact + intent data |
 | **Hunter or Snov** | Email pattern guessing and verification |
-| **Truelist** | Email deliverability validation (before adding to outreach list) |
+| **Truelist** | Optional authorized deliverability validation |
 | **LinkedIn Sales Navigator** | Decision-maker mapping (manual, no scraping) |
 | **BuiltWith / Wappalyzer** | Tech stack qualification (SaaS branch) |
 | **Crunchbase** | Funding signals (SaaS branch) |
@@ -200,7 +200,7 @@ score,business,category,area,distance_km,website_status,website_url,social_urls,
 
 - [ ] Remove duplicates (by domain for SaaS/B2B, by business + address for Local SMB)
 - [ ] Every "Hot" lead has a verified contact + at least one source URL
-- [ ] No lead has an email that failed Truelist (or your validator) verification — move to a separate "invalid" bucket and flag for the user
+- [ ] Record verified/unverified/invalid status and evidence; exclude invalid addresses from proposed sends. Research alone does not authorize sending or external validation.
 - [ ] No lead labeled "Hot" lacks a clear buying signal
 - [ ] Confidence levels honest — "High" requires 2 independent sources, not just two of your own searches
 - [ ] No leads sourced from prohibited scraping (LinkedIn at scale, Google Maps bulk extract, etc.)
@@ -213,7 +213,7 @@ score,business,category,area,distance_km,website_status,website_url,social_urls,
 
 1. **Starting discovery without an ICP**. Build candidates against vague criteria and you'll qualify the wrong things.
 2. **Treating data sources as authoritative without cross-checks**. Apollo and ZoomInfo are out of date often; verify before scoring as "Hot."
-3. **Adding contacts without email verification**. Cold email reputation tanks fast with bounces — always validate.
+3. **Failing to label contact status**. Record sourced/verified/unverified/invalid status and evidence. External verification requires authorized processing; unverified research contacts are not ready to send.
 4. **Bulk scraping LinkedIn or Google Maps**. Real risk: account suspension + ToS violation. Browser as an assisted tool only.
 5. **Mixing branches**. Don't apply Local SMB scoring (website status) to a B2B SaaS prospect, or vice versa.
 6. **"Hot" labels without buying signals**. ICP fit alone is not enough — the signal is what makes the timing right.
@@ -265,3 +265,7 @@ For implementation, see the [tools registry](https://github.com/coreyhaines31/ma
 - **sales-enablement**: For battle cards and one-pagers used in the outreach
 - **directory-submissions**: For inbound discovery surfaces (the prospects might find you back)
 - **product-marketing**: For the ICP definition that anchors every prospecting engagement
+
+## Focused integration guidance
+
+For signal-based qualification, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

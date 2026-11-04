@@ -3,3 +3,11 @@ License: MIT (see LICENSE)
 Reviewed commit: 5b2c0007766c6a1cf1d53fd8fc73e979e0821022
 Vendored skills: see registry/skills.tsv
 Not vendored/not audited: tools/, scripts/, validate-*.sh, evals/
+
+Integration review: 2026-11-04
+Additional reviewed commit: 88c79f6528a9347420e57ceb1fff9a60de651768
+39 self-contained, locally authored adaptations; 10 existing skills enhanced; marketing-ideas merged into marketing-plan. Content-strategy and customer-research retained; marketing-council skipped.
+Existing baseline prose remains pinned to 5b2c0007766c6a1cf1d53fd8fc73e979e0821022; supplements and AI SEO corrections are reviewed local adaptations, with the supplemental SHA recorded in registry notes.
+Local modifications, complete 53-skill assessment and excluded executable/dependency inventory: docs/marketing-integration.md, docs/marketing-assessment.tsv.
+No upstream scripts, hooks, tools, generated contexts, tracking snippets, GTM JSON recipes, HTML templates, packages, installers or eval code were imported/executed. No required runtime network calls or dependencies.
+Future updates must be manual: locally authored adaptations must not be overwritten using upstream.sh apply.

@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-analytics",
+  "prompt": "Define a GA4 event schema and UTM convention for qualified demo measurement. No tracking code changes are approved.",
+  "expected_skill": "analytics",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Define event meaning and identifiers; route delivery separately; no tag/pixel changes.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

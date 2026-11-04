@@ -6,12 +6,12 @@ Run from the repository root. `scripts/validate.sh --strict --repo-only --online
 
 | Gate | Evidence required | What it does not prove |
 |---|---|---|
-| Registry/provenance | 51 unique entries, 41 protected IDs preserved, reviewed SHA and license for each source | Domain correctness |
+| Registry/provenance | All registry entries (currently 97), 41 protected IDs preserved, reviewed SHA and license for each source | Domain correctness |
 | Metadata/resources | Valid frontmatter, descriptions, local links, referenced files, one hash-approved skill executable | Agent follows instructions |
 | Strict/online | Repository validator success with pinned remotes reachable | Upstream commands are safe to run |
 | Security review | All candidate references inspected; no imported scripts/hooks; policies on restricted work; script hash unchanged | Every future implementation is secure |
 | Compatibility | Claude/Codex/Cursor skill discovery links and registry routes; no vendor-only frontmatter required | Identical behavior across agent models |
-| Behavior evidence | 13 fixture contracts, prior ten scenario desk reviews, and six executed Codex samples in `evaluation-results.md` | Statistical reliability or Claude/Cursor behavior |
+| Behavior evidence | 66 fixture contracts; prior evidence in `evaluation-results.md`; marketing routing/safety evidence in `marketing-verification.md` | Statistical reliability or Claude/Cursor behavior |
 | PR review | Passing checks, reviewed diff, clean base, no branch protection bypass | Product-owner approval of `main` |
 
 The GitHub workflow `.github/workflows/validate-skills.yml` runs the repository validator and fixture-contract checks on PRs to `dev`/`main` and pushes to those branches with read-only token permissions. Actual agent runs are recorded in `docs/evaluation-results.md` and reviewed manually; CI does not claim model behavior success.

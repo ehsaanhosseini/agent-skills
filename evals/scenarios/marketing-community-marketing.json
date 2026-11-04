@@ -1,0 +1,13 @@
+{
+  "id": "marketing-community-marketing",
+  "prompt": "A salon software user group can share scheduling practices and monthly workflow clinics; do not expose customer appointment data or create fake member activity. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "community-marketing",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose support, practice-sharing, professional identity or product feedback as the primary member value. Start where participants already gather and establish moderation, conduct and escalation rules. Seed useful recurring rituals with real contributors. Define member consent and escalation for harassment, health claims or confidential disclosures; avoid manufactured engagement.",
+    "Measure activated contributors, response quality, returning members, resolution time and moderation burden. Compare community-exposed retention cautiously because selection bias is likely.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

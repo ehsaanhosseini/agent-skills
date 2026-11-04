@@ -4,7 +4,7 @@ Complete JSON-LD examples for common schema types.
 
 ## Contents
 - Organization
-- WebSite (with SearchAction)
+- WebSite (site identity)
 - Article / BlogPosting
 - Product
 - SoftwareApplication
@@ -42,24 +42,16 @@ For company/brand homepage or about page.
 
 ---
 
-## WebSite (with SearchAction)
+## WebSite (site identity)
 
-For homepage, enables sitelinks search box.
+For homepage/site identity. Google retired the sitelinks search box; SearchAction cannot enable it. See [the official announcement](https://developers.google.com/search/blog/2024/10/sitelinks-search-box).
 
 ```json
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Example",
-  "url": "https://example.com",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "https://example.com/search?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  }
+  "url": "https://example.com"
 }
 ```
 
@@ -162,7 +154,7 @@ For SaaS product pages and app landing pages.
 
 ## FAQPage
 
-For pages with frequently asked questions.
+For visible frequently asked questions where a consumer needs Schema.org semantics. Check current Google eligibility separately; valid vocabulary alone does not enable a rich result.
 
 ```json
 {
@@ -193,7 +185,7 @@ For pages with frequently asked questions.
 
 ## HowTo
 
-For instructional content and tutorials.
+For instructional content and tutorials where a consumer needs Schema.org semantics. Google HowTo rich results are retired; vocabulary validity is a separate concern.
 
 ```json
 {
@@ -364,7 +356,7 @@ Combine multiple schema types using @graph.
     },
     {
       "@type": "BreadcrumbList",
-      "itemListElement": [...]
+      "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://example.com/"}]
     }
   ]
 }

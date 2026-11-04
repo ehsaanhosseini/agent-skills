@@ -1,0 +1,13 @@
+{
+  "id": "marketing-marketing-plan",
+  "prompt": "For a hotel PMS, distinguish selling software to hotel operators from driving guest bookings. A PMS plan might improve qualified demos, first-property activation and retained paid accounts; a hotel's direct-booking plan uses different economics. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "marketing-plan",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Diagnose the binding funnel constraint before selecting channels. Map acquisition, activation, retention, referral and revenue to accountable outcomes and baseline evidence. Compare a small set of plausible initiatives using fit, cost, confidence and time to feedback. Sequence a bounded plan with owners and dependencies; do not require an exhaustive audit or a particular tool stack.",
+    "Show assumptions, budget allocation, milestones, source-backed KPIs, stop/continue criteria and a review date. Keep market-sizing ranges explicit; do not present guessed TAM or historical benchmarks as measured facts.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

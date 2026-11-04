@@ -1,0 +1,13 @@
+{
+  "id": "marketing-revops",
+  "prompt": "Route a qualified hotel-group demo to the territory owner; if absent, send to an owned fallback queue with an SLA rather than silently dropping the lead. Preserve provenance of merged records. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "revops",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Define objective entry/exit criteria for lead, qualified, opportunity, customer and disqualified states. Separate account fit from behavioral intent and calibrate scores using actual outcomes. Specify routing precedence, deduplication, assignment ownership, fallback queues and reassignment rules. Record sync direction, source of truth, retries and audit requirements before automation.",
+    "Walk duplicate, unknown territory, absent owner, opt-out, stale score, stage regression and sync replay cases. Measure accepted leads, response time, pipeline aging and reconciled revenue.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

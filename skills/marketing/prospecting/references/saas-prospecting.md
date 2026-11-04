@@ -68,7 +68,7 @@ For dev-tool SaaS, GitHub is one of the highest-quality discovery channels:
 2. Pull stargazers (or forks for stronger intent) via `node tools/clis/github-prospects.js stargazers <owner/repo> --enrich --with-company --format csv`
 3. Filter to users with `company` set — these are the easiest to enrich downstream
 4. Pair with Apollo/Clay/Hunter to lookup email by name + company
-5. Validate with Truelist before adding to outreach list
+5. Record validation status; external verification only with approved data processing
 
 Tradeoffs: GitHub yields email for only ~5–20% of users directly. The strength is the signal quality — a stargazer of a niche dev tool is genuinely in-market in a way Apollo firmographics alone can't tell you.
 

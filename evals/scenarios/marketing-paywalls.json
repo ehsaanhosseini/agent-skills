@@ -1,0 +1,13 @@
+{
+  "id": "marketing-paywalls",
+  "prompt": "A usage-limit prompt should show actual usage and reset timing; a customer who already paid should see restore/support rather than another sales prompt. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "paywalls",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Place prompts at a real value or limit moment; explain what is already available and what payment unlocks. Compare trial, metered access or feature gating against cost and user value. Make price, period, renewal and dismissal clear; preserve access to paid entitlements. On mobile, check current store purchase and restore requirements.",
+    "Test free, trial, paid, expired, offline, pending purchase, failed payment, restored purchase and dismissal paths. Measure qualified upgrade, refunds, retained revenue and support complaints.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

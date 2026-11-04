@@ -1,0 +1,13 @@
+{
+  "id": "marketing-emails",
+  "prompt": "A SaaS trial sequence stops upgrade reminders after payment; an e-commerce cart series stops after an order and excludes unsubscribed contacts. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "emails",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Map each message to an event, eligibility condition, delay, exit and one action. Prefer behavior-triggered help to unconditional drips. Coordinate channels to prevent overlapping campaigns; stop on conversion, unsubscribe or changed lifecycle state. Draft subjects, bodies and fallback behavior without deploying flows.",
+    "Test triggers, race conditions, duplicate webhooks, exit/suppression paths, accessible rendering and links. Evaluate delivered-to-conversion and revenue with holdouts when feasible, not open rate alone.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

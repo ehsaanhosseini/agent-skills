@@ -1,6 +1,6 @@
 ---
 name: analytics
-description: When the user wants to set up, improve, or audit analytics tracking and measurement. Also use when the user mentions "set up tracking," "GA4," "Google Analytics," "conversion tracking," "event tracking," "UTM parameters," "tag manager," "GTM," "analytics implementation," "tracking plan," "how do I measure this," "track conversions," "Mixpanel," "Segment," "are my events firing," or "analytics isn't working." Use this whenever someone asks how to know if something is working or wants to measure marketing results. For choosing attribution models, comparing multi-touch/MMM/incrementality, or reconciling conflicting numbers across tools, see attribution. For A/B test measurement, see ab-testing.
+description: "Plan, implement or audit marketing measurement definitions, GA4 events, UTMs and tag-manager architecture. Use for tracking plans and event schemas; conversion-tracking owns confirmed conversion delivery, pixels and CAPI; attribution owns channel-credit interpretation; kpi-analytics-engineering owns business KPI definitions."
 metadata:
   version: 2.0.1
 ---
@@ -313,3 +313,7 @@ For implementation, see the [tools registry](https://github.com/coreyhaines31/ma
 - **seo-audit**: For organic traffic analysis
 - **cro**: For conversion optimization (uses this data)
 - **revops**: For pipeline metrics, CRM tracking, and revenue attribution
+
+## Focused integration guidance
+
+For conversion signal ownership, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

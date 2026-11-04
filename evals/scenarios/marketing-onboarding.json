@@ -1,0 +1,13 @@
+{
+  "id": "marketing-onboarding",
+  "prompt": "For a PMS, first value might be a verified sample reservation or safely imported availability, not inviting staff before the property exists. Distinguish sandbox demonstration from live reservations. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "onboarding",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Inventory steps from account creation to a meaningful outcome. Remove or defer steps not needed for that outcome, while preserving security and domain prerequisites. Choose product-first, guided setup or realistic demo data according to complexity. Make progress truthful, optional guidance dismissible and recovery paths clear. Validate activation against subsequent retained use rather than assuming checklist completion is value.",
+    "Test fresh, returning, interrupted, failed-import, empty and permission-limited sessions. Measure activation rate and time by eligible cohort, plus later retained outcomes and support burden.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

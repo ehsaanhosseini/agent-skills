@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-cro",
+  "prompt": "Diagnose an e-commerce cart with high mobile abandonment, uncertain tracking and rising refunds; recommend a bounded test.",
+  "expected_skill": "cro",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Separate measurement/payment/merchandising faults; protect margin/refund/accessibility guardrails.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

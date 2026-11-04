@@ -1,0 +1,13 @@
+{
+  "id": "marketing-aso",
+  "prompt": "For a booking app, storyboard screenshots around finding availability, booking, and managing a reservation. If images or console data cannot be inspected, label those dimensions unverified rather than scoring them as poor. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "aso",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Separate public observations from hidden keywords and console-only metrics. Compare relevant peers in the same locale and category. Audit title/subtitle or short description, value proposition, screenshot sequence, accessibility, release notes and disclosure accuracy. Propose keyword and asset hypotheses grounded in the app's real capabilities. Verify current Apple/Google field constraints before drafting counted alternatives.",
+    "Count characters or bytes according to official field rules. Track listing impressions, product-page visits, installs and retention by locale/source; use store experiments when available. Report rubric scores as subjective diagnostics, never ranking predictions.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

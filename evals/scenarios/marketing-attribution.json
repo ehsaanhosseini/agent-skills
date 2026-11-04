@@ -1,0 +1,13 @@
+{
+  "id": "marketing-attribution",
+  "prompt": "If Google and Meta each claim a booking, reconcile both to the confirmed booking ledger and explain overlapping credit; do not count two bookings. Preserve unmatched traffic as unknown. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "attribution",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Normalize conversion dates, refunds, currency, attribution windows and view/click-through rules before comparing sources. Show first-touch and last-touch as descriptive lenses; platform-attributed conversions overlap and must not be summed. Separate attribution from causal lift and recommend holdouts or geo experiments where feasible. For identity stitching, specify consent, retention, approved join keys and deletion propagation.",
+    "Produce a reconciliation table, model assumptions, identity coverage, confidence and a decision that survives plausible alternative models. Track net revenue and contribution margin instead of only reported ROAS.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

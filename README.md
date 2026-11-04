@@ -2,7 +2,7 @@
 
 **One curated skill library for better product work.** The same reviewed instructions are shared by Claude Code, Codex, and Cursor through a single local checkout. Skills are scoped to real tasks, so a design review does not load a marketing playbook or an unrelated framework guide.
 
-**58 skills** · **Engineering, design, marketing, SEO, and business systems** · **Pinned sources** · **No runtime downloads**
+**97 skills** · **Engineering, design, marketing, SEO, and business systems** · **Pinned sources** · **No runtime downloads**
 
 > This repository is public. It contains reusable workflows, not customer data, secrets, project files, or private business context.
 
@@ -100,7 +100,53 @@ Generic patterns for PMS, marketplace, clinic, salon, and studio systems; see [s
 | [schema](skills/seo-geo/schema/SKILL.md) | Adding or checking structured data | Appropriate schema markup and validation |
 | [site-architecture](skills/seo-geo/site-architecture/SKILL.md) | Planning page hierarchy and internal links | Clear navigation, URLs, and information structure |
 
-`skills/hoccotech/` is reserved for future reusable, public-safe HoccoTech skills; none are registered yet.
+`skills/hoccotech/` contains reusable business-system and data workflows; private project context stays outside this library.
+
+### Specialized growth and revenue skills
+
+Self-contained, pinned-source adaptations; no upstream runtime tooling. See [integration assessment](docs/marketing-integration.md).
+
+| Skill | Use it for |
+|---|---|
+| [ab-testing](skills/marketing/ab-testing/SKILL.md) | Design marketing A/B tests, sample-size plans, or growth experiment programs. |
+| [ad-creative](skills/marketing/ad-creative/SKILL.md) | Draft and iterate paid ad headlines, static concepts, UGC briefs, and video storyboards. |
+| [ads](skills/marketing/ads/SKILL.md) | Plan or audit paid campaigns on Google Ads, Meta, LinkedIn and other ad networks: PPC, targeting, search terms, bidding, budgets, CPA and ROAS. |
+| [aso](skills/marketing/aso/SKILL.md) | Audit App Store or Google Play listing visibility and install conversion: ASO, metadata, screenshots, localization and store experiments. |
+| [attribution](skills/marketing/attribution/SKILL.md) | Interpret marketing channel contribution, reconcile platform versus revenue reports, or plan first-party attribution, multi-touch models and incrementality. |
+| [churn-prevention](skills/marketing/churn-prevention/SKILL.md) | Design SaaS retention, transparent cancellation, save offers, dunning and failed-payment recovery. |
+| [co-marketing](skills/marketing/co-marketing/SKILL.md) | Plan partner selection and joint campaigns, integration marketing, cross-promotion and co-branded programs. |
+| [community-marketing](skills/marketing/community-marketing/SKILL.md) | Design customer communities, forums, ambassador programs and community-led growth. |
+| [competitors](skills/marketing/competitors/SKILL.md) | Create truthful alternative, versus and comparison pages with evidence-backed differentiation. |
+| [conversion-tracking](skills/marketing/conversion-tracking/SKILL.md) | Implement, audit or fix confirmed website conversions reaching GA4, Google Ads, Meta CAPI, LinkedIn or other destinations: GTM, dataLayer, duplicate purchases, missing bookings or Enhanced Conversions. |
+| [copy-editing](skills/marketing/copy-editing/SKILL.md) | Edit existing marketing copy for clarity, evidence, consistency and conversion while preserving approved voice. |
+| [copywriting](skills/marketing/copywriting/SKILL.md) | Draft marketing pages, product messages, headlines and calls to action from audience evidence. |
+| [directory-submissions](skills/marketing/directory-submissions/SKILL.md) | Plan and track relevant product, industry, app and review directory listings for qualified discovery. |
+| [emails](skills/marketing/emails/SKILL.md) | Design opted-in lifecycle email sequences: welcome, nurture, activation, cart recovery and win-back. |
+| [events](skills/marketing/events/SKILL.md) | Plan webinars, workshops, conferences, sponsorships and speaking programs with a measurable follow-up funnel.. |
+| [free-tools](skills/marketing/free-tools/SKILL.md) | Scope free calculators, checkers, generators or templates as useful acquisition products. |
+| [influencer-marketing](skills/marketing/influencer-marketing/SKILL.md) | Plan creator partnerships, UGC programs, affiliate creators and newsletter sponsorships with fit, rights and disclosure controls.. |
+| [launch](skills/marketing/launch/SKILL.md) | Plan product, feature and market launches: readiness, audience sequencing, release communications and post-launch learning.. |
+| [lead-magnets](skills/marketing/lead-magnets/SKILL.md) | Design useful gated or ungated guides, checklists, templates and research offers that qualify demand. |
+| [link-building](skills/seo-geo/link-building/SKILL.md) | Plan ethical earned-link acquisition, digital PR, resource placement and relevant partnership links. |
+| [marketing-loops](skills/marketing/marketing-loops/SKILL.md) | Design bounded recurring marketing reviews, alerts and draft workflows with cadence, state, idempotency and stop conditions. |
+| [marketing-plan](skills/marketing/marketing-plan/SKILL.md) | Build a proportionate marketing or product growth strategy across acquisition, activation, retention, referrals and revenue for SaaS, commerce, hospitality and services. |
+| [marketing-psychology](skills/marketing/marketing-psychology/SKILL.md) | Apply behavioral models to ethical marketing decisions, message clarity, choice architecture and experiment hypotheses. |
+| [offers](skills/marketing/offers/SKILL.md) | Design product/service offers, bundles, bonuses, guarantees and honest urgency around a real customer outcome. |
+| [onboarding](skills/marketing/onboarding/SKILL.md) | Improve post-signup activation, first-run setup, minimum path to value, empty states and time to first value. |
+| [paywalls](skills/marketing/paywalls/SKILL.md) | Design transparent in-product upgrade prompts, usage limits and subscription paywalls, including mobile purchase/restore states. |
+| [popups](skills/marketing/popups/SKILL.md) | Design or evaluate marketing modals, banners, slide-ins and opt-in prompts for conversion with accessible dismissal. |
+| [pricing](skills/marketing/pricing/SKILL.md) | Design SaaS and service monetization, value metrics, tiers, usage pricing and pricing research. |
+| [programmatic-seo](skills/seo-geo/programmatic-seo/SKILL.md) | Plan scalable search pages from structured data and templates: location, integration, inventory and comparison page families. |
+| [public-relations](skills/marketing/public-relations/SKILL.md) | Develop earned-media strategy, journalist pitch drafts, announcements, podcast preparation and crisis-response drafts.. |
+| [referrals](skills/marketing/referrals/SKILL.md) | Design customer referral, affiliate, advocacy and review programs with incentives, attribution and anti-abuse controls.. |
+| [reverse-engineer-marketing](skills/marketing/reverse-engineer-marketing/SKILL.md) | Research evidence-backed growth timelines, channel patterns and funnel teardowns from public sources. |
+| [revops](skills/marketing/revops/SKILL.md) | Design CRM lifecycle stages, lead qualification/scoring, routing, sales handoffs, pipeline hygiene and revenue operations. |
+| [sales-enablement](skills/marketing/sales-enablement/SKILL.md) | Create sales decks, demo scripts, one-pagers, battlecards, objection handling and win/loss analysis grounded in approved product evidence.. |
+| [signup](skills/marketing/signup/SKILL.md) | Improve registration, account creation and free-trial signup conversion while preserving identity/security controls. |
+| [sms](skills/marketing/sms/SKILL.md) | Plan consent-based SMS, MMS and WhatsApp lifecycle messaging, opt-ins, suppression and recovery campaigns. |
+| [social](skills/marketing/social/SKILL.md) | Draft organic social posts, carousels, short-form scripts, content calendars and public listening summaries. |
+| [marketing-image](skills/marketing/marketing-image/SKILL.md) | Plan and produce marketing images, product mockups, social graphics and OG assets using approved available tools. |
+| [marketing-video](skills/marketing/marketing-video/SKILL.md) | Plan marketing video production, product-demo recordings, storyboards, edit analysis and programmatic video briefs using available tools. |
 
 ## How the library works
 

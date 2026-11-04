@@ -1,6 +1,6 @@
 ---
 name: schema
-description: When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "schema markup," "structured data," "JSON-LD," "rich snippets," "schema.org," "FAQ schema," "product schema," "review schema," "breadcrumb schema," "Google rich results," "knowledge panel," "star ratings in search," or "add structured data." Use this whenever someone wants their pages to show enhanced results in Google. For broader SEO issues, see seo-audit. For AI search optimization, see ai-seo.
+description: "Implement or validate truthful Schema.org JSON-LD and current search-consumer eligibility. Use for structured data, rich-result requirements and entity consistency; distinguish vocabulary validity from supported search features. seo-audit owns wider search diagnosis."
 metadata:
   version: 2.0.0
 ---
@@ -37,7 +37,7 @@ Before implementing schema, understand:
 - Place in `<head>` or end of `<body>`
 
 ### 3. Follow Google's Guidelines
-- Only use markup Google supports
+- For Google rich results, select currently supported eligible types; other consumers may validly use additional Schema.org vocabulary
 - Avoid spam tactics
 - Review eligibility requirements
 
@@ -50,10 +50,10 @@ Before implementing schema, understand:
 
 ## Common Schema Types
 
-| Type | Use For | Required Properties |
+| Type | Use For | Example Properties (consumer requirements vary) |
 |------|---------|-------------------|
 | Organization | Company homepage/about | name, url |
-| WebSite | Homepage (search box) | name, url |
+| WebSite | Homepage (site identity) | name, url |
 | Article | Blog posts, news | headline, image, datePublished, author |
 | Product | Product pages | name, image, offers |
 | SoftwareApplication | SaaS/app pages | name, offers |
@@ -154,8 +154,8 @@ You can combine multiple schema types on one page using `@graph`:
 ```
 
 ### Testing Checklist
-- [ ] Validates in Rich Results Test
-- [ ] No errors or warnings
+- [ ] Vocabulary validates; current supported features checked in Rich Results Test
+- [ ] Errors resolved; warnings assessed against the intended consumer
 - [ ] Matches page content
 - [ ] All required properties included
 
@@ -177,3 +177,7 @@ You can combine multiple schema types on one page using `@graph`:
 - **ai-seo**: For AI search optimization (schema helps AI understand content)
 - **programmatic-seo**: For templated schema at scale
 - **site-architecture**: For breadcrumb structure and navigation schema planning
+
+## Focused integration guidance
+
+For consumer-aware vocabulary validation, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

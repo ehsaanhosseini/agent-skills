@@ -1,0 +1,13 @@
+{
+  "id": "marketing-launch",
+  "prompt": "For a marketplace launch, validate supply availability before driving demand; a waitlist announcement must not imply live inventory. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "launch",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose a launch size proportional to product readiness. Sequence internal rehearsal, controlled audience, broader communication and follow-up. Separate product deployment approval from campaign approval. Prepare factual release notes, demos, support answers and a fallback if adoption or reliability fails.",
+    "Verify destinations, signup paths, tracking authorization, support ownership, claims, staged messages and rollback/escalation triggers. Measure activation and retained use alongside initial attention.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "marketing-sms",
+  "prompt": "An appointment reminder should reveal only necessary scheduling details; a promotional follow-up requires its own valid basis and must stop promptly on opt-out. Do not include diagnoses or sensitive appointment reasons. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "sms",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Separate transactional from promotional purpose and verify current regional/carrier/platform requirements before launch. Specify explicit opt-in evidence, sender identity, quiet-hour handling, frequency limits and opt-out processing. Map triggers, exits and cross-channel suppression before drafting short messages. Treat WhatsApp template/session constraints as version-sensitive.",
+    "Use sandbox/test recipients for approved implementation. Verify opt-in, opt-out variants, delivery errors, duplicate triggers, timezone boundaries and suppression propagation. Measure completed intended actions and complaints.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

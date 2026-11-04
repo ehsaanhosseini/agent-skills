@@ -1,0 +1,13 @@
+{
+  "id": "marketing-signup",
+  "prompt": "Defer optional company-size questions until after account creation if allowed, but keep required age/consent/verification checks and avoid revealing whether arbitrary emails have accounts. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "signup",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Separate legally/security-required inputs from optional profiling. Choose one-step or progressive registration by actual complexity. Specify field labels, validation, password/SSO states, duplicate-account handling, recovery and clear terms. Preserve anti-abuse, accessibility and verified-identity requirements; friction reduction cannot justify weakening them.",
+    "Test happy path, invalid input, existing account, expired verification, SSO failure, retries, keyboard and mobile. Measure eligible completion and downstream activation plus fraud/support guardrails.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

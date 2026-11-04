@@ -1,0 +1,13 @@
+{
+  "id": "marketing-ad-creative",
+  "prompt": "For a clinic booking product, test scheduling convenience against reduced administrative work using approved evidence; never invent patient outcomes or endorsements. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "ad-creative",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Build an angle-by-hook matrix from customer evidence. Vary one creative hypothesis at a time: problem, proof, mechanism or objection. Produce complete platform-specific variations with visual direction and a matching destination promise. Separate fatigue from audience saturation and poor landing-page fit; do not infer a winner from CTR alone.",
+    "Check current platform limits, accessibility/captions, licensed assets, claim evidence, destination consistency and a falsifiable test metric. Distinguish concept drafts from rendered assets.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

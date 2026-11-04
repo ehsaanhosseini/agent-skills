@@ -1,6 +1,6 @@
 # Subject Line Optimization
 
-The subject line determines whether the email gets read. The data is counterintuitive: **short, boring, internal-looking subject lines win decisively.**
+The subject line determines whether the email gets read. The data is counterintuitive: **concise, relevant subjects are hypotheses to test with honest sender/context.**
 
 ## Length: 2–4 words
 
@@ -11,13 +11,13 @@ The subject line determines whether the email gets read. The data is counterintu
 
 ## Internal Camouflage Principle
 
-Subject lines that look like they came from a colleague, not a vendor, double open rates (Gong). Buyers mentally categorize before opening — if it looks like sales, it's filtered.
+Do not disguise a vendor as a colleague or fake a reply thread. A familiar business topic is useful only when relevant and honest; a historic study is not a universal prediction.
 
 **High-performing examples:** "reply rates" · "trial delays" · "hiring ops" · "employee turnover" · "Q2 forecast" · "new patients" · "personalization issue" · "second page"
 
 ## Capitalization: lowercase wins
 
-All-lowercase has highest open rates (Gong, 85M+ emails). Lowercase looks more personal/internal. For cold outreach specifically, lowercase beats title case.
+Choose casing appropriate to approved voice; do not imply a personal or internal relationship through formatting.
 
 ## Personalization: context over name
 

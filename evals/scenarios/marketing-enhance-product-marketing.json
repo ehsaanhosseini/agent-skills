@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-product-marketing",
+  "prompt": "Create a product marketing context for a SaaS using supplied approved positioning and voice examples. Existing context already exists; preserve it and identify unsupported assumptions.",
+  "expected_skill": "product-marketing",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Reuse approved facts; separate positioning from voice; no automatic context tracking/publication.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

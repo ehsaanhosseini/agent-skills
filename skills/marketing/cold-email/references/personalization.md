@@ -52,10 +52,10 @@ The personalization must logically connect to the problem. This creates 5 reusab
 
 ## The Four -Graphic Principles (Becc Holland)
 
-- **Demographic** — Age, profession, background
+- **Professional context** — Public role and relevant responsibilities; exclude age/protected traits
 - **Technographic** — Tech stack, tools used
 - **Firmographic** — Company size, funding, industry, growth stage
-- **Psychographic** — Values, passions, beliefs (highest-impact dimension)
+- **Expressed business priorities** — Public work goals; no inferred sensitive beliefs or vulnerabilities
 
 Tapping into what prospects are passionate about drives significantly higher response rates.
 

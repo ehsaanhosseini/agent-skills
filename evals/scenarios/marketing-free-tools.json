@@ -1,0 +1,13 @@
+{
+  "id": "marketing-free-tools",
+  "prompt": "An occupancy calculator should state available-room-night and sold-room-night definitions, accept valid date ranges and avoid asking for guest identities. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "free-tools",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose a tool that solves a narrow real problem and demonstrates the paid product's value. Decide whether ungated output is sufficient before adding lead capture. Specify input validation, transparent formulas, accessibility, abuse controls and a useful failure state. Estimate ongoing support and compute cost before choosing AI or external APIs.",
+    "Validate calculations against worked examples, boundary inputs, mobile use and export behavior. Measure completed useful tasks, qualified product interest and cost per completion.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

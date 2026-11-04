@@ -1,0 +1,25 @@
+# Co Marketing playbook
+
+## Establish the decision
+
+Audience overlap, non-competing value, partner assets, goals, distribution commitments and data-sharing limits.
+
+Use supplied, authorized evidence first. Label missing inputs and choose a reversible recommendation if uncertainty remains; do not invent a baseline, market statistic or guaranteed improvement.
+
+## Method and tradeoffs
+
+Score partners on audience fit, complementary value, execution capacity and mutual benefit. Choose a small joint deliverable with a distribution plan and named responsibilities. Agree attribution, brand review, lead ownership, consent, budget and exit terms before launch. Use aggregate fit estimates rather than exchanging identifiable customer lists.
+
+## Worked example
+
+A PMS and channel manager could co-author a booking-operations guide and host a webinar; define each partner's promotion commitment and separate opt-ins for follow-up.
+
+## Verify and diagnose
+
+Track qualified participants, accepted leads, opportunities and partner contribution, with a post-campaign review against agreed commitments. Test registration and consent handling.
+
+If evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.
+
+## Deliverable
+
+Provide the artifact requested, its evidence and assumptions, a prioritized recommendation with the material tradeoff, and observable acceptance criteria. Include a staged rollout or recovery plan only when implementation risk requires it. Do not label a proposal as an executed result.

@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-prospecting",
+  "prompt": "Find company-level prospects for a PMS from supplied public business signals. No external validator/upload is authorized; include some unverified contacts.",
+  "expected_skill": "prospecting",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Record research provenance, confidence and unverified status; no compulsory service upload or sending.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

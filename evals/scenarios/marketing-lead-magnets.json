@@ -1,0 +1,13 @@
+{
+  "id": "marketing-lead-magnets",
+  "prompt": "A hotel operations checklist can help managers assess reservation handoffs; collect work contact details only when necessary and clearly describe follow-up. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "lead-magnets",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose a format that helps a reader complete a meaningful task and signals product fit. Outline the deliverable around a concrete outcome, include an example, and decide whether gating adds enough value to justify friction. Define delivery, explicit follow-up expectations and an exit from the nurture sequence.",
+    "Test promised delivery, accessibility, completion usefulness, consent/suppression and qualified-lead rate. A high download count with no relevant demand is not success.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

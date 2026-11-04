@@ -1,0 +1,13 @@
+{
+  "id": "marketing-influencer-marketing",
+  "prompt": "A beauty-booking product can commission a real workflow demo with clear sponsorship disclosure; do not script a creator to claim results they never experienced. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "influencer-marketing",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Assess audience relevance, engagement quality and creator trust rather than followers alone. Distinguish paid reach, reusable creative and affiliate sales as different objectives. Specify deliverables, honest claims, review process, licensing, exclusivity and attribution. Start with a bounded pilot and inspect audience quality before scaling.",
+    "Review creative against the brief and current platform/ad disclosure rules. Measure qualified visits and contribution after fees/usage rights; compare against a baseline and inspect suspicious engagement.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

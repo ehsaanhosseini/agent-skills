@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-site-architecture",
+  "prompt": "Plan a multilingual URL-family migration from supplied existing routes; production release is not authorized.",
+  "expected_skill": "site-architecture",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Map redirects/canonicals/locales and representative failure cases; stage only.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

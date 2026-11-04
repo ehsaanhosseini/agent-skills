@@ -1,0 +1,13 @@
+{
+  "id": "marketing-copywriting",
+  "prompt": "For a dashboard product, connect consolidated reporting to a specific operational decision; mark unsupported time-saving numbers as evidence needed rather than fabricating a testimonial. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "copywriting",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose the page's promise and one primary action before writing. Build a message hierarchy from customer language, explaining benefits through concrete mechanisms and proof. Match objections with evidence near the relevant claim. Offer a few genuinely distinct directions with tradeoffs instead of many superficial variations.",
+    "Check factual support, consistency with product behavior, accessible link labels, CTA destination, readability and mobile hierarchy. Separate draft choices from owner-approved messaging.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

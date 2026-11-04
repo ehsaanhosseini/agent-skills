@@ -1,0 +1,13 @@
+{
+  "id": "marketing-competitors",
+  "prompt": "For a PMS versus spreadsheet page, explain when a spreadsheet is adequate and when multi-user controls matter; cite actual capabilities and migration effort. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "competitors",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Choose single-alternative, alternatives list, direct versus or comparison matrix to match reader intent. Compare the same plans, dates and use cases. Include strengths, constraints, switching costs and who should choose each option. Use original product evidence and maintain a claim/source/date ledger; do not invent missing feature gaps.",
+    "Check claims against current sources, broken links, accessibility, approved brand language and a single useful CTA. Monitor qualified conversion and review stale claims on product changes.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

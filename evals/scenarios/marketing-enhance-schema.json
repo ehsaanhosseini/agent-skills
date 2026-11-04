@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-schema",
+  "prompt": "Validate visible FAQ vocabulary that a rich-result tool does not detect, and assess a SearchAction search-box promise.",
+  "expected_skill": "schema",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Vocabulary validity differs from feature eligibility; retired search box cannot be restored.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

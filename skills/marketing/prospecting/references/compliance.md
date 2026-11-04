@@ -1,3 +1,5 @@
+> Current official legal, jurisdictional and platform requirements govern. Historical summaries below are not categorical legal permission. Public availability, API access, platform-internal messaging or successful email validation does not authorize collection, sensitive inference, enrichment, upload or outreach. Use minimal data under the task's approved scope; verify current rules before operational use.
+
 # Prospecting Compliance Reference
 
 The legal and platform-ToS constraints that apply to prospect list building. Read first, every engagement.
@@ -72,7 +74,7 @@ Stricter than CAN-SPAM. Cold B2B outreach requires:
 - **Sales Navigator** as a research tool: fine
 - **Scraping LinkedIn at any scale**: explicit ToS violation. Banned accounts are permanent. Don't.
 - **Apollo, Clay, and ZoomInfo** claim LinkedIn-overlap data through various legitimate channels — verify their data sources before assuming compliance
-- **InMail and Connection Requests**: governed by LinkedIn's own messaging rules, not by CAN-SPAM/GDPR (because LinkedIn-internal)
+- **InMail and Connection Requests**: subject to platform rules and applicable privacy/marketing law; platform delivery is not a legal exemption
 
 ### Google Maps
 
@@ -116,7 +118,7 @@ Before shipping a list to the user (or downstream to cold-email):
 - [ ] No contacts sourced from scraped LinkedIn data
 - [ ] No Google Maps Place IDs or large Maps-structured data retained
 - [ ] Lawful basis documented (legitimate interest test for B2B, or relevant alternative)
-- [ ] Email addresses validated (deliverability check before outreach)
+- [ ] Source and verification status recorded; suppression, lawful processing and exact send authorization remain required
 - [ ] Personal addresses (Gmail, etc.) flagged or excluded
 - [ ] Source provider contracts permit the intended use case
 - [ ] Retention plan documented (when to delete)

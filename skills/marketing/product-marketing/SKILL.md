@@ -1,6 +1,6 @@
 ---
 name: product-marketing
-description: "When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positioning,' 'who is my target audience,' 'describe my product,' 'ICP,' 'ideal customer profile,' or wants to avoid repeating foundational information across marketing tasks. Use this at the start of any new project before using other marketing skills — it creates `.agents/product-marketing.md` that all other skills reference for product, audience, and positioning context."
+description: "Create or update explicitly requested product marketing context, positioning, audience/ICP and approved brand voice. Use for foundational marketing decisions; reuse existing context for other tasks instead of requiring a new document at every project start."
 metadata:
   version: 2.1.0
 ---
@@ -258,3 +258,7 @@ After gathering information, create `.agents/product-marketing.md` with this str
 - **Ask for examples**: "Can you give me an example?" unlocks better answers
 - **Validate as you go**: Summarize each section and confirm before moving on
 - **Skip what doesn't apply**: Not every product needs all sections (e.g., Personas for B2C)
+
+## Focused integration guidance
+
+For brand voice and evidence, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

@@ -1,0 +1,13 @@
+{
+  "id": "marketing-enhance-seo-audit",
+  "prompt": "Review a multilingual public site with an approved noindex locale policy and contradictory hreflang/canonical observations.",
+  "expected_skill": "seo-audit",
+  "references": [
+    "references/2026-integration.md"
+  ],
+  "rubric": [
+    "Report evidence and official guidance; preserve approved indexing; do not blanket index thin locales.",
+    "Separate actual evidence from assumptions and proposed changes.",
+    "Preserve project policies, authorization and unrelated behavior."
+  ]
+}

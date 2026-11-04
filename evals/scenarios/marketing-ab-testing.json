@@ -1,0 +1,13 @@
+{
+  "id": "marketing-ab-testing",
+  "prompt": "For a pricing page, randomize by account and compare paid conversion within 30 days; track refunds and support contacts as guardrails. A click increase alone cannot establish revenue lift. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "ab-testing",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Write a falsifiable hypothesis and choose one primary outcome before exposure. Randomize by stable user or account; avoid cross-variant contamination. Plan power, duration and stopping rules, including weekday cycles and delayed outcomes. Check sample-ratio mismatch and missing events before interpreting lift. Use a fixed horizon or a valid sequential method; repeated ordinary p-value peeking is invalid.",
+    "Report absolute and relative change, confidence interval, denominators, exclusions and practical significance. An underpowered null is inconclusive; compare guardrails before recommending rollout.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

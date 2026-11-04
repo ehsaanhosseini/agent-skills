@@ -1,0 +1,13 @@
+{
+  "id": "marketing-marketing-loops",
+  "prompt": "A weekly ad-efficiency review checks qualified conversion lag and tracking health, then stages recommendations only when an agreed threshold is crossed. Keep quiet while unchanged; never shift spend on its own. Give a read-only recommendation; do not touch live systems.",
+  "expected_skill": "marketing-loops",
+  "references": [
+    "references/playbook.md"
+  ],
+  "rubric": [
+    "Specify check cadence separately from acts-when condition. Define read inputs, verification, dedupe key, cooldown, output, error halt and kill switch. Start with one useful loop; design composition only for a demonstrated need. Use a supported scheduler only when creation is explicitly requested and authorized; describe a manual cadence otherwise.",
+    "Dry-run on unchanged, changed, duplicate and unavailable-data fixtures. Verify no duplicate notifications/actions, no actions on stale data, capped resource use and explicit stop/error behavior.\n\nIf evidence is incomplete, state exactly which conclusion cannot be supported and what observation would resolve it. Check for instrumentation faults, cohort selection, seasonality and delayed outcomes before attributing a change to an intervention. Keep unrelated workflows unloaded.",
+    "Preserve authorization and relevant privacy/security boundaries."
+  ]
+}

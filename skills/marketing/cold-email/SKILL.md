@@ -94,10 +94,10 @@ For the full catalog of frameworks with examples, see [frameworks.md](references
 
 ## Subject Lines
 
-Short, boring, internal-looking. The subject line's only job is to get the email opened — not to sell.
+Use a concise, truthful subject matching the relevant business topic; never imply an internal relationship or prior conversation that does not exist.
 
 - 2-4 words, lowercase, no punctuation tricks
-- Should look like it came from a colleague ("reply rates," "hiring ops," "Q2 forecast")
+- Use a relevant business topic while keeping sender identity and commercial intent honest; never impersonate a colleague.
 - No product pitches, no urgency, no emojis, no prospect's first name
 
 See [subject-lines.md](references/subject-lines.md) for the full data.
@@ -163,3 +163,7 @@ Use this data to inform your writing — not as a checklist to satisfy.
 - **social**: For LinkedIn and social posts
 - **product-marketing**: For establishing foundational positioning
 - **revops**: For lead scoring, routing, and pipeline management
+
+## Focused integration guidance
+
+For deliverability and reply handling, read [the integration reference](references/2026-integration.md). Existing local policies remain in force.

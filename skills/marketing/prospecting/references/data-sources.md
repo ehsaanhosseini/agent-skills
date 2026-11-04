@@ -13,7 +13,7 @@ Tool selection guide for prospecting across all three branches.
 | **Tech stack qualification (SaaS)** | BuiltWith, Wappalyzer | BuiltWith has wider coverage + paid plans for bulk; Wappalyzer is lighter + free for small use |
 | **Funding signals (SaaS)** | Crunchbase, Pitchbook | Crunchbase free tier sufficient for early signals; Pitchbook for deeper investor data |
 | **Email pattern discovery** | Hunter, Snov, Apollo | Pattern guessing — followed by verification |
-| **Email deliverability verification** | Truelist, Hunter, NeverBounce, ZeroBounce | Always verify before adding to outreach lists |
+| **Email deliverability verification** | Truelist, Hunter, NeverBounce, ZeroBounce | Optional authorized validation; label unverified candidates |
 | **Visitor identification (warm intent)** | RB2B, Clearbit Reveal | Anonymous traffic → company identification |
 | **Intent data** | ZoomInfo Intent, 6sense, Bombora | Pre-warmed signals; mid-market+ pricing |
 | **Trigger event monitoring** | Google Alerts, Feedly, LinkedIn Sales Nav alerts | Free options are sufficient for most |
@@ -112,7 +112,7 @@ Tool selection guide for prospecting across all three branches.
 
 **Watch out for**:
 - Both are pattern-guessing tools — accuracy depends on the target company's email pattern being inferable
-- Always run results through a dedicated validator (Truelist or similar) before outreach
+- Use external validation only if authorized; otherwise label research candidates unverified
 
 **Integrations**: see [hunter.md](https://github.com/coreyhaines31/marketingskills/blob/5b2c0007766c6a1cf1d53fd8fc73e979e0821022/tools/integrations/hunter.md), [snov.md](https://github.com/coreyhaines31/marketingskills/blob/5b2c0007766c6a1cf1d53fd8fc73e979e0821022/tools/integrations/snov.md)
 
@@ -120,7 +120,7 @@ Tool selection guide for prospecting across all three branches.
 
 ## Truelist
 
-**Use for**: Email deliverability validation before adding contacts to outreach lists. Critical safety step.
+**Use for**: Optional authorized deliverability validation; not required for company-level research.
 
 **Strengths**:
 - Single-email sync verification (`/api/v1/verify_inline`) + bulk async (`/api/v1/verify`)
@@ -131,7 +131,7 @@ Tool selection guide for prospecting across all three branches.
 - Native integrations with Mailchimp, Klaviyo, HubSpot, Zapier, Make, n8n, Clay, Salesforce, more
 - Pay-per-email pricing
 
-**Why this matters**: Cold email reputation craters when bounce rates exceed 2%. Validating before sending is non-negotiable. Apollo/ZoomInfo/Hunter data is often 60–80% accurate — Truelist catches the rest.
+**Why this matters**: Source data can be inaccurate. Validation is not consent or a delivery guarantee; never upload contacts without approved data processing.
 
 **Integration**: see [truelist.md](https://github.com/coreyhaines31/marketingskills/blob/5b2c0007766c6a1cf1d53fd8fc73e979e0821022/tools/integrations/truelist.md)
 
@@ -194,11 +194,11 @@ Cross-reference both for high-confidence tech stack signals.
 **Use for**: Developer-intent prospecting. Especially powerful for dev-tool SaaS — stargazers of competitor or category-defining repos are in-market signal.
 
 **Strengths**:
-- Public API, no scraping concerns
+- Public API research remains subject to authorization, privacy, source terms and suppression requirements
 - High signal quality (a starred repo = explicit interest)
 - Forks are an even stronger signal (intent to modify, not just bookmark)
-- Bundled `github-prospects.js` CLI handles pagination + enrichment + CSV output
-- Free with 5,000 req/hr authenticated rate limit
+- No collector CLI is bundled in this library; use only authorized available tools and minimal relevant company/professional evidence
+- Check current official rate limits and access costs; never infer entitlement from this historical source
 
 **Watch out for**:
 - Only ~5–20% of users publish email — pair with Apollo/Clay/Hunter for enrichment
@@ -281,7 +281,7 @@ A typical full-stack prospecting workflow:
 3. **Enrich** with Clay (waterfall: tech stack, funding, trigger events)
 4. **Decision-maker mapping** in LinkedIn Sales Nav (manual)
 5. **Email pattern discovery** with Hunter or Apollo's built-in
-6. **Email validation** with Truelist before final list
+6. **Verification status** recorded; optional authorized provider validation
 7. **Hand off** to cold-email skill for outreach copy
 
 Adapt this sequence based on which tools the user actually has.
