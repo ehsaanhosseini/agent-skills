@@ -68,3 +68,52 @@ Independent targeted reread confirmed all reported contradictions resolved in th
 No live campaigns, actual destination conversion receipt, payment recovery, outreach, store experiments or production systems tested. No separate Claude Code/Cursor behavior run. Source tooling and executable assets excluded, not certified safe; an attempted raw source-text/hash sweep hit local read timeouts and is not a successful whole-tree audit. Regex checks are tripwires, not a security guarantee. Changing platform requirements must still be verified at use time.
 
 No push, PR, merge, deploy, GitHub Actions execution or metered GitHub service occurred. Existing workflow untouched; all commands ran locally.
+
+
+## Final verification follow-up — 2026-11-04 (release approval pending)
+
+This section adds real installed-runtime evidence; it supersedes the earlier statements that Cursor had not been run, without rewriting the historical integration results. Baseline inspected: `e0c886f5a6903b709bd1dc71f3cb5106228a296b`, branch `feature/marketing-skills-integration`, clean tree and 97 registry entries. Existing unrelated worktree preserved; no branch/worktree created. No new skill defect found and no skill/source behavior changed in this follow-up.
+
+### Real runtime execution
+
+| Agent | Actual execution | Result |
+|---|---|---|
+| Codex | Installed CLI 0.166.0-alpha.5.1; 7 fresh ephemeral read-only sessions with JSONL tool traces, existing account/configuration | PASS all 7 cases; completed inference and actual relevant entrypoint/reference reads |
+| Cursor | Installed native application 3.27.22, observed Grok 4.7 High; This Mac, existing checkout/branch. Ads plus six-case follow-up and fresh engineering/UI control | PASS 8 cases; Used skill / Read file UI activity and completed answers observed |
+| Claude Code | Installed 2.1.316 native binary; real print-mode startup/request with plan/read-only tools, hooks/MCP disabled for the test, no persistent session, bounded budget | Discovery PASS: all 97 registered IDs in startup metadata. Behavioral routing UNVERIFIED: request returned 401 expired OAuth before any skill tool use; reported model cost zero |
+
+Claude Code was found in an installed extension despite no `claude` command on PATH. No runtime was installed. The Cursor shell launcher would download/install cursor-agent if absent, so it was deliberately not invoked; the actual installed GUI was tested instead. Initial Codex launch from the projectless non-Git folder was rejected by its trust check; re-running from the existing authorized checkout succeeded without disabling trust or sandbox protections. These setup attempts are not counted as passing routing cases.
+
+Prompts described business/engineering tasks without giving expected skill IDs/paths or a routing table. Native metadata discovery was kept enabled. Tests forbade registry/folder enumeration, network research, mutation, installation, live effects and delegation. Model-service inference was the only intended external operation. Hooks/MCP restrictions were temporary test flags, not persistent configuration changes.
+
+| Case | Codex actual skill bodies | Cursor actual skill bodies |
+|---|---|---|
+| Google Search Ads planning, missing economics | ads | ads |
+| Confirmed conversion delivery/deduplication | conversion-tracking | conversion-tracking |
+| Multilingual technical SEO and AI answer accuracy | seo-audit, ai-seo | seo-audit, ai-seo |
+| Mobile App Store / Play listing without console/assets | aso | aso |
+| SaaS pricing and transparent retention | pricing, churn-prevention | pricing, churn-prevention |
+| B2B prospects and revenue handoffs | prospecting, revops | prospecting, revops |
+| Next.js caching and product dashboard design | nextjs-developer, frontend-design, data-dashboard | nextjs-developer, frontend-design |
+| Fresh isolated engineering/UI control | Covered by the fresh Codex engineering session above | nextjs-developer, data-dashboard, design-tokens |
+
+Codex traces contained only local file-read commands, completed successfully, and showed no unrelated skill bodies. Cursor activity showed only the relevant skill activations/reference reads; its fresh engineering/UI control loaded no marketing skill. Related design helper choice differed between models: design-tokens was a relevant consistency helper in the Cursor control, not proof of identical minimal selections. Startup exposure of the full metadata catalog is normal discovery, not loading all 97 bodies. No claim is made about hidden runtime-internal context outside observable tool/UI activity.
+
+Actual answers kept missing data explicit: no guessed Ads budget, no live tracking or personal-data upload, approved indexing preserved, no invented console/visual ASO scores, no obstructive cancellation or unauthorized CRM/billing changes, and version-sensitive Next.js guidance remained conditional. These were real task responses, not fixture score outputs. Exact sanitized file lists and Codex trace hashes are in [runtime results](../evals/results/marketing-release-2026-11-04.json). Raw traces remain outside the public repository; no account metadata/screenshots or credentials are committed.
+
+### Focused final quality checks
+
+- `bash scripts/validate.sh --strict`: PASS, zero warnings at the clean baseline; all 97 entries and both managed discovery link sets valid, provenance/policies/relative links/override tripwire/available secret checks passed.
+- `python3 scripts/test_quality_check.py`: PASS four negative controls.
+- `python3 scripts/agent_eval.py validate`: PASS 66 fixture contracts, clearly separate from the 15 completed real runtime cases above.
+- `bash -n scripts/*.sh` and `git diff --check`: PASS. Existing scripts unchanged; Python runtime compilation is checked locally for release evidence without modifying sources.
+- Focused assertions: 39 new skills remain non-executable Markdown with exact local policies; 53-source assessment and pinned MIT provenance intact; reviewed documentation links resolve; engineering/design/business-system skill source, executable approval registry, validation scripts and GitHub configuration unchanged from the pre-integration baseline.
+- Both registered discovery paths resolve to the same authorized checkout. Claude native startup independently advertised all 97 IDs; Cursor actually selected through the managed .claude path; Codex through the managed .agents path.
+
+The follow-up changes only this verification record and sanitized runtime result data. A final strict/online clean-tree gate is rerun after their local commit; its actual result and resulting SHA are recorded in the delivery report and Notion. Online verification is a read-only public-visibility check, not a GitHub Actions run.
+
+### Readiness and remaining limitation
+
+**PASS — READY FOR APPROVAL for owner-reviewed integration, not released.** All executable checks available with the installed authenticated runtimes passed. No demonstrated library defect or source regression remains. Claude's expired OAuth is an environment limitation: it does not block submitting the local changes for owner approval, but prevents an unconditional claim that all three agents' behavioral routing passed. Full three-runtime certification requires owner re-authentication and rerunning the same read-only Claude cases; installation, credential changes and billing changes are outside this mission.
+
+No push, PR, merge into dev/main, deployment or GitHub Actions/metered GitHub service was performed. Release approval remains pending; no release-complete status is recorded. Live product implementations and absent optional scanners remain unverified as documented above.

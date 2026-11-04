@@ -1,0 +1,313 @@
+{
+  "date": "2026-11-04",
+  "baseline_commit": "e0c886f5a6903b709bd1dc71f3cb5106228a296b",
+  "branch": "feature/marketing-skills-integration",
+  "registry_count": 97,
+  "release_state": "READY FOR APPROVAL; owner approval pending, not released",
+  "codex": {
+    "runtime": "codex-cli 0.166.0-alpha.5.1",
+    "mode": "ephemeral, read-only, JSONL tracing; existing login/configuration",
+    "cases": [
+      {
+        "case": "codex-ads",
+        "status": "PASS",
+        "agent": "installed Codex CLI",
+        "version": "0.166.0-alpha.5.1",
+        "selection": [
+          "ads"
+        ],
+        "files_read": [
+          "ads/SKILL.md",
+          "ads/references/playbook.md",
+          "ads/references/search-decisions.md"
+        ],
+        "read_only_commands": 2,
+        "automatic_discovery": true,
+        "fixture_only": false,
+        "trace_sha256": "b0ce0e85ba64891b02e22ac283fe4ad078582e5f2fcfb25806742dae9e33eeb5"
+      },
+      {
+        "case": "conversion",
+        "status": "PASS",
+        "agent": "installed Codex CLI",
+        "version": "0.166.0-alpha.5.1",
+        "selection": [
+          "conversion-tracking"
+        ],
+        "files_read": [
+          "conversion-tracking/SKILL.md",
+          "conversion-tracking/references/playbook.md",
+          "conversion-tracking/references/verification-matrix.md"
+        ],
+        "read_only_commands": 2,
+        "automatic_discovery": true,
+        "fixture_only": false,
+        "trace_sha256": "2514d31bea5652f7123db54abcbc2a103f8f80b9878248651638afa8c9f74465"
+      },
+      {
+        "case": "seo",
+        "status": "PASS",
+        "agent": "installed Codex CLI",
+        "version": "0.166.0-alpha.5.1",
+        "selection": [
+          "ai-seo",
+          "seo-audit"
+        ],
+        "files_read": [
+          "ai-seo/SKILL.md",
+          "seo-audit/SKILL.md",
+          "ai-seo/references/2026-integration.md",
+          "ai-seo/references/platform-ranking-factors.md",
+          "ai-seo/references/citations-vs-recommendations.md",
+          "seo-audit/references/international-seo.md"
+        ],
+        "read_only_commands": 6,
+        "automatic_discovery": true,
+        "fixture_only": false,
+        "trace_sha256": "eb8989dcb127faf31d8ec9b4a69ed98d0c091c2a70166d00bfc6a61cb4a3ddb7"
+      },
+      {
+        "case": "aso",
+        "status": "PASS",
+        "agent": "installed Codex CLI",
+        "version": "0.166.0-alpha.5.1",
+        "selection": [
+          "aso"
+        ],
+        "files_read": [
+          "aso/SKILL.md",
+          "aso/references/playbook.md"
+        ],
+        "read_only_commands": 2,
+        "automatic_discovery": true,
+        "fixture_only": false,
+        "trace_sha256": "1f21e403552a70a1933f46b96495cd47ba35553c20bf0d3764300373c1165dc8"
+      },
+      {
+        "case": "pricing-retention",
+        "status": "PASS",
+        "agent": "installed Codex CLI",
+        "version": "0.166.0-alpha.5.1",
+        "selection": [
+          "churn-prevention",
+          "pricing"
+        ],
+        "files_read": [
+          "pricing/SKILL.md",
+          "churn-prevention/SKILL.md",
+          "pricing/references/playbook.md",
+          "churn-prevention/references/playbook.md",
+          "pricing/references/research.md"
+        ],
+        "read_only_commands": 5,
+        "automatic_discovery": true,
+        "fixture_only": false,
+        "trace_sha256": "56c625d251c86b99f12159166b2272d2437d0600b89747d2cdb14b2c9e218561"
+      },
+      {
+        "case": "prospecting-revops",
+        "status": "PASS",
+        "agent": "installed Codex CLI",
+        "version": "0.166.0-alpha.5.1",
+        "selection": [
+          "prospecting",
+          "revops"
+        ],
+        "files_read": [
+          "prospecting/SKILL.md",
+          "revops/SKILL.md",
+          "prospecting/references/b2b-prospecting.md",
+          "prospecting/references/compliance.md",
+          "prospecting/references/2026-integration.md",
+          "revops/references/playbook.md",
+          "revops/references/scoring-validation.md"
+        ],
+        "read_only_commands": 2,
+        "automatic_discovery": true,
+        "fixture_only": false,
+        "trace_sha256": "fe6cd8451ba6c4448e475f0936eeb1cc31dfab216240d0370f0dabfa47c2319e"
+      },
+      {
+        "case": "engineering-ui",
+        "status": "PASS",
+        "agent": "installed Codex CLI",
+        "version": "0.166.0-alpha.5.1",
+        "selection": [
+          "data-dashboard",
+          "frontend-design",
+          "nextjs-developer"
+        ],
+        "files_read": [
+          "nextjs-developer/SKILL.md",
+          "frontend-design/SKILL.md",
+          "data-dashboard/SKILL.md",
+          "nextjs-developer/references/data-and-security.md",
+          "nextjs-developer/references/routing-and-verification.md",
+          "data-dashboard/references/metric-contracts.md",
+          "data-dashboard/references/interaction-and-verification.md"
+        ],
+        "read_only_commands": 2,
+        "automatic_discovery": true,
+        "fixture_only": false,
+        "trace_sha256": "68bafb422646ab6befe4ada3fbbd9d0438a8f75fe3d71902a242c8f636471537"
+      }
+    ]
+  },
+  "cursor": {
+    "runtime": "Cursor 3.27.22 native application",
+    "model_observed": "Grok 4.7 High",
+    "mode": "This Mac, existing checkout/branch; one Ads conversation and six-case follow-up, plus fresh engineering/UI control",
+    "discovery_path_observed": "managed .claude/skills symlinks",
+    "cases": [
+      {
+        "case": "ads",
+        "status": "PASS",
+        "selection": [
+          "ads"
+        ],
+        "files_read": [
+          "ads/SKILL.md",
+          "ads/references/playbook.md",
+          "ads/references/search-decisions.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      },
+      {
+        "case": "conversion",
+        "status": "PASS",
+        "selection": [
+          "conversion-tracking"
+        ],
+        "files_read": [
+          "conversion-tracking/SKILL.md",
+          "conversion-tracking/references/playbook.md",
+          "conversion-tracking/references/verification-matrix.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      },
+      {
+        "case": "seo",
+        "status": "PASS",
+        "selection": [
+          "seo-audit",
+          "ai-seo"
+        ],
+        "files_read": [
+          "seo-audit/SKILL.md",
+          "ai-seo/SKILL.md",
+          "seo-audit/references/international-seo.md",
+          "ai-seo/references/2026-integration.md",
+          "ai-seo/references/citations-vs-recommendations.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      },
+      {
+        "case": "aso",
+        "status": "PASS",
+        "selection": [
+          "aso"
+        ],
+        "files_read": [
+          "aso/SKILL.md",
+          "aso/references/playbook.md",
+          "aso/references/store-audit.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      },
+      {
+        "case": "pricing-retention",
+        "status": "PASS",
+        "selection": [
+          "pricing",
+          "churn-prevention"
+        ],
+        "files_read": [
+          "pricing/SKILL.md",
+          "churn-prevention/SKILL.md",
+          "pricing/references/playbook.md",
+          "pricing/references/research.md",
+          "churn-prevention/references/playbook.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      },
+      {
+        "case": "prospecting-revops",
+        "status": "PASS",
+        "selection": [
+          "prospecting",
+          "revops"
+        ],
+        "files_read": [
+          "prospecting/SKILL.md",
+          "revops/SKILL.md",
+          "prospecting/references/compliance.md",
+          "prospecting/references/b2b-prospecting.md",
+          "prospecting/references/2026-integration.md",
+          "revops/references/playbook.md",
+          "revops/references/scoring-validation.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      },
+      {
+        "case": "engineering-ui",
+        "status": "PASS",
+        "selection": [
+          "nextjs-developer",
+          "frontend-design"
+        ],
+        "files_read": [
+          "nextjs-developer/SKILL.md",
+          "frontend-design/SKILL.md",
+          "nextjs-developer/references/data-and-security.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      },
+      {
+        "case": "isolated-engineering-ui",
+        "status": "PASS",
+        "selection": [
+          "nextjs-developer",
+          "data-dashboard",
+          "design-tokens"
+        ],
+        "files_read": [
+          "nextjs-developer/SKILL.md",
+          "data-dashboard/SKILL.md",
+          "design-tokens/SKILL.md",
+          "nextjs-developer/references/data-and-security.md",
+          "data-dashboard/references/metric-contracts.md",
+          "data-dashboard/references/interaction-and-verification.md"
+        ],
+        "automatic_discovery": true,
+        "evidence": "Observed installed Cursor UI Used skill actions, Read file activity, completed answer and file list; not a fixture."
+      }
+    ]
+  },
+  "claude": {
+    "runtime": "Claude Code 2.1.316, installed extension native binary",
+    "discovery": "PASS: all 97 registered IDs present in actual startup skills list",
+    "behavior": "UNVERIFIED: actual model request failed before tool use",
+    "error": "401 OAuth access token expired; re-authentication required",
+    "routing_cases_completed": 0,
+    "attempted_case": "ads",
+    "reported_cost_usd": 0,
+    "trace_sha256": "3d2537fd1dfdcb9c83678599baff65041afcedc1ac1601ec6871b8a970b69e4b",
+    "test_mode": "plan; tools Read/Skill; hooks disabled; strict MCP configuration; no session persistence; one-dollar maximum",
+    "release_assessment": "Environment/authentication limitation, not a demonstrated library defect; non-blocking for owner approval with this explicit limitation, but full three-runtime behavioral certification remains pending."
+  },
+  "scope_limits": [
+    "No raw account metadata or private runtime traces committed.",
+    "No live campaign, conversion transport, payment, outreach or production implementation tests.",
+    "Startup metadata advertising all skills is not loading all skill bodies.",
+    "Related design helper choices vary by runtime; Cursor isolated UI control also loaded design-tokens.",
+    "Existing optional gitleaks/trufflehog not installed; not counted as passed.",
+    "No installation, push, merge, deploy, GitHub Actions or metered GitHub service."
+  ]
+}
